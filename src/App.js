@@ -1,23 +1,42 @@
 import logo from './logo.svg';
 import './App.css';
+import { useEffect, useState } from 'react';
+import API from './utils/API';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Splash from './pages/Splash';
+import Dashboard from './admin/pages/Dashboard';
+
 
 function App() {
+
+  const [postsState, setPostsState] = useState([]);
+
+  useEffect(() => {
+    API.getAllPosts()
+      .then(dbPosts => {
+        console.log(dbPosts)
+        setPostsState(dbPosts.data);
+      })
+      .catch(err => console.log(err))
+  }, [])
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        {/* BEGIN ROUTING */}
+        <Switch>
+          <Route exact path={['/', '/home']}>
+            <Splash />
+          </Route>
+          <Route exact path="/admin">
+            <Dashboard postsState={postsState} setPostsState={setPostsState} />
+          </Route>
+          <Route exact path="*">
+            <h1>404 not found</h1>
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
