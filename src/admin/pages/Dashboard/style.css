@@ -1,0 +1,7 @@
+.Dashboard {
+    width: 80vw;
+    min-height:100vh;
+    position: absolute;
+    top: 0;
+    right: 0;
+}

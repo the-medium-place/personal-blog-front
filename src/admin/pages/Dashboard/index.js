@@ -1,9 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
+import SideNav from '../../components/SideNav'
+import './style.css';
+import AllPosts from '../../components/AllPosts';
+import AllComments from '../../components/AllComments';
 
 export default function Dashboard({ postsState, setPostsState }) {
+
+
+    const [componentViewState, setComponentViewState] = useState('main')
+
+
+console.log('postsState: ',postsState);
     return (
         <div className="Dashboard">
             <h1>Here's the dashboard!!</h1>
+            <SideNav componentViewState={componentViewState} setComponentViewState={setComponentViewState} />
+            {
+                componentViewState === 'posts' ? <AllPosts postsState={postsState} setPostsState={setPostsState} /> :
+                componentViewState === 'comments' ? <AllComments /> :
+                componentViewState === 'main' ? <h1>main!</h1> : null
+            
+            
+            }
 
             {postsState.map(post => {
         return (

@@ -32,6 +32,10 @@ const API = {
         return axios.get(API_URL + `/api/posts/tag/${tagId}`);
     },
 
+    getAllComments: function () {
+        return axios.get(API_URL + `/api/comments`);
+    },
+
     // BLOG POST 'POST' QUERIES
     // ========================
     // save post

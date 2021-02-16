@@ -1,0 +1,23 @@
+thead {
+    font-weight: bold;
+    text-align: center;
+    background: darkgray;
+    color: white;
+    font-family: 'Roboto', sans-serif
+}
+
+td {
+    padding: 7px;
+}
+
+td img {
+    max-width: 100px;
+}
+
+table {
+    border: 3px solid red;
+}
+
+tr {
+    border: 3px solid black;
+}
