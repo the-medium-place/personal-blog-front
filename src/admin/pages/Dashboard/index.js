@@ -3,11 +3,15 @@ import SideNav from '../../components/SideNav'
 import './style.css';
 import AllPosts from '../../components/AllPosts';
 import AllComments from '../../components/AllComments';
+import AddPost from '../../components/AddPost';
+import UpdatePost from '../../components/UpdatePost';
+import AllTags from '../../components/AllTags';
 
 export default function Dashboard({ postsState, setPostsState }) {
 
 
     const [componentViewState, setComponentViewState] = useState('main')
+    const [updatePostState, setUpdatePostState] = useState(null)
 
 
 console.log('postsState: ',postsState);
@@ -16,9 +20,12 @@ console.log('postsState: ',postsState);
             <h1>Here's the dashboard!!</h1>
             <SideNav componentViewState={componentViewState} setComponentViewState={setComponentViewState} />
             {
-                componentViewState === 'posts' ? <AllPosts postsState={postsState} setPostsState={setPostsState} /> :
+                componentViewState === 'posts' ? <AllPosts postsState={postsState} setPostsState={setPostsState} setComponentViewState={setComponentViewState} updatePostState={updatePostState} setUpdatePostState={setUpdatePostState} /> :
                 componentViewState === 'comments' ? <AllComments /> :
-                componentViewState === 'main' ? <h1>main!</h1> : null
+                componentViewState === 'tags' ? <AllTags /> :
+                componentViewState === 'updatepost' ? <UpdatePost postId={updatePostState} setPostsState={setPostsState}/> :
+                componentViewState === 'addpost' ? <AddPost postsState={postsState} setPostsState={setPostsState} /> :
+                componentViewState === 'main' ? <h1>main!</h1> : <h1>What are you lookin' for?</h1>
             
             
             }

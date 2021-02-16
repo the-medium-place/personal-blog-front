@@ -36,6 +36,14 @@ const API = {
         return axios.get(API_URL + `/api/comments`);
     },
 
+    getAllTags: function () {
+        return axios.get(API_URL + `/api/tags`)
+    },
+
+    getTagById: function (tagId) {
+        return axios.get(API_URL + `/api/tags/${tagId}`)
+    },
+
     // BLOG POST 'POST' QUERIES
     // ========================
     // save post
@@ -49,6 +57,10 @@ const API = {
     // change comment approval (true/false)
     setCommentApproval: function (apprObj, commentId) {
         return axios.put(API_URL + `/api/comments/setapproval/${commentId}`, apprObj)
+    },
+
+    updateTagTextById: function(tagObj, tagId){
+        return axios.put(API_URL + `/api/tags/${tagId}`, tagObj)
     }
 
 

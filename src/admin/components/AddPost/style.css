@@ -1,0 +1,30 @@
+form {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+
+input, textarea {
+    margin-bottom: 1rem;
+}
+
+.post-tags-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.post-tags-wrapper h3 {
+    width: 100%;
+}
+
+input[type="checkbox"] {
+    border: 3px solid black;
+    border-radius: 50%;
+    background: green;
+}
+
+input[type='checkbox']:checked {
+    background:red;
+}

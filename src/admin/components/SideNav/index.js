@@ -15,6 +15,12 @@ export default function SideNav(props) {
             <ul>
                 <li onClick={()=>setComponentViewState('comments')}>All Comments</li>
             </ul>            
+            <ul>
+                <li onClick={()=>setComponentViewState('addpost')}>Add New Post</li>
+            </ul>
+            <ul>
+                <li onClick={()=>setComponentViewState('tags')}>All Tags</li>
+            </ul>            
             
         </div>
     )

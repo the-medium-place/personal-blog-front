@@ -23,7 +23,11 @@ export default function AllComments() {
             approved: !approval
         }
         API.setCommentApproval(apprObj, commentId)
-        .then(fetchComments())
+        .then(dbComment => {
+            alert(`Comment ${approval ? 'Denied!':'Approved!'}`)
+            console.log(dbComment)
+            fetchComments()
+        })
         .catch(err => console.log(err))
     }
 
@@ -51,9 +55,9 @@ export default function AllComments() {
                             <td>{comment.name}</td>
                             <td>{comment.email}</td>
                             <td>{comment.text}</td>
-                            <td>{comment.createdAt}</td>
-                            <td>{comment.approved ? 'Approved' : 'Not Approved'}</td>
-                            <td><button onClick={handleApprovalClick(comment.id, comment.approved)}>{comment.approved ? 'Deny' : 'Approve'}</button></td>
+                            <td>{new Date(comment.createdAt).toLocaleString()}</td>
+                            <td style={comment.approved ? {background:'green'}:{background:'red'}}>{comment.approved ? 'Approved' : 'Not Approved'}</td>
+                            <td><button onClick={()=>handleApprovalClick(comment.id, comment.approved)}>{comment.approved ? 'Deny' : 'Approve'}</button></td>
                         </tr>
                         )
                     })}
