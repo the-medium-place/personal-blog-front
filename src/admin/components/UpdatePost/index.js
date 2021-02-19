@@ -15,13 +15,28 @@ export default function UpdatePost(props) {
     })
     const [allTagsState, setAllTagsState] = useState([])
     const [tagCheckboxState, setTagCheckboxState] = useState([])
+    const [showCheckboxState, setShowCheckboxState] = useState(false);
 
     useEffect(() => {
         API.getPostById(props.postId)
             .then(dbPost => {
                 setFormState(dbPost.data)
-                console.log(formState)
+                const tagsCopy = [];
+                if (dbPost.data.Tags.length > 0) {
+                    dbPost.data.Tags.forEach(tagObj => {
+                        // tagsCopy = tagCheckboxState;
+                        tagsCopy.push("" + tagObj.id);
+                        console.log(tagCheckboxState)
+                    })
+                }
+                return tagsCopy;
             })
+            .then(tags => {
+                console.log('second .then(): ', tags)
+                setTagCheckboxState(tags)
+                return tags;
+            })
+            .then((sameTags)=>setShowCheckboxState(true))
             .catch(err => console.log(err))
 
         API.getAllTags()
@@ -29,10 +44,10 @@ export default function UpdatePost(props) {
                 setAllTagsState(dbTags.data)
             })
             .catch(err => console.log(err))
-
     }, [])
-    console.log('formState.Tags: ', formState.Tags)
-    console.log('allTagsState: ', allTagsState)
+    // console.log('formState.Tags: ', formState.Tags)
+    // console.log('allTagsState: ', allTagsState)
+    // console.log('tagCheckboxState: ', tagCheckboxState)
 
     function handleInputChange(event) {
         const { name, value } = event.target;
@@ -40,24 +55,49 @@ export default function UpdatePost(props) {
         setFormState({ ...formState, [name]: value })
     }
 
-    function updatePost() {
-
-        console.log(formState)
-    }
-
-    function findMatchingTags(id) {
-        // search allTagsState for tags that are in formState.Tags
-        const tagCheck = formState.Tags.filter(tag => {
-            return tag.id === id
-        })
-        console.log('tagCheck for id #' + id + ': ', tagCheck)
-
-        if (tagCheck.length > 0) {
-            return true
+    function handleTagClick(event) {
+        if (event.target.checked) {
+            console.log('checked!', event.target.id)
+            const tagsCopy = tagCheckboxState;
+            tagsCopy.push(event.target.id);
+            setTagCheckboxState(tagsCopy)
         } else {
-            return false
-        };
+            console.log('unchecked!', event.target.id)
+            const tagsCopy = tagCheckboxState;
+            const tagIndex = tagsCopy.indexOf(event.target.id);
+            tagsCopy.splice(tagIndex, 1)
+            setTagCheckboxState(tagsCopy)
+        }
+
+        console.log(tagCheckboxState)
     }
+
+    function updatePost(event) {
+        event.preventDefault();
+        const postObj = {
+            title: formState.title,
+            text: formState.text,
+            image1url: formState.image1url,
+            image2url: formState.image2url,
+            image3url: formState.image3url,
+            tags: tagCheckboxState
+        }
+        API.updatePost(postObj, formState.id)
+            .then(dbUpdatedPost => {
+                console.log(dbUpdatedPost);
+                API.getAllPosts()
+                .then(dbPosts => {
+                    props.setPostsState(dbPosts.data)
+                })
+                .catch(err => {
+                    console.log('error retrieving DB posts: ', err)
+                })
+                alert('Post successfully updated!!');
+                props.setComponentViewState('posts');
+            })
+    }
+
+
 
     return (
         <div className="UpdatePost">
@@ -75,8 +115,8 @@ export default function UpdatePost(props) {
 
                 <label htmlFor="post-content">Content:</label>
                 <textarea
-                    rows="20"
-                    cols="20"
+                    rows="12"
+                    // cols="20"
                     name="text"
                     id="post-content"
                     placeholder="Post content..."
@@ -117,27 +157,31 @@ export default function UpdatePost(props) {
                 <div className="post-tags-wrapper">
                     <h3>Current Tags:</h3>
                     {formState.Tags.length > 0 ?
-                    formState.Tags.map(tag => {
-                        return (
-                            <div key={tag.id}>
-                                {/* <label htmlFor={tag.id}>{tag.text} </label>
-                                <input type="checkbox" defaultChecked id={tag.id} /> */}
-                                <p>{tag.text}</p>
-                            </div>
-                        )
-                    }) : <h3>No Tags for this Post yet!</h3>}
+                        formState.Tags.map(tag => {
+                            return (
+                                <div key={tag.id}>
+                                    <p>{tag.text}</p>
+                                </div>
+                            )
+                        }) : <h3>No Tags for this Post yet!</h3>}
                 </div>
 
                 <div className="post-tags-wrapper">
                     <h3>All Tags (Checked tags are already attached to this post):</h3>
-                    {allTagsState.map(tag => {
+                    {showCheckboxState ? allTagsState.map(tag => {
                         return (
                             <div key={tag.id}>
-                                <label htmlFor={tag.id}>{tag.text} </label>
-                                <input type="checkbox" defaultChecked={findMatchingTags(tag.id)} id={tag.id} onChange={() => console.log('clicked!')} />
+                                <label htmlFor={tag.id}> {tag.text} </label>
+                                <input
+                                    type="checkbox"
+                                    defaultChecked={tagCheckboxState.includes("" + tag.id)}
+                                    id={tag.id}
+                                    onChange={handleTagClick}
+                                />
                             </div>
                         )
-                    })}
+                    }) : null
+                }
                 </div>
 
                 <input type="submit" value="Update Post" onClick={updatePost} />

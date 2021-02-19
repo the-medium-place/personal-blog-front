@@ -8,18 +8,14 @@ export default function SideNav(props) {
         <div className="SideNav">
             <ul>
                 <li onClick={()=>setComponentViewState('main')}>Dashboard</li>
-            </ul>
-            <ul>
-                <li onClick={()=>setComponentViewState('posts')}>All Posts</li>
-            </ul>
-            <ul>
-                <li onClick={()=>setComponentViewState('comments')}>All Comments</li>
-            </ul>            
-            <ul>
+                
                 <li onClick={()=>setComponentViewState('addpost')}>Add New Post</li>
-            </ul>
-            <ul>
-                <li onClick={()=>setComponentViewState('tags')}>All Tags</li>
+       
+                <li onClick={()=>setComponentViewState('posts')}>View/Edit All Posts</li>
+        
+                <li onClick={()=>setComponentViewState('tags')}>View/Edit All Tags</li>
+                
+                <li onClick={()=>setComponentViewState('comments')}>View/Approve All Comments</li>
             </ul>            
             
         </div>

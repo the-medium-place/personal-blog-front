@@ -3,14 +3,7 @@ import './style.css';
 
 export default function AllPosts(props) {
 
-    const { postsState, setPostsState, setComponentViewState, setUpdatePostState } = props;
-
-
-    // function handleEditClick(){
-
-    //     setComponentViewState('updatepost')
-    //     setUpdatePostState(post.id)
-    // }
+    const { postsState, setComponentViewState, setUpdatePostState } = props;
 
     return (
         <div className="AllPosts">
@@ -37,11 +30,11 @@ export default function AllPosts(props) {
                             <td>{post.id}</td>
                             <td>{post.title}</td>
                             <td>{post.text.substr(0,30)+'...'}</td>
-                            <td>{post.Comments.length}</td>
+                            <td>{post.Comments.length} total /<br/> {post.Comments.filter(comment=>comment.approved).length} approved</td>
                             <td>{post.Tags.map(tag=>tag.text+' ')}</td>
-                            <td><img src={post.image1url} alt={post.title} /></td>
-                            <td><img src={post.image2url} alt={post.title} /></td>
-                            <td><img src={post.image3url} alt={post.title} /></td>
+                            <td><img src={post.image1url||'https://via.placeholder.com/150'} alt={post.title} /></td>
+                            <td><img src={post.image2url||'https://via.placeholder.com/150'} alt={post.title} /></td>
+                            <td><img src={post.image3url||'https://via.placeholder.com/150'} alt={post.title} /></td>
                             <td>{new Date(post.createdAt).toLocaleString()}</td>
                             <td><button onClick={()=>{
                                       setComponentViewState('updatepost')

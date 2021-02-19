@@ -44,7 +44,12 @@ const API = {
         return axios.get(API_URL + `/api/tags/${tagId}`)
     },
 
-    // BLOG POST 'POST' QUERIES
+    getAllPostsWithApprovedComments: function () {
+        return axios.get(API_URL + '/api/posts/approved');
+
+    },
+
+    // BLOG 'POST'/'PUT' QUERIES
     // ========================
     // save post
     saveNewPost: function (postObj) {
@@ -61,6 +66,15 @@ const API = {
 
     updateTagTextById: function(tagObj, tagId){
         return axios.put(API_URL + `/api/tags/${tagId}`, tagObj)
+    },
+
+    updatePost: function(postObj, postId) {
+        console.log('updatePost postId: ', postId)
+        return axios.put(API_URL + `/api/posts/${postId}`, postObj)
+    },
+
+    saveNewTag: function (tagObj) {
+        return axios.post(API_URL + `/api/tags`, tagObj)
     }
 
 

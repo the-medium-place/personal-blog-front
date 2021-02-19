@@ -5,3 +5,27 @@
     top: 0;
     right: 0;
 }
+
+thead {
+    font-weight: bold;
+    text-align: center;
+    background: darkgray;
+    color: white;
+    font-family: 'Roboto', sans-serif
+}
+
+td {
+    padding: 7px;
+}
+
+td img {
+    max-width: 100px;
+}
+
+table {
+    border: 3px solid red;
+}
+
+tbody tr:hover {
+    background: lightgray;
+}

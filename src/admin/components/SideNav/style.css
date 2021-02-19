@@ -6,3 +6,20 @@
     width: 18.5vw;
     background: darkgray;
 }
+
+.SideNav ul {
+    list-style: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 24px;
+}
+
+.SideNav li {
+    padding: 8px;
+    margin-top: 12px;
+}
+
+.SideNav li:hover {
+    background: black;
+    color: white;
+
+}

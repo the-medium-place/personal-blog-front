@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import API from '../../../utils/API'
 
-export default function AllComments() {
+export default function AllComments(props) {
 
     const [commentsState, setCommentsState] = useState([])
 
@@ -24,9 +24,14 @@ export default function AllComments() {
         }
         API.setCommentApproval(apprObj, commentId)
         .then(dbComment => {
-            alert(`Comment ${approval ? 'Denied!':'Approved!'}`)
+            // alert(`Comment ${approval ? 'Denied!':'Approved!'}`)
             console.log(dbComment)
             fetchComments()
+            API.getAllPosts()
+            .then(dbPosts => {
+                props.setPostsState(dbPosts.data)
+            })
+            .catch(err => console.log(err))
         })
         .catch(err => console.log(err))
     }

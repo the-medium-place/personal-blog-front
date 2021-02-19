@@ -4,11 +4,12 @@ import TagEdit from '../TagEdit'
 
 import './style.css'
 
-export default function AllTags() {
+export default function AllTags({ setPostsState }) {
 
     const [tagsState, setTagsState] = useState([])
     const [editViewState, setEditViewState] = useState(false)
     const [editTagId, setEditTagId] = useState(null);
+    const [newTagState, setNewTagState] = useState('')
 
     useEffect(() => {
         API.getAllTags()
@@ -29,9 +30,30 @@ export default function AllTags() {
         // return <TagEdit tag={tag} />
     }
 
+    function handleInputChange(event) {
+        const { name, value } = event.target;
+        setNewTagState({[name]:value})
+
+    }
+
+    function handleTagSave () {
+        API.saveNewTag(newTagState)
+        .then(dbNewTag => {
+            API.getAllTags()
+            .then(dbTags => {
+                setTagsState(dbTags.data);
+            })
+            .catch(err => console.log(err))
+        })
+        .catch(err => console.log(err))
+    }
+
     return (
         <div className="AllTags">
             <h1>All Tags!</h1>
+            <label htmlFor="new-tag">Save new tag: </label>
+            <input id="new-tag" name="text" type="text" value={newTagState.text} onChange={handleInputChange} />
+            <button onClick={handleTagSave}>SAVE</button>
             <div className="tags-wrapper">
                 <div className="tags-left">
                     <table>
@@ -58,7 +80,7 @@ export default function AllTags() {
                     </table>
                 </div>
                 <div className="tags-right">
-                    {editViewState ? <TagEdit tag={editTagId} setEditViewState={setEditViewState} setParentTagsState={setTagsState}/> : null}
+                    {editViewState ? <TagEdit tag={editTagId} setEditViewState={setEditViewState} setParentTagsState={setTagsState} setPostsState={setPostsState}/> : null}
                 </div>
             </div>
         </div>

@@ -1,0 +1,46 @@
+label {
+    width: 15ch;
+}
+
+.Nav {
+    width: 100vw;
+    height: 60px;
+    background: rgb(70, 70, 70);
+    font-family: monospace;
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+    align-items: center;  
+    color:rgb(201, 201, 201);
+  
+}
+
+.Nav form {
+    display: flex;
+    flex-direction: row;
+    height: 24px;
+    margin: auto 0;
+
+}
+
+.Nav a {
+    color:rgb(201, 201, 201);
+}
+
+.nav-search {
+    display: flex;
+    padding: 10px;
+    height: 100%;
+    /* align-items: center; */
+}
+
+.nav-search input {
+    margin: auto 3px;
+}
+
+.nav-text {
+    color:rgb(201, 201, 201);
+}
+

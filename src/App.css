@@ -1,3 +1,7 @@
+body {
+  background: rgb(237, 237, 237);
+}
+
 .App {
   height: 100vh;
   width: 100vw;
