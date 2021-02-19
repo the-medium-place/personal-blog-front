@@ -1,4 +1,4 @@
-.TagSearchWidget {
+.PostSearchWidget {
     width: 70%;
     margin: 10px auto 4vh 20%;
     display: flex;
@@ -9,7 +9,8 @@
     z-index: 1;
 }
 
-.tag-widget-tags-wrapper {
+
+.search-widget-form-wrapper {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -25,7 +26,7 @@
     /* z-index:1; */
 }
 
-.tag-widget-tags-wrapper::before {
+.search-widget-form-wrapper::before {
     content:'';
     position: absolute;
     bottom: 14px;
@@ -38,7 +39,7 @@
     transform: skew(-9deg) rotate(-3deg)
 }
 
-.tag-widget-tags-wrapper::after {
+.search-widget-form-wrapper::after {
     content:'';
     position: absolute;
     bottom: 14px;
@@ -51,15 +52,12 @@
     transform: skew(9deg) rotate(3deg)
 }
 
-.tag-widget-tag-text {
-    display: inline-block;
-    background: rgb(96, 96, 96);
-    color: rgb(213, 213, 213);
-    margin: 3px;
-}
-
-.tag-widget-reset-button {
+.search-widget-reset-button {
     background: lightcoral;
     border-radius: 10px;
     box-shadow: 0 0 10px 2px rgba(20, 20, 20, 0.4);
+}
+
+label, select, input {
+    margin-bottom: 8px;
 }

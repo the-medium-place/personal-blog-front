@@ -6,12 +6,17 @@
     right: 0;
 }
 
+table, th, td {
+    border-bottom: 1px solid rgb(69, 69, 69);
+    border-collapse: collapse;
+}
+
 thead {
     font-weight: bold;
     text-align: center;
     background: darkgray;
     color: white;
-    font-family: 'Roboto', sans-serif
+    font-family: 'Roboto', sans-serif;
 }
 
 td {
@@ -22,9 +27,9 @@ td img {
     max-width: 100px;
 }
 
-table {
+/* table {
     border: 3px solid red;
-}
+} */
 
 tbody tr:hover {
     background: lightgray;

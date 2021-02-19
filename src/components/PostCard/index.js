@@ -11,6 +11,7 @@ export default function PostCard({ post }) {
 
 
     const postDate = new Date(post.createdAt);
+    // postDate.setHours(postDate.getHours() - 9);
     // const postImages = [post.image1url || 'noImage', post.image2url || 'noImage', post.image3url || 'noImage']
     const postImages = [post.image1url, post.image2url, post.image3url]
     return (

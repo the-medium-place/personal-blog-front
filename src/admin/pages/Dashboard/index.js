@@ -19,7 +19,7 @@ export default function Dashboard({ postsState, setPostsState }) {
   return (
     <div className="Dashboard">
       <h1>Here's the dashboard!!</h1>
-      <a href="/home"><h3>go home</h3></a>
+      <a href="/crudposting"><h3>go home</h3></a>
       <SideNav componentViewState={componentViewState} setComponentViewState={setComponentViewState} />
       {
         componentViewState === 'posts' ? <AllPosts postsState={postsState} setComponentViewState={setComponentViewState} updatePostState={updatePostState} setUpdatePostState={setUpdatePostState} /> :

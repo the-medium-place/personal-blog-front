@@ -3,7 +3,7 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import API from './utils/API';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Splash from './pages/Splash';
+import BlogSplash from './pages/BlogSplash';
 import Dashboard from './admin/pages/Dashboard';
 import Nav from './components/Nav';
 
@@ -16,7 +16,7 @@ function App() {
   useEffect(() => {
     API.getAllPosts()
       .then(dbPosts => {
-        console.log(dbPosts)
+        // console.log(dbPosts)
         setPostsState(dbPosts.data);
         setModifiablePostsState(dbPosts.data)
       })
@@ -29,11 +29,11 @@ function App() {
       <Router>
         {/* BEGIN ROUTING */}
         <Switch>
-          <Route exact path={['/', '/home']}>
+          <Route exact path={['/crudposting']}>
             <Nav postsState={postsState} setPostsState={setPostsState}  modifiablePostsState={modifiablePostsState} setModifiablePostsState={setModifiablePostsState}/>
-            <Splash postsState={postsState} setPostsState={setPostsState} modifiablePostsState={modifiablePostsState} setModifiablePostsState={setModifiablePostsState}/>
+            <BlogSplash postsState={postsState} setPostsState={setPostsState} modifiablePostsState={modifiablePostsState} setModifiablePostsState={setModifiablePostsState}/>
           </Route>
-          <Route exact path="/admin">
+          <Route exact path="/crudposting/admin">
             <Dashboard postsState={postsState} setPostsState={setPostsState} />
           </Route>
           <Route exact path="*">
