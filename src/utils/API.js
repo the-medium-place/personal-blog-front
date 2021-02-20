@@ -1,6 +1,8 @@
 import axios from 'axios';
 // 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8080';
+// const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8080';
+const API_URL = 'https://zgs-personal-blog-backend.herokuapp.com' 
+
 
 const API = {
     // PORTFOLIO CALLS
@@ -26,6 +28,7 @@ const API = {
     // BLOG POST 'GET' QUERIES
     // =======================
     getAllPosts: function () {
+        console.log(process.env.REACT_APP_API_URL)
         return axios.get(API_URL + '/api/posts');
     },
 
