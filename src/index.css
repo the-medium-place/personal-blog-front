@@ -11,6 +11,25 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 } */
+
 * {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+:root {
+  --primaryText: rgb(57, 57, 57);
+  --lightText: rgb(201, 201, 201);
+  --primaryBG: rgb(237, 237, 237);
+  --lightBG: white;
+  --contentBoxBG: rgb(211, 211, 211);
+  /* lightgray */
+  --tagButtonBG: rgb(41, 46, 213);
+  --tagButtonLight: rgb(177, 180, 255);
+  --commentCounterBG: red;
+  --commentCounterLight: rgb(255, 177, 177);
+  --tagBtnText: white;
+  --resetBtnBG: rgb(41, 46, 213);
+  --randVal: 0deg;
+  --imgPos: 'absolute';
+  --leftPost: 0;
 }

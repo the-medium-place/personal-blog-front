@@ -1,0 +1,70 @@
+.PostSearchWidget {
+    width: 70%;
+    margin: 10px auto 4vh 20%;
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    background: var(--lightBG);
+    border-radius: 20px 20px 20px 0px;
+    z-index: 1;
+    text-align: center;
+}
+
+
+.search-widget-form-wrapper {
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    /* border: 3px solid rgb(199, 199, 199); */
+    position: relative;
+    margin: 10px;
+    padding: 10px;
+    background: var(--contentBoxBG);
+    /* border-radius: 20px 20px 0px 0px; */
+    color: var(--primaryText);
+    margin-bottom: 2rem;
+    /* z-index:1; */
+}
+
+.search-widget-form-wrapper::before {
+    content:'';
+    position: absolute;
+    bottom: 14px;
+    left: 10px;
+    height: 30%;
+    width: 40%;
+    z-index: -1;
+    background:transparent;
+    box-shadow: 0.4rem 0.4rem 1.8rem 3px rgba(20, 20, 20, 0.6);
+    transform: skew(-9deg) rotate(-3deg)
+}
+
+.search-widget-form-wrapper::after {
+    content:'';
+    position: absolute;
+    bottom: 14px;
+    right: 18px;
+    height: 30%;
+    width: 40%;
+    z-index: -1;
+    background:transparent;
+    box-shadow: 0.4rem 0.4rem 1.8rem 3px rgba(20, 20, 20, 0.6);
+    transform: skew(9deg) rotate(3deg)
+}
+
+.search-widget-reset-button {
+    background: var(--resetBtnBG);
+    border-radius: 5px;
+    display: block;
+    margin: 0 auto;
+    padding: 3px 10px 3px 10px;
+    color: var(--tagBtnText);
+
+    /* box-shadow: 0 0 10px 2px rgba(20, 20, 20, 0.4); */
+}
+
+label, select, input {
+    margin-bottom: 8px;
+}

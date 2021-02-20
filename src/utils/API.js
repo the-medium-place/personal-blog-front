@@ -3,24 +3,29 @@ import axios from 'axios';
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8080';
 
 const API = {
+    // PORTFOLIO CALLS
+    // ===============
+    sendMail: function (input) {
+        return axios.post(API_URL + "/contactme", input);
+    },
 
     // USER INFO QUERIES
     // =================
-    userLogin: function (userObj){
-        return axios.post(API_URL+'/api/users/login', userObj)
+    userLogin: function (userObj) {
+        return axios.post(API_URL + '/api/users/login', userObj)
     },
 
-    getProfile: function(token){
+    getProfile: function (token) {
         return axios.get(API_URL + '/api/users/secretProfile', {
-            headers:{
-                "authorization":`Bearer ${token}`
+            headers: {
+                "authorization": `Bearer ${token}`
             }
         })
     },
 
     // BLOG POST 'GET' QUERIES
     // =======================
-    getAllPosts: function (){
+    getAllPosts: function () {
         return axios.get(API_URL + '/api/posts');
     },
 
@@ -28,7 +33,7 @@ const API = {
         return axios.get(API_URL + `/api/posts/${id}`);
     },
 
-    getPostsByTagId: function(tagId) {
+    getPostsByTagId: function (tagId) {
         return axios.get(API_URL + `/api/posts/tag/${tagId}`);
     },
 
@@ -64,11 +69,11 @@ const API = {
         return axios.put(API_URL + `/api/comments/setapproval/${commentId}`, apprObj)
     },
 
-    updateTagTextById: function(tagObj, tagId){
+    updateTagTextById: function (tagObj, tagId) {
         return axios.put(API_URL + `/api/tags/${tagId}`, tagObj)
     },
 
-    updatePost: function(postObj, postId) {
+    updatePost: function (postObj, postId) {
         console.log('updatePost postId: ', postId)
         return axios.put(API_URL + `/api/posts/${postId}`, postObj)
     },
