@@ -41,18 +41,10 @@ const theme = createMuiTheme({
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    // background: `url('${Background}') no-repeat center fixed`,
-    // backgroundSize: '100vw 100vh'
+
   }
 
 }))
-
-const routes = [
-  { path: '/', name: 'About Me', Component: AboutMe },
-  { path: '/portfolio', name: 'Portfolio', Component: Portfolio, Icon: LaptopIcon },
-  { path: '/contact', name: 'Contact Me', Component: ContactMe, Icon: MailIcon },
-]
-
 
 function App() {
 
@@ -78,38 +70,50 @@ function App() {
   return (
     <div className="App">
       <Router>
+        <CssBaseline />
+        <ThemeProvider theme={theme}>
 
 
 
-        {/* BEGIN ROUTING */}
-        <Switch>
-
-          <Route exact path="/">
-            <NavDrawer routes={routes} />
-            <AboutMe />
-          </Route>
-          <Route exact path="/portfolio">
-            <NavDrawer routes={routes} />
-            <Portfolio />
-          </Route>
-          <Route exact path="/contact">
-            <NavDrawer routes={routes} />
-            <ContactMe />
-          </Route>
-
-          <Route exact path={['/crudposting']}>
-            <Nav postsState={postsState} setPostsState={setPostsState} modifiablePostsState={modifiablePostsState} setModifiablePostsState={setModifiablePostsState} />
-            <BlogSplash postsState={postsState} setPostsState={setPostsState} modifiablePostsState={modifiablePostsState} setModifiablePostsState={setModifiablePostsState} />
-          </Route>
-          <Route exact path="/crudposting/admin">
-            <Dashboard postsState={postsState} setPostsState={setPostsState} />
-          </Route>
-          <Route exact path="*">
-            <h1>404 not found</h1>
-          </Route>
 
 
-        </Switch>
+          {/* BEGIN ROUTING */}
+          <Switch>
+
+            <Route exact path="/">
+              <NavDrawer />
+              <Container>
+                <AboutMe latestPost={postsState.length > 0 ? postsState[0] : null} />
+              </Container>
+            </Route>
+            <Route exact path="/portfolio">
+              <NavDrawer />
+              <Container>
+                <Portfolio />
+              </Container>
+            </Route>
+            <Route exact path="/contact">
+              <NavDrawer />
+              <Container>
+                <ContactMe />
+              </Container>
+            </Route>
+
+            <Route exact path={['/crudposting']}>
+              <Nav postsState={postsState} setPostsState={setPostsState} modifiablePostsState={modifiablePostsState} setModifiablePostsState={setModifiablePostsState} />
+              <BlogSplash postsState={postsState} setPostsState={setPostsState} modifiablePostsState={modifiablePostsState} setModifiablePostsState={setModifiablePostsState} />
+            </Route>
+            <Route exact path="/crudposting/admin">
+              <Dashboard postsState={postsState} setPostsState={setPostsState} />
+            </Route>
+            <Route exact path="*">
+              <h1>404 not found</h1>
+            </Route>
+
+
+          </Switch>
+        </ThemeProvider>
+
       </Router>
     </div>
   );

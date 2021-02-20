@@ -147,8 +147,8 @@ export default function PortfolioCard({ project }) {
                                     </Typography>
                                 </AccordionDetails>
                             </Accordion> */}
-                        <Grid style={{ fontWeight: 'bold' }} item xs={10}>
-                            <h2 style={{ marginTop: '-7rem' }}>
+                        <Grid style={{ fontWeight: 'bold', marginBottom: '2rem' }} item xs={10}>
+                            <h2>
                                 {title}<br />
                                 <small>{tagline}</small>
                             </h2>
