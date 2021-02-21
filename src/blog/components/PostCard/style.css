@@ -98,8 +98,8 @@
 .post-content-wrapper::before {
     content:'';
     position: absolute;
-    bottom: 20px;
-    left: 21px;
+    bottom: 25px;
+    left: 26px;
     height: 30%;
     width: 40%;
     z-index: -1;
@@ -111,8 +111,8 @@
 .post-content-wrapper::after {
     content:'';
     position: absolute;
-    bottom: 20px;
-    right: 30px;
+    bottom: 25px;
+    right: 34px;
     height: 30%;
     width: 40%;
     z-index: -1;

@@ -28,7 +28,6 @@ const API = {
     // BLOG POST 'GET' QUERIES
     // =======================
     getAllPosts: function () {
-        console.log(process.env.REACT_APP_API_URL)
         return axios.get(API_URL + '/api/posts');
     },
 

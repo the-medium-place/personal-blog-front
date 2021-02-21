@@ -16,6 +16,7 @@ export default function PostCard({ post }) {
     const postImages = [post.image1url, post.image2url, post.image3url]
     return (
         <div className="PostCard">
+            <a href={`/crudposting/viewpost/${post.id}`}><button>View Post</button></a>
             <div className="post-title">
                 <h2>{post.title} <br /><small>{postDate.toDateString() + ', ' + postDate.toLocaleTimeString()}</small></h2>
                 <div className="post-comment-counter">

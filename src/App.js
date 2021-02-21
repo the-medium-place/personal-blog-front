@@ -17,6 +17,7 @@ import Nav from './blog/components/Nav';
 import AboutMe from './portfolio/pages/AboutMe';
 import ContactMe from './portfolio/pages/ContactMe';
 import Portfolio from './portfolio/pages/Portfolio';
+import ViewPost from './blog/pages/ViewPost';
 
 
 
@@ -79,7 +80,7 @@ function App() {
 
           {/* BEGIN ROUTING */}
           <Switch>
-
+            {/* PORTFOLIO SIDE ROUTING */}
             <Route exact path="/">
               <NavDrawer />
               <Container>
@@ -99,9 +100,15 @@ function App() {
               </Container>
             </Route>
 
+
+            {/* BLOG SIDE ROUTING */}
             <Route exact path={['/crudposting']}>
               <Nav postsState={postsState} setPostsState={setPostsState} modifiablePostsState={modifiablePostsState} setModifiablePostsState={setModifiablePostsState} />
               <BlogSplash postsState={postsState} setPostsState={setPostsState} modifiablePostsState={modifiablePostsState} setModifiablePostsState={setModifiablePostsState} />
+            </Route>
+            <Route exact path="/crudposting/viewpost/:id">
+              <Nav postsState={postsState} setPostsState={setPostsState} modifiablePostsState={modifiablePostsState} setModifiablePostsState={setModifiablePostsState} />
+              <ViewPost />
             </Route>
             <Route exact path="/crudposting/admin">
               <Dashboard postsState={postsState} setPostsState={setPostsState} />
