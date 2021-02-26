@@ -1,0 +1,92 @@
+.fullpost-comments-wrapper {
+    margin-top: 2rem;
+    width: 60%;
+    background: var(--lightBG);
+    padding: 1rem;
+    display: inline-block;
+
+}
+
+.fullpost-comments-box {
+    width: 100%;
+    /* padding: 1rem; */
+
+}
+
+.fullpost-single-comment-wrapper {
+    margin: .5rem;
+    background: var(--contentBoxBG);
+    padding: .5rem;
+}
+
+.fullpost-single-comment-wrapper p {
+    font-family: monospace;
+    font-size: 1.2rem;
+    font-weight: 530;
+}
+
+.comment-from-posted-email {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border-bottom: 2px solid black;
+    margin-bottom: 0.6rem;
+}
+
+.comment-from {
+    width: 100%;
+}
+
+.comment-posted {
+    width: 100%;
+}
+
+.comment-heading {
+    font-family: sans-serif;
+    font-weight: bold;
+    display: block;
+    margin-bottom: -1rem;
+
+}
+
+.comment-email {
+    width: 100%;
+}
+
+.fullpost-add-comment-wrapper {
+    margin-top: 2rem;
+    width: 38%;
+    background: var(--lightBG);
+    padding: 1rem;
+    display: inline-block;
+    height: fit-content;
+    
+}
+
+.add-comment-form {
+    padding: 1rem;
+    background: var(--contentBoxBG);
+    margin-bottom: 2rem;
+}
+
+.add-comment-form form {
+    margin: 0 auto;
+}
+
+.add-comment-form button {
+    background: orange;
+    box-shadow: inset 0 6px 1rem .6rem rgb(245, 215, 159);
+    padding: .3rem;
+    width: 50%;
+}
+
+.add-comment-name, .add-comment-email {
+    width: 60%;
+}
+
+.comment-text {
+    margin: .6rem;
+    font-size: 1.4rem;
+    /* color:red; */
+}

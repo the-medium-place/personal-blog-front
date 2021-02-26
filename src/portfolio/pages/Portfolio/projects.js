@@ -63,15 +63,7 @@ const projects = [
   // technologies: "HTML5, CSS3, Node.js, Express, MySQL"
 
   // },
-  // {
-  //   id: "fitnessmonkey",
-  //   github: "https://github.com/the-medium-place/fitness-tracker",
-  //   deployed: "https://awesome-fitness-tracker.herokuapp.com/",
-  //   description: "This is a simple fitness tracker app that utilizes Node JS, Handlebars and Mongoose DB to allow a user to create workout regimens and then add/edit/delete the individual exercises within. My test data while building consistently focused, for some reason, on eating bananas. So, I called the app Fitness Monkey!",
-  //   title: "Fitness Monkey",
-  // technologies: "HTML5, CSS3, Mongoose DB, Express, Handlebars JS, Node.js"
-
-  // },
+ 
   {
     id: "markit",
     github: "https://github.com/dianastebbins/mark-it-react",
@@ -82,6 +74,18 @@ const projects = [
     tagline: "Farm-to-market-to-internet-database...",
     screenshot: 'https://i.imgur.com/rcTeF3S.jpg',
     technologies: "Node.js, Express, React JS, Sequelize, HTML5, CSS3, Bulma CSS"
+
+  },
+  {
+    id: "crudposting",
+    github: "https://github.com/the-medium-place/personal-blog-front",
+    deployed: "https://zgs-personal-blog-frontend.herokuapp.com/crudposting",
+    description: "Welcome to my personal blog and portfolio combo application! The blog-side is a fully CRUD-functional CMS that is directly connected to this portfolio site! click the menu above or the button below to visit the homepage and catch up on my programming journey, or random musings!",
+    // "This full-stack application provides a way for users to search for local farmer's markets as well as create a vendor profile which allows the user to list and sell products - creating a way for consumers to get their farmer's market shopping done at a safe 'social distance'.  Items created appear on the app's map function, and users can favorite a vendor, item or market and have it appear on their profile page.",
+    title: "CRUDposting",
+    tagline: "Personal CRUD blog and Portolio!",
+    screenshot: 'https://i.imgur.com/zu9Gwy4.png',
+    technologies: "Node.js, Express, React JS, Sequelize, HTML5, CSS3, Material UI"
 
   },
 
@@ -113,8 +117,19 @@ const projects = [
     description: "This Full-Stack (MERN) application uses React JS and Mongoose, allowing a user to search the Google Books API, and save any results to a list that is displayed on the 'Saved' page. The user can also delete books from this list giving the app CR-D functionality.",
     title: "Google Books Search",
     tagline: "Simple but elegant book search...",
-    screenshot: 'https://i.imgur.com/4ZhnYG9.png',
+    screenshot: 'https://i.imgur.com/JWLfCey.png',
     technologies: "Mongoose DB, Express, React JS, Node.js, HTML5, CSS3, Bootstrap/React-Bootstrap CSS Framework"
+
+  },
+  {
+    id: "fitnessmonkey",
+    github: "https://github.com/the-medium-place/fitness-tracker",
+    deployed: "https://awesome-fitness-tracker.herokuapp.com/",
+    description: "This is a simple fitness tracker app that utilizes Node JS, Handlebars and Mongoose DB to allow a user to create workout regimens and then add/edit/delete the individual exercises within. My test data while building consistently focused, for some reason, on eating bananas. So, I called the app Fitness Monkey!",
+    title: "Fitness Monkey",
+    tagline:'Stay fit... no monkey business!',
+    screenshot: "https://i.imgur.com/hlZdCTl.png",
+  technologies: "HTML5, CSS3, Mongoose DB, Express, Handlebars JS, Node.js"
 
   },
   {

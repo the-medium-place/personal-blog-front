@@ -1,26 +1,58 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import './style.css';
 
 
 
 export default function PostCard({ post }) {
-    const [imgHoverState, setImgHoverState] = useState('absolute')
+    // const ref = useRef(null);
+
+    // const [visibleState, setVisibleState] = useState({
+    //     img1: {},
+    //     img2: {},
+    //     img3: {}
+    // });
 
 
+    useEffect(() => {
+        // ref.current.focus();
+        
+        // document.addEventListener('scroll', (e) => {
+        //     ref.current.focus();
+        //     const rect = ref.current.getBoundingClientRect();
+        //     const imgArr = ref.current.childNodes[3].childNodes[1].firstChild.childNodes;
+            
+        //     // IF BOTTOM OF POSTCARD DIV IS AT BOTTOM OF SCREEN
+        //     if (rect.y + rect.height <= window.innerHeight) {
+        //         imgArr.forEach((imgDiv,i) => {
+        //             if (!imgDiv.classList.contains(`slide-in${i}`)){
+        //                 imgDiv.classList.add(`slide-in${i}`)
+        //             }
+        //         })
+
+        //     } else {
+        //         imgArr.forEach((imgDiv,i)=>{
+        //             if (imgDiv.classList.contains(`slide-in${i}`)){
+        //                 imgDiv.classList.remove(`slide-in${i}`)
+        //             }
+        //         })
+        //     }
+        // })
+    }, [])
 
 
 
     const postDate = new Date(post.createdAt);
-    // postDate.setHours(postDate.getHours() - 9);
-    // const postImages = [post.image1url || 'noImage', post.image2url || 'noImage', post.image3url || 'noImage']
     const postImages = [post.image1url, post.image2url, post.image3url]
+
+
     return (
-        <div className="PostCard">
+        <div className="PostCard" id={post.id}>
+            {/* <p>SCROLL STATE: {JSON.stringify(visibleState)}</p> */}
             <a href={`/crudposting/viewpost/${post.id}`}><button>View Post</button></a>
             <div className="post-title">
                 <h2>{post.title} <br /><small>{postDate.toDateString() + ', ' + postDate.toLocaleTimeString()}</small></h2>
                 <div className="post-comment-counter">
-                    <h4 className="post-comment-icon"><i className="fas fa-comment-alt"></i> {post.Comments.filter(comment=>comment.approved).length}</h4>
+                    <h4 className="post-comment-icon"><i className="fas fa-comment-alt"></i> {post.Comments.filter(comment => comment.approved).length}</h4>
                 </div>
             </div>
             <div className="post-content-wrapper">

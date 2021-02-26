@@ -8,7 +8,7 @@ export default function AllTags({ setPostsState }) {
 
     const [tagsState, setTagsState] = useState([])
     const [editViewState, setEditViewState] = useState(false)
-    const [editTagId, setEditTagId] = useState(null);
+    const [editTag, setEditTag] = useState(null);
     const [newTagState, setNewTagState] = useState('')
 
     useEffect(() => {
@@ -23,7 +23,7 @@ export default function AllTags({ setPostsState }) {
     function handleEditClick(tag) {
         // API.getTagById(event.target.id)
         // .then(dbTag => {
-            setEditTagId(tag)
+            setEditTag(tag)
             setEditViewState(true);
         // })
         // console.log('clicked!')
@@ -80,7 +80,7 @@ export default function AllTags({ setPostsState }) {
                     </table>
                 </div>
                 <div className="tags-right">
-                    {editViewState ? <TagEdit tag={editTagId} setEditViewState={setEditViewState} setParentTagsState={setTagsState} setPostsState={setPostsState}/> : null}
+                    {editViewState ? <TagEdit editTag={editTag} setEditTag={setEditTag} setEditViewState={setEditViewState} setParentTagsState={setTagsState} setPostsState={setPostsState}/> : null}
                 </div>
             </div>
         </div>

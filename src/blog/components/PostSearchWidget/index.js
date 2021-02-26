@@ -81,7 +81,7 @@ export default function PostSearchWidget({ postsState, modifiablePostsState,setM
                     />
                 </form>
                 {resultCountShowState ? (
-                    <p>Number of Results: {modifiablePostsState.length}</p>
+                    <h3>Number of Results: {modifiablePostsState.length}</h3>
                 ):null}
 
             </div>

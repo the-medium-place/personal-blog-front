@@ -3,9 +3,8 @@ import MailIcon from '@material-ui/icons/Mail';
 import HomeIcon from '@material-ui/icons/Home';
 import LaptopIcon from '@material-ui/icons/LaptopMac';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createMuiTheme, makeStyles } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
-import { makeStyles } from '@material-ui/core/styles';
 import { Container } from '@material-ui/core';
 import NavDrawer from './portfolio/components/NavDrawer';
 import { useEffect, useState } from 'react';
@@ -18,38 +17,60 @@ import AboutMe from './portfolio/pages/AboutMe';
 import ContactMe from './portfolio/pages/ContactMe';
 import Portfolio from './portfolio/pages/Portfolio';
 import ViewPost from './blog/pages/ViewPost';
+import PortfolioSplash from './portfolio/pages/Splash';
+
+import Accordion from '@material-ui/core/Accordion';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: '100%',
+  },
+  heading: {
+    fontSize: theme.typography.pxToRem(15),
+    flexBasis: '33.33%',
+    flexShrink: 0,
+  },
+  secondaryHeading: {
+    fontSize: theme.typography.pxToRem(15),
+    color: theme.palette.text.secondary,
+  },
+}));
 
 // TODO: create custom color themes!!
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#EEF2D0'// offwhite - used to be '#7986cb'
+      main: '#7986cb'// offwhite - used to be '#7986cb'
     },
     secondary: {
-      main: '#4D7343'// green - used to be #bdbdbd
+      main: '#014f17'// green - used to be #bdbdbd
     },
     terciary: {
       main: '#A67D65'//brownish - used to be "#bada55"
     },
     text: {
       primary: '#080B0D', // nearly black
-      secondary: '#F2F2F2'
+      secondary: '#d6d6d6',
+      formHelper: '#595959'
     }
   }
 })
 
-const useStyles = makeStyles((theme) => ({
-  root: {
+// const useStyles = makeStyles((theme) => ({
+//   root: {
 
-  }
+//   }
 
-}))
+// }))
 
 function App() {
 
-  const classes = useStyles();
+  // const classes = useStyles();
 
   const [postsState, setPostsState] = useState([]);
   const [modifiablePostsState, setModifiablePostsState] = useState([])
@@ -71,13 +92,9 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <CssBaseline />
+        {/* <CssBaseline /> */}
         <ThemeProvider theme={theme}>
-
-
-
-
-
+          
           {/* BEGIN ROUTING */}
           <Switch>
             {/* PORTFOLIO SIDE ROUTING */}
@@ -85,6 +102,12 @@ function App() {
               <NavDrawer />
               <Container>
                 <AboutMe latestPost={postsState.length > 0 ? postsState[0] : null} />
+              </Container>
+            </Route>
+            <Route exact path="/home">
+              <NavDrawer />
+              <Container>
+                <PortfolioSplash latestPost={postsState.length > 0 ? postsState[0] : null} />
               </Container>
             </Route>
             <Route exact path="/portfolio">

@@ -1,37 +1,71 @@
 import React, { useState } from 'react';
 import API from '../../../utils/API';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import SendIcon from '@material-ui/icons/Send';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import EightBitAvatar from '../../assets/images/8bitAvatar.png';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import ContactMailIcon from '@material-ui/icons/ContactMail'
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
+import './style.css';
+
+const CssTextField = withStyles((theme) => ({
+    root: {
+        '& label.Mui-focused': {
+            color: theme.palette.text.formHelper,
+        },
+        '& .MuiInput-underline:after': {
+            borderBottomColor: theme.palette.text.formHelper,
+        },
+        '& .MuiFormLabel-root': {
+            color: theme.palette.text.formHelper,
+        },
+        '& .MuiFormHelperText-root': {
+            color: theme.palette.text.formHelper
+        },
+        '& .Mui-error': {
+            color: 'red',
+        },
+    },
+}))(TextField);
+
+const CssButton = withStyles((theme) => ({
+    root: {
+        margin: theme.spacing(3),
+        width: '90%',
+        height: '3rem'
+    }
+}))(Button);
 
 
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
+        color: theme.palette.text.primary
+    },
+    paper: {
+        color: theme.palette.text.primary,
     },
     pageTitle: {
         fontSize: '2.5rem'
     },
-    button: {
-        margin: theme.spacing(3),
+    blackText: {
+        color: theme.palette.text.primary
     },
+    button: {margin: theme.spacing(3)},
     form: {
-        margin: theme.spacing(3)
+        margin: theme.spacing(3),
     },
     formTitle: {
         textAlign: 'center'
     },
     formTitleText: {
-        paddingTop: '1.2rem'
+        paddingTop: '1.2rem',
+        // color: 'black'
     },
     contactLinkBox: {
         display: 'flex',
@@ -44,7 +78,7 @@ const useStyles = makeStyles((theme) => ({
         border: 'none',
         borderRadius: '40px',
         background: "darkblue",
-        color: 'azure',
+        // color: 'azure',
         margin: "3px",
         alignItems: 'center'
     }
@@ -74,7 +108,6 @@ export default function ContactMe() {
             setFailureBarText("You didn't enter any valid information!")
             setFailureBarOpen(true);
         } else {
-
             API.sendMail(emailState).then(res => {
                 console.log(res)
                 if (res.data === 'success') {
@@ -130,44 +163,38 @@ export default function ContactMe() {
                     <h1 className={classes.pageTitle}>Choose an option here, or use the form below!</h1>
                 </Grid>
                 <Grid className={classes.contactLinkBox} item xs={12} md={4}>
-                    <Button
+                    <CssButton
                         variant="contained"
-                        style={{ width: '90%', height: '3rem' }}
                         color="default"
-                        className={classes.button}
                         href="mailto:zgstowell@gmail.com"
                         target="_blank"
                         startIcon={<ContactMailIcon />}
                     >
                         zgstowell@gmail.com
-                    </Button>
+                    </CssButton>
                 </Grid>
                 <Grid className={classes.contactLinkBox} item xs={12} md={4}>
-                    <Button
+                    <CssButton
                         variant="contained"
-                        style={{ width: '90%', height: '3rem' }}
                         color="default"
-                        className={classes.button}
                         href="http://github.com/the-medium-place"
                         startIcon={<GitHubIcon />}
                         target="_blank"
                     >
                         GitHub Profile
-                    </Button>
+                    </CssButton>
                 </Grid>
                 <Grid className={classes.contactLinkBox} item xs={12} md={4}>
 
-                    <Button
+                    <CssButton
                         variant="contained"
-                        style={{ width: '90%', height: '3rem' }}
                         color="default"
-                        className={classes.button}
                         href="https://www.linkedin.com/in/zachary-stowell/"
                         startIcon={<LinkedInIcon />}
                         target="_blank"
                     >
                         LinkedIn Profile
-                    </Button>
+                    </CssButton>
                 </Grid>
                 <Grid item xs={5} style={{ borderTop: '3px dotted black' }}></Grid>
                 <Grid item xs={2}></Grid>
@@ -179,7 +206,7 @@ export default function ContactMe() {
 
                 <Grid item md={2} xs={false}></Grid>
                 <Grid item xs={12} md={8}>
-                    <Paper>
+                    <Paper className={classes.paper}>
                         <Grid item xs={12} className={classes.formTitle}>
                             <h1 className={classes.formTitleText}>Reach out and touch someone (me)!</h1>
                         </Grid>
@@ -187,7 +214,12 @@ export default function ContactMe() {
                             <Grid item xs={12}>
                                 <Grid container spacing={3}>
                                     <Grid item xs={8} md={3}>
-                                        <TextField
+                                        <CssTextField
+                                            // InputProps={{ className: classes.blackText }}
+                                            // InputLabelProps={{ className: classes.blackText }}
+                                            // FormHelperTextProps={{ className: classes.blackText }}
+
+                                            // variant="outlined"
                                             required
                                             fullWidth
                                             id="standard-basic"
@@ -199,12 +231,15 @@ export default function ContactMe() {
                                         />
                                     </Grid>
                                     <Grid item xs={8} md={3}>
-                                        <TextField
+                                        <CssTextField
+                                            // InputProps={{ className: classes.blackText }}
+                                            // InputLabelProps={{ className: classes.blackText }}
+                                            // FormHelperTextProps={{ className: classes.blackText }}
                                             error={(emailState.userEmail.length !== 0) && !(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/).test(emailState.userEmail)}
                                             required
                                             fullWidth
                                             type="email"
-                                            id="standard-basic"
+                                            id="standard-basic2"
                                             label="Email"
                                             name="userEmail"
                                             value={emailState.userEmail}
@@ -214,7 +249,10 @@ export default function ContactMe() {
                                     </Grid>
 
                                     <Grid item xs={12}>
-                                        <TextField
+                                        <CssTextField
+                                            // InputProps={{ className: classes.blackText }}
+                                            // InputLabelProps={{ className: classes.blackText }}
+                                            // FormHelperTextProps={{ className: classes.blackText }}
                                             id="standard-multiline-flexible"
                                             helperText={emailState.userMessage.length < 1 ? 'Say something nice!' : emailState.userMessage.length}
                                             required
@@ -225,12 +263,12 @@ export default function ContactMe() {
                                             name="userMessage"
                                             value={emailState.userMessage}
                                             onChange={handleInputChange}
-                                            fullWidth 
-                                            />
+                                            fullWidth
+                                        />
                                     </Grid>
                                     <Button
                                         variant="contained"
-                                        // color="primary"
+                                        // color="prmary"
                                         type="submit"
                                         className={classes.button}
                                         endIcon={<SendIcon />}

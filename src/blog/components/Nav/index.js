@@ -13,7 +13,11 @@ export default function Nav({ postsState, setPostsState, modifiablePostsState, s
                     <h2>CRUDposting <small>by &lt;Zac Stowell&gt;</small></h2>
                 </div>
                 <div>
-                    <a href="/"><h3>Portfolio Home</h3></a>
+                    <a href="/crudposting">CRUDposting Home</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a href="/">Zac's Portolio Home</a>
+                </div>
+                <div>
                     <a href="/crudposting/admin"><h3>Admin</h3></a>
                 </div>
             </div>

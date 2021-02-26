@@ -1,27 +1,34 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import API from '../../../utils/API'
 
 export default function TagEdit(props) {
    
-    const {tag, setEditViewState, setParentTagsState, setPostsState } = props;
+    const {editTag, setEditTag, setEditViewState, setParentTagsState, setPostsState } = props;
 
-    const [tagState, setTagState] = useState(tag)
+    // const [editTag, seteditTag] = useState({
+    //     id:null,
+    //     text:''
+    // })
+    
+    // useEffect(()=>{
+    //     seteditTag(editTag)
+    // },[])
 
     function handleInput (event) {
         const { name, value } = event.target;
 
-        setTagState({...tagState,[name]:value})
+        setEditTag({...editTag,[name]:value})
     }
 
     function handleUpdateClick(event){
         event.preventDefault()
         const updateObj = {
-            text: tagState.text
+            text: editTag.text
         }
-        const currentTagId = tagState.id;
+        const currentTagId = editTag.id;
 
         console.log(updateObj, currentTagId);
-        API.updateTagTextById(updateObj, tagState.id)
+        API.updateTagTextById(updateObj, editTag.id)
         .then(dbUpdatedTag => {
             console.log(dbUpdatedTag);
 
@@ -49,7 +56,7 @@ export default function TagEdit(props) {
             <h1>Edit Tag!!</h1>
      
             <form onSubmit={handleUpdateClick}>
-                <input onChange={handleInput} name="text" value={tagState.text} />
+                <input onChange={handleInput} name="text" value={editTag.text} />
             </form>
             <button onClick={handleUpdateClick}>Update Tag</button>
             <button onClick={()=>setEditViewState(false)}>Close</button>

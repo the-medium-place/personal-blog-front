@@ -45,8 +45,9 @@ export default function TagSearchWidget({ postsState, modifiablePostsState, setM
                 {allTagsState.map(tagObj => {
                     return <button onClick={handleTagClick} className="tag-widget-tag-text" key={tagObj.text} id={tagObj.id}>{tagObj.text}</button>
                 })}
+                <hr />
                 {resultCountShowState ? (
-                    <p>Number of Results: {modifiablePostsState.length}</p>
+                    <h3>Number of Results: {modifiablePostsState.length}</h3>
                 ) : null}
             </div>
 

@@ -55,6 +55,20 @@
     transform: translateX(37.5vw);
 }
 
+/* .slide-in0 {
+    transform: translateX(0);
+}
+
+.slide-in1 {
+    transition: .6s;
+    transform: translateX(19vw);
+}
+
+.slide-in2 {
+    transition: .6s;
+    transform: translateX(37.5vw);
+} */
+
 .img-box {
     position: var(--imgPos);
     max-width: 20%;
@@ -143,6 +157,7 @@
 }
 
 .post-comment-counter {
+    aspect-ratio: 1/1;
     color: var(--tagBtnText);
     display: flex;
     justify-content: center;

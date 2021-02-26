@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './style.css';
 import { useParams } from 'react-router-dom';
 import API from '../../../utils/API';
+import ViewComment from '../../components/ViewComment';
 
 export default function ViewPost() {
 
@@ -23,6 +24,13 @@ export default function ViewPost() {
     const [imgArrState, setImgArrState] = useState([]);
     const [approvedCommentState, setApprovedCommentState] = useState([])
 
+    const [commentFormState, setCommentFormState] = useState({
+        name: '',
+        email: '',
+        text: '',
+        approved: false
+    })
+
     let postImgArr;
     useEffect(() => {
         API.getPostById(params.id)
@@ -35,6 +43,31 @@ export default function ViewPost() {
             })
             .catch(err => console.log(err))
     }, [])
+
+
+    function handleInput(e) {
+        const { name, value } = e.target;
+
+        setCommentFormState({ ...commentFormState, [name]: value })
+    }
+
+    function handleAddCommentClick(e) {
+        e.preventDefault();
+        console.log(commentFormState)
+        API.addComment(commentFormState, params.id)
+            .then(dbComment => {
+                alert('comment added! It will not appear until approved...');
+                setCommentFormState({
+                    name: '',
+                    email: '',
+                    text: '',
+                    approved: false
+                })
+
+
+            })
+            .catch(err => console.log(err))
+    }
 
     return (
         <div className="ViewPost">
@@ -72,42 +105,38 @@ export default function ViewPost() {
                     </div>
                 </div>
             </div>
-            <div className="fullpost-comments-wrapper">
-                <h3>Comments:</h3>
-                <div className="fullpost-comments-box">
-                    {approvedCommentState.length > 0 ? (
-                        approvedCommentState.map(commentObj => {
-                            return (
-                                <div key={commentObj.id} className="fullpost-single-comment-wrapper">
-                                    <div className="comment-from-posted">
-                                        <div className="comment-from">
+            <div className="fullpost-bottom-box">
 
-                                            <span className="comment-heading">FROM:</span>
-                                            <p>
-                                                {commentObj.name}
-                                            </p>
-                                        </div>
-                                        <div className="comment-posted">
+                <div className="fullpost-comments-wrapper">
+                    <h3>Comments:</h3>
+                    <div className="fullpost-comments-box">
+                        {approvedCommentState.length > 0 ? (
+                            approvedCommentState.map(commentObj => {
+                                return (
+                                    <ViewComment comment={commentObj} />
+                                )
+                            })
+                        ) : <h3>No Comments!</h3>}
+                    </div>
+                </div>
 
-                                            <span className="comment-heading">POSTED:</span>
-                                            <p>
-                                                {new Date(commentObj.createdAt).toLocaleString()}
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <span className="comment-heading">EMAIL:</span>
-                                    <p>
-                                        {commentObj.email}
-                                    </p>
-                                    <span className="comment-heading">TEXT:</span>
-                                    <p>
-                                        {commentObj.text}
-                                    </p>
+                {/* NEW COMMENT FORM */}
+                <div className="fullpost-add-comment-wrapper">
+                    <h3>Add Comment:</h3>
+                    <div className="add-comment-form">
+                        <form>
+                            <label htmlFor="add-comment-name">Your Name: </label>
+                            <input onChange={handleInput} value={commentFormState.name} type="text" name="name" id="add-comment-name" className="add-comment-name" placeholder="O. CRUD" />
 
-                                </div>
-                            )
-                        })
-                    ) : <h3>No Comments!</h3>}
+                            <label htmlFor="add-comment-email">Your Email: </label>
+                            <input onChange={handleInput} value={commentFormState.email} type="email" name="email" id="add-comment-email" className="add-comment-email" placeholder="email@email.web" />
+
+                            <label htmlFor="add-comment-text">Your Name: </label>
+                            <textarea onChange={handleInput} value={commentFormState.text} rows="6" name="text" type="text" id="add-comment-text" placeholder="..." />
+
+                            <button className="add-comment-button" onClick={handleAddCommentClick}>Submit</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

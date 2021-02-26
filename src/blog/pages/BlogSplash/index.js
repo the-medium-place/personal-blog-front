@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import PostCard from '../../components/PostCard'
 import './style.css';
 import CrudLogo from '../../../assets/images/CRUDlogo.png';
@@ -6,6 +6,10 @@ import TagSearchWidget from '../../components/TagSearchWidget';
 import PostSearchWidget from '../../components/PostSearchWidget';
 
 export default function BlogSplash({ postsState, modifiablePostsState, setModifiablePostsState }) {
+
+    
+    
+
 
 
     // console.log('postState at App(): ',postsState)
@@ -20,13 +24,14 @@ export default function BlogSplash({ postsState, modifiablePostsState, setModifi
                     <p>Since I built this blog with full CRUD functionality - and since I will be filling it with random junk about me and my life - <span className="splash-intro-title">CRUDposting</span> felt uniquely suitable!</p>
                 </div>
             </div>
+            {/* <p>{testScrollState}</p> */}
             <div className="post-cards-wrapper" >
 
                 {modifiablePostsState.length > 0 ? (
 
                     modifiablePostsState.map(post => {
                         return (
-                            <PostCard key={post.id} post={post} />
+                            <PostCard key={post.id} post={post}  />
                         )
                     })) : <h1>no search results OR bad DB connection OR empty DB... check the console logs to find out!</h1>}
 
