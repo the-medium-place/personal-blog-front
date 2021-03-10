@@ -11,12 +11,12 @@ import ScrollTrigger from 'react-scroll-trigger';
 
 const useStyles = makeStyles((theme) => ({
     projectCardWrapper: {
-        transform: 'translateX(-100vw)'
+        // transform: 'translateX(-100vw)'
     },
     root: {
         // height: 'auto',
         // marginBottom: '10vh',
-        height: 300,
+        height: '100%',
     },
     paper: {
         color: theme.palette.text.main,
@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     },
     cardTitleText: {
         position: 'absolute',
-        bottom: 0,
+        bottom: '20%',
         // left: 'center',
         maxWidth: '100%',
         color: 'rgb(201, 201, 201)',
@@ -70,8 +70,8 @@ export default function PortfolioCard({ project }) {
 
     const minWidth1000 = useMediaQuery('(min-width:1000px)');
 
-    console.log(minWidth1000)
-    console.log(project)
+    // console.log(minWidth1000)
+    // console.log(project)
     const { github, deployed, description, title, screenshot, technologies, tagline } = project;
     const classes = useStyles();
 
@@ -86,7 +86,7 @@ export default function PortfolioCard({ project }) {
             style={{ height: 500 }}
             onEnter={()=>{
                 console.log('in view with #'+project.id)
-                classes.projectCardWrapper = {transform:'translateX(0)'}
+                // classes.projectCardWrapper.transform = 'translateX(0)'
             }}
         >
             <Grid container justify="center" className={classes.root}>
@@ -113,7 +113,7 @@ export default function PortfolioCard({ project }) {
                                     <h4>{technologies}</h4>
                                 </Grid>
                                 <Grid item xs={12}>
-                                    <ButtonGroup size="small" color="secondary-dark" aria-label="outlined primary button group" style={{ position: 'absolute', bottom: '5%' }}>
+                                    <ButtonGroup size="small" aria-label="outlined primary button group" style={{ position: 'absolute', bottom: '5%' }}>
                                         <Button
                                             startIcon={<WebTwoToneIcon />}
                                             href={deployed}

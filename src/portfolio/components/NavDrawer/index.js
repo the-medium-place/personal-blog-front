@@ -1,14 +1,10 @@
+import React, { useState, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 import MailIcon from '@material-ui/icons/Mail';
 import HomeIcon from '@material-ui/icons/Home';
 import LaptopIcon from '@material-ui/icons/LaptopMac';
 import CommentIcon from '@material-ui/icons/Comment';
-
 import Link from '@material-ui/core/Link'
-import React from 'react';
-
-
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -26,33 +22,47 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-export default function NavDrawer({ routes }) {
-  const minWidth900 = useMediaQuery('(min-width:900px)');
+export default function NavDrawer() {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [visibleState, setVisibleState] = useState(false);
+  const anchorEl = useRef(null);
+
+  // console.log(anchorEl);
 
   const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+    // setAnchorEl(event.currentTarget);
+    // anchorEl.current.focus();
+    setVisibleState(true);
   };
 
   const handleClose = () => {
-    setAnchorEl(null);
+    // setAnchorEl(null);
+    // anchorEl.current = null;
+    setVisibleState(false);
   };
   return (
     <div>
-      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+      <Button
+        aria-controls="simple-menu"
+        aria-haspopup="true"
+        onClick={handleClick}
+        ref={anchorEl}
+      >
         Open Menu
       </Button>
       <Menu
+        // className={classes.root}
         id="simple-menu"
-        anchorEl={anchorEl}
+        anchorEl={anchorEl.current}
         keepMounted
-        open={Boolean(anchorEl)}
+        open={visibleState}
         onClose={handleClose}
+        MenuListProps
+        transitionDuration={{enter: 400, exit: 200}}
       >
         <MenuItem onClick={handleClose}><Link href='/' color="inherit"><HomeIcon /> About Me</Link></MenuItem>
         <MenuItem onClick={handleClose}><Link href='/portfolio' color="inherit"><LaptopIcon /> Portfolio</Link></MenuItem>
-        <MenuItem onClick={handleClose}><Link href='/contact' color="inherit"><MailIcon/> Contact Me</Link></MenuItem>
+        <MenuItem onClick={handleClose}><Link href='/contact' color="inherit"><MailIcon /> Contact Me</Link></MenuItem>
         <MenuItem onClick={handleClose}><Link href='/crudposting' color="inherit"><CommentIcon /> CRUDposting</Link></MenuItem>
       </Menu>
     </div>

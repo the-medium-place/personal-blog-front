@@ -52,7 +52,10 @@ const useStyles = makeStyles(({ spacing, breakpoints, palette }) => ({
         zIndex: 5,
         padding: '.2rem .8rem .2rem .8rem',
         color: 'rgb(201, 201, 201)',
-        background: 'linear-gradient(to bottom, rgba(20, 20, 20, 0.8), rgba(20, 20, 20, 0.4))'
+        background: 'linear-gradient(to bottom, rgba(20, 20, 20, 0.8), rgba(20, 20, 20, 0.4))',
+        '&:hover': {
+            transform: 'rotateY(0)'
+        }
     },
     slide: {
         perspective: 1000, // create perspective

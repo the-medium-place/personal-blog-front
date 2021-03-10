@@ -26,22 +26,21 @@ export default function Portfolio() {
         <Box style={{ minHeight: '100vh', paddingTop: '5vh', marginTop: '5vh' }}>
             <Grid container spacing={1} justify="center">
                 <Grid item xs={12}>
-                    <h1>My Projects:</h1>
+                    <h1 style={{ margin: '0 auto' }}>My Projects:</h1>
                 </Grid>
                 <Grid item xs={1}></Grid>
                 <Grid item xs={10}>
-
                     <Grid container justify="center">
                         {width > 960 ? (
                             <ProjectCarousel />
                         ) : (projects.map(project => {
-                            return (<>
+                            return (<Grid container justify="center" style={{ width: '100%' }} key={project.id}>
                                 <Grid item xs='auto' />
-                                <Grid xs={9}>
+                                <Grid item xs={9}>
                                     <PortfolioCard project={project} />
                                 </Grid>
                                 <Grid item xs='auto' />
-                            </>)
+                            </Grid>)
                         })
                             )}
                     </Grid>

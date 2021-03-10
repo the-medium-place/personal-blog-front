@@ -12,8 +12,48 @@ code {
     monospace;
 } */
 
+
+@font-face {
+  font-family: 'metropolis';
+  src: url('./assets/fonts/Webfonts/EOT/Metropolis-Regular.eot');
+  src: url('./assets/fonts/Webfonts/WOFF/Metropolis-Regular.woff') format('woff');
+  src: url('./assets/fonts/Webfonts/WOFF2/Metropolis-Regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'metropolisBold';
+  src: url('./assets/fonts/Webfonts/EOT/Metropolis-Bold.eot');
+  src: url('./assets/fonts/Webfonts/WOFF/Metropolis-Bold.woff') format('woff');
+  src: url('./assets/fonts/Webfonts/WOFF2/Metropolis-Bold.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'metropolisItalic';
+  src: url('./assets/fonts/Webfonts/EOT/Metropolis-RegularItalic.eot');
+  src: url('./assets/fonts/Webfonts/WOFF/Metropolis-RegularItalic.woff') format('woff');
+  src: url('./assets/fonts/Webfonts/WOFF2/Metropolis-RegularItalic.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'metropolisBoldItalic';
+  src: url('./assets/fonts/Webfonts/EOT/Metropolis-BoldItalic.eot');
+  src: url('./assets/fonts/Webfonts/WOFF/Metropolis-BoldItalic.woff') format('woff');
+  src: url('./assets/fonts/Webfonts/WOFF2/Metropolis-BoldItalic.woff2') format('woff2');
+}
+
 * {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: metropolis, sans-serif;
+  line-height: 150%;
+  /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+}
+
+strong {
+  font-family: metropolisBold;
+}
+
+em {
+  font-family: metropolisItalic;
+}
+
+strong em, em strong {
+  font-family: metropolisBoldItalic;
 }
 
 :root {

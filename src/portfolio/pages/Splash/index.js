@@ -1,5 +1,5 @@
 import React from 'react';
-import Headshot from '../../assets/images/Seattle-Brand-Headshot-Photographer-35.jpg'
+import Headshot from '../../assets/images/headshot.jpg'
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import useMediaQuery from '@material-ui/core/useMediaQuery';

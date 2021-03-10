@@ -3,9 +3,9 @@
   transition: transform .5s;
   transform: translateX(-100vw);
 } */
-.project-card-visible {
+/* .project-card-visible {
   transform: '';
-}
+} */
 
 
 
@@ -47,10 +47,10 @@
   }
   
   /* Style the front side (fallback if image is missing) */
-  .flip-card-front {
-    /* background-color: #bbb; */
-    /* color: black; */
-  }
+  /* .flip-card-front {
+    background-color: #bbb;
+    color: black;
+  } */
   
   /* Style the back side */
   .flip-card-back {

@@ -16,7 +16,7 @@ export default function BlogSplash({ postsState, modifiablePostsState, setModifi
     return (
         <div className="Splash">
             <div className="splash-top-wrapper">
-                <img className="splash-logo" src={CrudLogo} alt="feelin' like C.R.U.D." />
+                <img className="splash-logo" src={CrudLogo} alt="CRUD posting" />
                 <div className="splash-intro">
                     <p>Hello! My name is Zac Stowell and I am a Full-Stack Web Developer - welcome to my blog "<span className="splash-intro-title">CRUDposting</span>"!</p>
                     <p><strong>You may be asking yourself, <em>"What is CRUD"?</em></strong></p>
