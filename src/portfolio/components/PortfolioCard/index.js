@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     },
     cardTitleText: {
         position: 'absolute',
-        bottom: '20%',
+        bottom: '50%',
         // left: 'center',
         maxWidth: '100%',
         color: 'rgb(201, 201, 201)',
@@ -95,7 +95,7 @@ export default function PortfolioCard({ project }) {
                         <Grid container justify="center" className="flip-card-front">
                             <Grid item xs={12} style={{ width: '100%' }}>
                                 <img className={classes.projectImg} src={screenshot} alt={title} style={{ width: '100%' }} />
-                                <div style={{ width: '100%' }}>
+                                <div style={{ width: '100%'}}>
 
                                     <p className={classes.cardTitleText}>
                                         {title}<br />

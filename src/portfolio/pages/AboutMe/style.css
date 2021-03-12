@@ -1,4 +1,4 @@
-.fade-in {
+/* .fade-in {
     animation: fadeIn ease 3s;
     -webkit-animation: fadeIn ease 3s;
     -moz-animation: fadeIn ease 3s;
@@ -49,20 +49,4 @@
     100% {
         opacity: 1;
     }
-}
-
-.aboutme-picture {
-    height: 600px;
-    /* transition: transform 3s ease-in-out;
-    transform: translateX(-100vw) */
-}
-
-.aboutme-greeting {
-    /* transition: transform 3s;
-    transform: translateX(-100vw) */
-}
-
-/* .aboutme-intro {
-    transition: transform 3s;
-    transform: translateX(100vw) translateY(35vh);
 } */

@@ -35,11 +35,11 @@ export default function Portfolio() {
                             <ProjectCarousel />
                         ) : (projects.map(project => {
                             return (<Grid container justify="center" style={{ width: '100%' }} key={project.id}>
-                                <Grid item xs='auto' />
-                                <Grid item xs={9}>
+                                <Grid item xs={false} md='auto'/>
+                                <Grid item xs={11} md={9}>
                                     <PortfolioCard project={project} />
                                 </Grid>
-                                <Grid item xs='auto' />
+                                <Grid item xs={false} md='auto' />
                             </Grid>)
                         })
                             )}

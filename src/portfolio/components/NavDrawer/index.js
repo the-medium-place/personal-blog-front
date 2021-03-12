@@ -19,6 +19,11 @@ const useStyles = makeStyles((theme) => ({
     top: 0,
     zIndex: 100
   },
+  button: {
+    position:'absolute',
+    top:'1rem',
+    left:'1rem'
+  }
 
 }));
 
@@ -47,6 +52,7 @@ export default function NavDrawer() {
         aria-haspopup="true"
         onClick={handleClick}
         ref={anchorEl}
+        className={classes.button}
       >
         Open Menu
       </Button>
@@ -57,7 +63,7 @@ export default function NavDrawer() {
         keepMounted
         open={visibleState}
         onClose={handleClose}
-        MenuListProps
+        // MenuListProps
         transitionDuration={{enter: 400, exit: 200}}
       >
         <MenuItem onClick={handleClose}><Link href='/' color="inherit"><HomeIcon /> About Me</Link></MenuItem>

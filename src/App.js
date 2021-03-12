@@ -24,6 +24,7 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import AboutMeJumbotron from './portfolio/components/AboutMeJumbotron';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -99,6 +100,7 @@ function App() {
           <Switch>
             {/* PORTFOLIO SIDE ROUTING */}
             <Route exact path="/">
+              {/* <AboutMeJumbotron /> */}
               <NavDrawer />
               <Container>
                 <AboutMe latestPost={postsState.length > 0 ? postsState[0] : null} />
