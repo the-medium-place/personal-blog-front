@@ -6,7 +6,7 @@ import PostCard from '../../../blog/components/PostCard';
 import TypeText from '../../../blog/TypeText';
 import useScrollPosition from '../../../hooks/ScrollPosition';
 // import { motion } from 'framer-motion';
-import { motion, useViewportScroll, useTransform } from "framer-motion"
+import { motion, useViewportScroll, useTransform, useSpring } from "framer-motion"
 
 import headshot from '../../assets/images/headshotminSquare.png'
 import facepic from '../../assets/images/facepicmin.jpg'
@@ -15,8 +15,11 @@ import './style.css';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    width: '100%',
-    height: '100%'
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100vw',
+    height: 4000
   },
   paper: {
     padding: theme.spacing(2),
@@ -40,6 +43,23 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'flex-end',
     alignItems: 'center'
+  },
+  picIntroWrapper: {
+    position: 'fixed',
+    top: 40,
+    padding: '0 20vw 0 20vw'
+    // left: '3vw'
+  },
+  missionStatement: {
+    // transform: 'translateY(-18vh)'
+  },
+  scrollProgressIndicator: {
+    position: 'fixed',
+    top: '2.5rem',
+    right: '1rem',
+    width: 80,
+    height: 80,
+    aspectRatio: '1/1'
   }
 
 }));
@@ -56,6 +76,9 @@ export default function AboutMe(props) {
     intro: false
   })
 
+  const [scrollState, setScrollState] = useState(`0% Scrolled`)
+  const [isComplete, setIsComplete] = useState(false);
+
   const greetingRef = useRef(null)
   const picRef = useRef(null)
   const introRef = useRef(null)
@@ -68,67 +91,29 @@ export default function AboutMe(props) {
   //   introRef.current)
   //   picRef.current.style.transform = `translateX(-100vw)`
   // }, [])
-
   const { scrollYProgress, scrollY } = useViewportScroll()
+  const yRange = useTransform(scrollYProgress, [0, 0.97], [0, 1]);
+  const pathLength = useSpring(yRange, { stiffness: 400, damping: 90 });
 
   scrollYProgress.onChange(x => {
-    console.log(x)
+    setScrollState(`${Math.floor(x * 100)}% Scrolled`)
+    // Math.floor(x * 100) >= 97 ? setIsComplete(true) : setIsComplete(false);
+    setIsComplete(Math.floor(x*100) >= 97)
   })
-  // X position of intro pic during scroll
-  const picXPosAnim = useTransform(scrollYProgress, [0, .22], [-100, 0])
-  const picOpacityAnim = useTransform(scrollYProgress, [0, .22], [0, 1])
-  // X potiion of intro text during scroll
-  const introXPosAnim = useTransform(scrollYProgress, [0, .20], [100, 0])
 
+  // X POSITION OF INTRO PIC ON SCROLL
+  const picXPosAnim = useTransform(scrollYProgress, [0, .18, .3, .4], ["-100vw", '0vw', "0vw", '100vw'])
+  const picOpacityAnim = useTransform(scrollYProgress, [0, .18, .3, .37], [0, 1, 1, 0])
 
-  // useScrollPosition(({ currPos, prevPos }) => {
-  //   // console.log(scrollYProgress)
-  //   // CAPTURE SCROLL DIRECTION
-  //   const scrollingUp = currPos.y > prevPos.y;
-  //   const scrollingDown = currPos.y < prevPos.y;
-  //   // GET TOP AND BOTTOM POSITIONS OF EACH ANIMATED ELEMENT
-  //   const greetingTop = topPos(greetingRef.current),
-  //     picTop = topPos(picRef.current),
-  //     introTop = topPos(introRef.current),
-  //     greetingBottom = bottomPos(greetingRef.current),
-  //     picBottom = bottomPos(picRef.current),
-  //     introBottom = bottomPos(introRef.current);
+  // X POSITION OF INTRO TEXT ON SCROLL
+  const introXPosAnim = useTransform(scrollYProgress, [0, .18, .3, .4], ['100vw', '0vw', '0vw', '-100vw'])
 
-  //   // MOVE INTRO TEXT/PIC IN ON SCROLL DOWN
-  //   if (scrollingDown && yPosCounter > 0 && opacityCounter < 1) {
-  //     yPosCounter--
-  //     opacityCounter += 0.007;
-  //   }
-  //   // MOVE INTRO TEXT/PIC OUT ON SCROLL UP
-  //   if (scrollingUp && yPosCounter < 100 && opacityCounter > 0) {
-  //     yPosCounter++
-  //     opacityCounter -= 0.02;
-  //   }
-  //   // ENSURE TEXT/PIC STAYS VISIBLE AT HOME POSITION
-  //   // AND STAY IN PLACE WHILE SCROLLING UP 
-  //   // UNTIL READY TO SCROLL
-  //   if (yPosCounter === 0) {
-  //     opacityCounter = 1;
-  //   }
-  //   if (picBottom < 1000) {
-  //     yPosCounter = 0;
-  //     opacityCounter = 1;
-  //   }
-  //   // APPLY INTRO TEXT ANIMATION STYLES
-  //   introRef.current.style.transform = `translateX(${yPosCounter}vw)`
-  //   introRef.current.style.opacity = opacityCounter;
-  //   picRef.current.style.transform = `translateX(${-yPosCounter}vw)`
-  //   picRef.current.style.opacity = opacityCounter;
-  //   // console.log(yPosCounter, currPos.y)
-  //   // console.log(picTop, picBottom)
-  //   // console.log('up: ', JSON.stringify(scrollingUp))
-  //   // console.log('down: ', JSON.stringify(scrollingDown))
-  // }, [])
-  // const topPos = element => element.getBoundingClientRect().top;
-  // const bottomPos = element => element.getBoundingClientRect().bottom;
-  // function setElementOpacity(element) {
-  //   element.style.opacity = 0;
-  // }
+  // MISSION STATEMENT SPECIFIC ANIMATION
+  const missionStatementXPos = useTransform(scrollYProgress, [0, .18, .3, .5], ['100vw', '0vw', '0vw', '-15vw'])
+  const missionStatmentFontSize = useTransform(scrollYProgress, [0, .3, .5], ['1em', '1em', '2.4em'])
+  const missionStatementWidth = useTransform(scrollYProgress, [0, .3, .5], ['100%', '100%', '200%'])
+  const missionnStatementYPos = useTransform(scrollYProgress, [0, .4, .5, .6, .7], ['0vh', '0vh', '-20vh', '-60vh', '-100vh'])
+  const missionStatementOpacity = useTransform(scrollYProgress, [0, .5, .6, .7], [1, 1, .8, 0])
 
   return (
     <div className={"AboutMe" + classes.root}>
@@ -170,35 +155,94 @@ export default function AboutMe(props) {
       </motion.div> */}
       <div className={classes.topSpacer}></div>
       {/* SIMPLE GREETING */}
-      <Grid container spacing={1} justify="center">
-        <motion.h1 className={classes.aboutMeGreeting} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 2 }} ref={greetingRef}>GREETINGS.</motion.h1>
+      <span style={{ position: 'fixed', top: '1rem', right: '1rem' }}>
+        {scrollState}
+      </span>
+
+      <svg className={classes.scrollProgressIndicator} viewBox="0 0 60 60">
+        <motion.path
+          fill="none"
+          strokeWidth="5"
+          stroke="rgba(20, 20, 20)"
+          strokeDasharray="0 1"
+          d="M 0, 20 a 20, 20 0 1,0 40,0 a 20, 20 0 1,0 -40,0"
+          style={{
+            pathLength,
+            rotate: 90,
+            translateX: 5,
+            translateY: 5,
+            scaleX: -1 // Reverse direction of line animation
+          }}
+        />
+        <motion.path
+          fill="none"
+          strokeWidth="5"
+          stroke="rgba(20, 20, 20)"
+          d="M14,26 L 22,33 L 35,16"
+          initial={false}
+          strokeDasharray="0 1"
+          animate={{ pathLength: isComplete ? 1 : 0 }}
+        />
+      </svg>
+
+
+      <Grid container justify="center">
+        <motion.h1
+          className={classes.aboutMeGreeting}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 2 }}
+          ref={greetingRef}
+        >
+          GREETINGS.
+        </motion.h1>
       </Grid>
       {/* PIC AND INTRO CONTENT */}
       {/* ===================== */}
-      <Grid container justify='center' className="aboutme-pic-intro-wrapper">
+      <Grid container justify='center' className={classes.picIntroWrapper}>
 
         {/* PIC IN FROM LEFT SIDE */}
         <Grid item md={6} className={classes.picWrapper}>
-          <motion.img style={{ x: picXPosAnim, opacity: picOpacityAnim }} ref={picRef} className={classes.aboutMePic} src={headshot} />
+          <motion.img
+            style={{ x: picXPosAnim, opacity: picOpacityAnim }}
+            ref={picRef}
+            className={classes.aboutMePic}
+            src={headshot}
+          />
         </Grid>
 
         {/* SHORT INTRO IN FROM RIGHT WITH PIC */}
         <Grid item md={6} className="aboutme-intro-wrapper" ref={introRef}>
-          <motion.div style={{ x: introXPosAnim, opacity: picOpacityAnim }}>
+          <motion.div
+            style={{
+              x: introXPosAnim,
+              opacity: picOpacityAnim
+            }}
+          >
             <h3 className="aboutme-intro">I'm Zac!</h3>
             <p className="aboutme-intro">
-              I've loved coding since I built my first website at the public library in the mid-90's. It was all about Bruce Lee. I didn't know anything about Bruce Lee, but He was the coolest thing I could think of.  My life went in many directions since then, but the draw to web and application development was constant.
-            </p>
-            <p className="aboutme-intro">
-              So, I have reinvented myself as a <em>Full-Stack Web Developer</em>. With training from the UW Coding Bootcamp
+              I've loved coding since I built my first websites at the public library in the mid-90's. I had a collection of GeoCities sites about dragons, or martial arts, or some combination thereof... My life went in many directions since then, but the draw to web and application development has always been a constant.
             </p>
           </motion.div>
+          <motion.p style={{
+            y: missionnStatementYPos,
+            x: missionStatementXPos,
+            fontSize: missionStatmentFontSize,
+            width: missionStatementWidth,
+            opacity: missionStatementOpacity
+          }}
+            className={classes.missionStatement}
+          >
+            So, I reinvented myself as a <br /><strong><em>Full-Stack Web Developer</em></strong>.
+            </motion.p>
         </Grid>
       </Grid>
 
+      <Grid container style={{ height: 3000 }}>
 
+      </Grid>
       {/* LATEST BLOG POST */}
-      <Grid container spacing={1} style={{ marginTop: '80vh' }}>
+      {/* <Grid container spacing={1} style={{ marginTop: '80vh' }}>
         <Grid item xs={false} md={2}></Grid>
         <Grid item xs={11} md={8}>
           <div style={{ width: '100%' }}>
@@ -207,7 +251,7 @@ export default function AboutMe(props) {
         </Grid>
         <Grid item xs={false} md={2}>
         </Grid>
-      </Grid>
+      </Grid> */}
     </div >
   )
 }
