@@ -12,17 +12,11 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    width: '100vw',
-    background: 'rgba(0, 0, 0, 0.7)',
-    position: 'fixed',
-    top: 0,
-    zIndex: 100
-  },
   button: {
     position:'absolute',
     top:'1rem',
-    left:'1rem'
+    left:'1rem',
+    zIndex: 100
   }
 
 }));
@@ -32,17 +26,11 @@ export default function NavDrawer() {
   const [visibleState, setVisibleState] = useState(false);
   const anchorEl = useRef(null);
 
-  // console.log(anchorEl);
-
   const handleClick = (event) => {
-    // setAnchorEl(event.currentTarget);
-    // anchorEl.current.focus();
     setVisibleState(true);
   };
 
   const handleClose = () => {
-    // setAnchorEl(null);
-    // anchorEl.current = null;
     setVisibleState(false);
   };
   return (
@@ -53,17 +41,16 @@ export default function NavDrawer() {
         onClick={handleClick}
         ref={anchorEl}
         className={classes.button}
+        variant="contained"
       >
         Open Menu
       </Button>
       <Menu
-        // className={classes.root}
         id="simple-menu"
         anchorEl={anchorEl.current}
         keepMounted
         open={visibleState}
         onClose={handleClose}
-        // MenuListProps
         transitionDuration={{enter: 400, exit: 200}}
       >
         <MenuItem onClick={handleClose}><Link href='/' color="inherit"><HomeIcon /> About Me</Link></MenuItem>

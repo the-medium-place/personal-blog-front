@@ -11,13 +11,23 @@ import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import headshot from '../../assets/images/headshotminSquare.png'
 import facepic from '../../assets/images/facepicmin.jpg'
 import './style.css';
+import Button from '@material-ui/core/Button';
+
+import logocss from '../../assets/images/logocss.png';
+import logohtml from '../../assets/images/logohtml.png';
+import logojavascript from '../../assets/images/logojavascript.png';
+import logomongodb from '../../assets/images/logomongodb.png';
+import logomongoose from '../../assets/images/logomongoose.png';
+import logomysql from '../../assets/images/logomysql.png';
+import logonode from '../../assets/images/logonode.png';
+import logoreact from '../../assets/images/logoreact.png';
+import logosequelize from '../../assets/images/logosequelize.png';
+
+const logoArr = [logocss, logohtml, logojavascript, logomongodb, logomongoose, logomysql, logonode, logoreact, logosequelize]
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    // position: 'fixed',
-    // top: 0,
-    // left: 0,
     width: '100vw',
     minHeight: 10000
   },
@@ -26,7 +36,8 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.primary,
   },
   topSpacer: {
-    height: '6rem'
+    height: '6rem',
+    zIndex: -1
   },
   blogWrapper: {
     width: '100%',
@@ -43,9 +54,7 @@ const useStyles = makeStyles((theme) => ({
   },
   picIntroWrapper: {
     position: 'fixed',
-    // top: 40,
     padding: '0 20vw 0 20vw'
-    // left: '3vw'
   },
   missionStatement: {
     // transform: 'translateY(-18vh)'
@@ -66,6 +75,9 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
+const userOptions = JSON.parse(localStorage.getItem('userOptions')) || { menuHelper: true }
+// localStorage.setItem('userOptions', JSON.stringify({ menuHelper: true }))
+console.log(userOptions)
 
 export default function AboutMe(props) {
   const latestPost = props.latestPost;
@@ -74,17 +86,16 @@ export default function AboutMe(props) {
   // GET WINDOW DIMENSIONS
   const { width, height } = useWindowDimensions();
 
-
-
   const classes = useStyles(props);
 
   const [scrollState, setScrollState] = useState(`0% Scrolled`)
   const [isComplete, setIsComplete] = useState(false);
 
+  const [menuHelperVisible, setMenuHelperVisible] = useState(userOptions.menuHelper);
+
   const greetingRef = useRef(null)
   const picRef = useRef(null)
   const introRef = useRef(null)
-
 
   const { scrollYProgress, scrollY } = useViewportScroll()
   const yRange = useTransform(scrollYProgress, [0, 0.97], [0, 1]);
@@ -92,8 +103,14 @@ export default function AboutMe(props) {
 
   scrollYProgress.onChange(x => {
     setScrollState(`${Math.floor(x * 100)}% Scrolled`)
-    setIsComplete(Math.floor(x * 100) >= 97)
+    setIsComplete(Math.floor(x * 100) > 99)
   })
+
+  function handleMenuVisibleChange() {
+    userOptions.menuHelper = false;
+    setMenuHelperVisible(false);
+    localStorage.setItem('userOptions', JSON.stringify(userOptions))
+  }
 
   // ANIMATION / SCROLL POSITION SETUP
   // =================================
@@ -110,9 +127,11 @@ export default function AboutMe(props) {
 
   // MISSION STATEMENT SPECIFIC ANIMATION
   // const missionStatementXPos = useTransform(scrollYProgress, [0, .18, .3, .5], ['100vw', '0vw', '0vw', '0vw'])
-  const missionStatementXPos = useTransform(scrollYProgress, [0, .07, .18, .5], ['100vw', '0vw', '0vw', '0vw'])
-  const missionStatmentFontSize = useTransform(scrollYProgress, [0, .18, .5], ['1em', '1em', '1.9em'])
-  const missionnStatementYPos = useTransform(scrollYProgress, [0, .4, .5, .6, .7], ['0vh', '0vh', '-20vh', '-60vh', '-100vh'])
+  const missionStatementXPos = useTransform(scrollYProgress, [0, .07], ['100vw', '0vw'])
+  const missionStatmentFontSize = useTransform(scrollYProgress, [0, .18, .5, .6, .7], ['1em', '1em', '1.4rem', '1.8rem', '1.9em'])
+  // const missionStatmentFontSize = useTransform(scrollYProgress, [0, .18, .5, .6, .7], ['.90vw', '.90vw', '.90vw', '.90vw', '.90vw'])
+  // const missionStatementScale = useTransform(scrollYProgress, [0, .18, .5], ['1','1','1.9'])
+  const missionnStatementYPos = useTransform(scrollYProgress, [0, .4, .5, .6, .7], ['0vh', '0vh', '-40vh', '-100vh', '-100vh'])
   // const missionStatementOpacity = useTransform(scrollYProgress, [0, .18, .5, .6, .7], [0, 1, 1, .8, 0])
   const missionStatementOpacity = useTransform(scrollYProgress, [0, .07, .5, .57], [0, 1, 1, 0])
 
@@ -123,10 +142,30 @@ export default function AboutMe(props) {
   const secondaryTextRotateAnimBackside = useTransform(scrollYProgress, [0, .65, .8], ['-180deg', '-180deg', '0deg'])
 
   // TOP LINK BUTTON
-  const topButtonYPos = useTransform(scrollYProgress, [0, 0.04, 0.09],['20vh', '100vh', '0vh'])
+  const topButtonYPos = useTransform(scrollYProgress, [0, 0.04, 0.09], ['100vh', '100vh', '0vh'])
+
+  // DEV LANGUAGES ICON LIST
+  const logoArrXPos = useTransform(scrollYProgress, [0, .22, .5], ['-300vw', '-300vw', '300vw'])
 
   return (
     <div className={"AboutMe " + classes.root}>
+      {/* MENU HELPER */}
+      {menuHelperVisible ? (
+        <div style={{ background:'darkblue', color: 'yellow', padding: '.5rem', position: 'absolute', top: '3.8rem', left: '1rem', height: 200, width: 200, textAlign: 'center', zIndex: 100, borderRadius: 15, boxShadow: '3px 5px .5rem rgba(20, 20, 20, 0.5)' }}>
+          {/* <p style={{margin: '0em 50% -.67em 0'}}>
+            &uarr;
+          </p> */}
+          <p><motion.span style={{fontSize: '1.5em'}} initial={{y:'0px'}} animate={{y:'-10px'}} transition={{duration:1.2, repeatType: 'mirror', repeat: Infinity}}>&uarr;</motion.span> Click 'OPEN MENU' to navigate to another page, or scroll down to learn more about me!</p>
+          <Button style={{color:'yellow'}} onClick={() => setMenuHelperVisible(false)}>
+            &times; close
+          </Button>
+          <Button style={{color:'yellow'}} onClick={() => handleMenuVisibleChange()}>
+            &times; Don't show again
+          </Button>
+        </div>
+      ) :
+        null}
+
       <div className={classes.topSpacer} id="aboutme-top" />
       {/* SIMPLE GREETING */}
       <span style={{ position: 'fixed', top: '1rem', right: '1rem' }}>
@@ -203,11 +242,10 @@ export default function AboutMe(props) {
           />
         </Grid>
 
-        {/* SHORT INTRO IN FROM RIGHT WITH PIC */}
+        {/* SHORT INTRO IN WITH PIC */}
         <Grid item md={6} className="aboutme-intro-wrapper" ref={introRef}>
           <motion.div
             style={{
-              // margin: '0 7vh -.67em 7vh',
               marginBottom: '-.67em',
               x: introXPosAnim,
               opacity: picOpacityAnim,
@@ -219,53 +257,54 @@ export default function AboutMe(props) {
               I've loved coding since I built my first websites at the public library in the mid-90's. I had a collection of GeoCities sites about dragons, or martial arts, or some combination thereof... My life went in many directions since then, but the draw to web and application development has always been a constant.
             </p>
           </motion.div>
-          <motion.p style={{
+
+          {/* MISSION STATEMENT SPECIFIC CONTAINER */}
+          <motion.h6 style={{
             y: missionnStatementYPos,
             x: missionStatementXPos,
             fontSize: missionStatmentFontSize,
+            // scale: missionStatementScale,
             width: '85vw',
             opacity: missionStatementOpacity,
             margin: '0 auto',
-            // textAlign: 'center',
-            // textJustify:'inter-word'
+            textShadow: '0px 10px 10px linear-gradient(to bottom, red, yellow)'
           }}
             className={classes.missionStatement}
           >
-            So, I reinvented myself as a <strong><em>Full-Stack Web Developer</em></strong>.
-            </motion.p>
+            So I became a <strong><em>Full-Stack Web Developer</em></strong>.
+            </motion.h6>
         </Grid>
       </Grid>
 
+      {/* SECONDARY TEXT FRONTSIDE */}
       <Grid container justify="center" className={classes.secondaryText}>
         <motion.p
           style={{
             position: 'abolute',
             top: 0,
             width: '85vw',
-            // margin:'0 auto',
+            margin: width < 960 ? '-20vh auto 0 auto' : '0 auto',
             y: secondaryTextYPos,
             rotateY: secondaryTextRotateAnim,
             backfaceVisibility: 'hidden',
-            WebkitBackfaceVisibility:'hidden',
+            WebkitBackfaceVisibility: 'hidden',
             textAlign: 'center',
-
-            // textJustify:'inter-word'
-            // opacity: secondaryTextOpacity
           }}
         >
           Now I build <strong>functional</strong>, <strong>beautiful</strong> and <strong>intuitive</strong> web application while constantly learning and growing.
           </motion.p>
+
+        {/* BACKSIDE OF SECONDARY TEXT */}
         <motion.p
           style={{
             position: 'absolute',
             top: 0,
             width: '85vw',
-            margin: '0 auto',
+            margin: width < 960 ? '-20vh auto 0 auto' : '0 auto',
             y: secondaryTextYPos,
             backfaceVisibility: 'hidden',
-            WebkitBackfaceVisibility:'hidden',
+            WebkitBackfaceVisibility: 'hidden',
             textAlign: 'center',
-            // textJustify:'inter-word',
             rotateY: secondaryTextRotateAnimBackside,
             opacity: secondaryTextOpacity
           }}
@@ -291,20 +330,49 @@ export default function AboutMe(props) {
         <Grid item xs={false} md={2}>
         </Grid>
       </Grid>
-      <a href="#aboutme-top">
-        <motion.button
-          style={{ 
-            position: 'fixed', 
-            bottom: '1rem', 
-            left: '1rem', 
-            y:topButtonYPos, 
-            background:'transparent', 
-            border: 'none' 
-          }}
+
+      {/* DEV LANGUAGE ICON ARRAY */}
+      <motion.div style={{
+        display: 'flex',
+        position: 'fixed',
+        flexDirection: 'row-reverse',
+        flexWrap: 'nowrap',
+        top: '35%',
+        x: logoArrXPos,
+        width: '300vw',
+        justifyContent: 'space-between'
+      }}>
+        {logoArr.map(logo => {
+          return (
+            <img
+              src={logo}
+              alt="developer language logo icon"
+              style={{
+                height: '15vh',
+              }}
+              key={logo}
+            />
+          )
+        })}
+
+      </motion.div>
+
+      {/* 'BACK TO TOP' BUTTON */}
+      <motion.a style={{
+        position: 'fixed',
+        top: '1rem',
+        left: '1rem',
+        y: topButtonYPos,
+        background: 'transparent',
+        border: 'none',
+        textDecoration: 'none'
+      }} href="#aboutme-top">
+        <Button
+          variant="contained"
         >
           &uarr; back to top
-      </motion.button>
-      </a>
+      </Button>
+      </motion.a>
     </div >
   )
 }
