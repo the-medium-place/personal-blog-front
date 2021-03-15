@@ -5,9 +5,9 @@ import Grid from '@material-ui/core/Grid';
 import PostCard from '../../../blog/components/PostCard';
 import TypeText from '../../../blog/TypeText';
 import useScrollPosition from '../../../hooks/ScrollPosition';
-// import { motion } from 'framer-motion';
+import useWindowDimensions from '../../../hooks/WindowDimensions';
 import { motion, useViewportScroll, useTransform, useSpring } from "framer-motion"
-
+import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import headshot from '../../assets/images/headshotminSquare.png'
 import facepic from '../../assets/images/facepicmin.jpg'
 import './style.css';
@@ -15,11 +15,11 @@ import './style.css';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    position: 'fixed',
-    top: 0,
-    left: 0,
+    // position: 'fixed',
+    // top: 0,
+    // left: 0,
     width: '100vw',
-    height: 4000
+    minHeight: 10000
   },
   paper: {
     padding: theme.spacing(2),
@@ -32,9 +32,6 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     padding: '3rem'
   },
-  aboutMeGreeting: {
-    marginBottom: '60vh'
-  },
   aboutMePic: {
     height: '40vh',
     clipPath: 'circle(30% at 38% 35%)'
@@ -46,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
   },
   picIntroWrapper: {
     position: 'fixed',
-    top: 40,
+    // top: 40,
     padding: '0 20vw 0 20vw'
     // left: '3vw'
   },
@@ -60,6 +57,11 @@ const useStyles = makeStyles((theme) => ({
     width: 80,
     height: 80,
     aspectRatio: '1/1'
+  },
+  secondaryText: {
+    position: 'fixed',
+    fontSize: '2rem',
+    perspective: 2000,
   }
 
 }));
@@ -68,6 +70,12 @@ const useStyles = makeStyles((theme) => ({
 export default function AboutMe(props) {
   const latestPost = props.latestPost;
   // const maxHeight = window.screen.height;
+
+  // GET WINDOW DIMENSIONS
+  const { width, height } = useWindowDimensions();
+
+
+
   const classes = useStyles(props);
 
   const [showState, setShowState] = useState({
@@ -83,77 +91,49 @@ export default function AboutMe(props) {
   const picRef = useRef(null)
   const introRef = useRef(null)
 
-  // let yPosCounter = 100;
-  // let opacityCounter = 0;
 
-  // useEffect(() => {
-  //   introRef.current.style.transform = `translateX(100vw)`
-  //   introRef.current)
-  //   picRef.current.style.transform = `translateX(-100vw)`
-  // }, [])
   const { scrollYProgress, scrollY } = useViewportScroll()
   const yRange = useTransform(scrollYProgress, [0, 0.97], [0, 1]);
   const pathLength = useSpring(yRange, { stiffness: 400, damping: 90 });
 
   scrollYProgress.onChange(x => {
     setScrollState(`${Math.floor(x * 100)}% Scrolled`)
-    // Math.floor(x * 100) >= 97 ? setIsComplete(true) : setIsComplete(false);
-    setIsComplete(Math.floor(x*100) >= 97)
+    setIsComplete(Math.floor(x * 100) >= 97)
   })
 
-  // X POSITION OF INTRO PIC ON SCROLL
-  const picXPosAnim = useTransform(scrollYProgress, [0, .18, .3, .4], ["-100vw", '0vw', "0vw", '100vw'])
-  const picOpacityAnim = useTransform(scrollYProgress, [0, .18, .3, .37], [0, 1, 1, 0])
+  // ANIMATION / SCROLL POSITION SETUP
+  // =================================
 
+  // X POSITION OF INTRO PIC ON SCROLL
+  // const picXPosAnim = useTransform(scrollYProgress, [0, .18, .3, .4], ["-100vw", '0vw', "0vw", '100vw'])
+  // const picOpacityAnim = useTransform(scrollYProgress, [0, .18, .3, .37], [0, 1, 1, 0])
+  const picXPosAnim = useTransform(scrollYProgress, [0, .07, .18, .25], ["-100vw", '0vw', "0vw", '100vw'])
+  const picOpacityAnim = useTransform(scrollYProgress, [0, .07, .18, .23], [0, 1, 1, 0])
   // X POSITION OF INTRO TEXT ON SCROLL
-  const introXPosAnim = useTransform(scrollYProgress, [0, .18, .3, .4], ['100vw', '0vw', '0vw', '-100vw'])
+  // const introXPosAnim = useTransform(scrollYProgress, [0, .18, .3, .4], ['100vw', '0vw', '0vw', '-100vw'])
+  const introXPosAnim = useTransform(scrollYProgress, [0, .07, .18, .25], ['100vw', '0vw', '0vw', '-100vw'])
+
 
   // MISSION STATEMENT SPECIFIC ANIMATION
-  const missionStatementXPos = useTransform(scrollYProgress, [0, .18, .3, .5], ['100vw', '0vw', '0vw', '-15vw'])
-  const missionStatmentFontSize = useTransform(scrollYProgress, [0, .3, .5], ['1em', '1em', '2.4em'])
-  const missionStatementWidth = useTransform(scrollYProgress, [0, .3, .5], ['100%', '100%', '200%'])
+  // const missionStatementXPos = useTransform(scrollYProgress, [0, .18, .3, .5], ['100vw', '0vw', '0vw', '0vw'])
+  const missionStatementXPos = useTransform(scrollYProgress, [0, .07, .18, .5], ['100vw', '0vw', '0vw', '0vw'])
+  const missionStatmentFontSize = useTransform(scrollYProgress, [0, .18, .5], ['1.2em', '1.2em', '1.9em'])
   const missionnStatementYPos = useTransform(scrollYProgress, [0, .4, .5, .6, .7], ['0vh', '0vh', '-20vh', '-60vh', '-100vh'])
-  const missionStatementOpacity = useTransform(scrollYProgress, [0, .5, .6, .7], [1, 1, .8, 0])
+  // const missionStatementOpacity = useTransform(scrollYProgress, [0, .18, .5, .6, .7], [0, 1, 1, .8, 0])
+  const missionStatementOpacity = useTransform(scrollYProgress, [0, .07, .5, .6, .7], [0, 1, 1, .8, 0])
+
+  // AFTER MISSION STATEMENT (SECONDARY) TEXT
+  const secondaryTextYPos = useTransform(scrollYProgress, [0, .55, .6], ['200vh', '100vh', '-25vh'])
+  const secondaryTextRotateAnim = useTransform(scrollYProgress, [0, .65, .8], ['0deg', '0deg', '180deg'])
+  const secondaryTextOpacity = useTransform(scrollYProgress, [0, .78, .83], [1, 1, 0])
+  const secondaryTextRotateAnimBackside = useTransform(scrollYProgress, [0, .65, .8], ['-180deg', '-180deg', '0deg'])
+
+  // TOP LINK BUTTON
+  const topButtonYPos = useTransform(scrollYProgress, [0, 0.04, 0.09],['20vh', '100vh', '0vh'])
 
   return (
-    <div className={"AboutMe" + classes.root}>
-
-      {/* <motion.div
-      style={{
-        position: 'fixed', 
-        y:yPosAnim, 
-        top: '1rem', 
-        left:'1rem'
-      }}
-        initial={{
-          position: 'fixed',
-          left: '1rem',
-          top: '1rem',
-          y: 0,
-          color: '#bada55',
-          textShadow: '5px 5px 0.1rem black'
-        }}
-        animate={{
-          textShadow: '60px 60px 2.5rem black',
-          // x: 0,
-          // y: 200,
-          y: yPosAnim,
-          // backgroundColor: "#000",
-          // boxShadow: "10px 10px 0 rgba(0, 0, 0, 0.2)",
-          position: "fixed",
-          left: '1rem',
-          top: '1rem',
-          fontSize: '36px',
-          color: '#fff'
-          // transitionEnd: {
-          //   display: "none",
-          // },
-        }}
-        transition={{ repeatType: 'mirror', repeat: Infinity, duration: 2 }}
-      >
-        <h1><strong>test</strong></h1>
-      </motion.div> */}
-      <div className={classes.topSpacer}></div>
+    <div className={"AboutMe " + classes.root}>
+      <div className={classes.topSpacer} id="aboutme-top" />
       {/* SIMPLE GREETING */}
       <span style={{ position: 'fixed', top: '1rem', right: '1rem' }}>
         {scrollState}
@@ -186,9 +166,10 @@ export default function AboutMe(props) {
       </svg>
 
 
-      <Grid container justify="center">
+      <Grid container direction="column" justify="center">
         <motion.h1
-          className={classes.aboutMeGreeting}
+          // className={classes.aboutMeGreeting}
+          style={{ margin: '0 auto' }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 2 }}
@@ -196,15 +177,32 @@ export default function AboutMe(props) {
         >
           GREETINGS.
         </motion.h1>
+        <motion.span
+          style={{ margin: '20vh auto 0 auto', fontSize: '4rem' }}
+          initial={{ y: 0 }}
+          animate={{ y: -10 }}
+          transition={{
+            duration: 1,
+            repeatType: 'mirror',
+            repeat: Infinity
+          }}
+        >
+          {/* <ArrowDownwardIcon /> */}
+          &darr;
+        </motion.span>
       </Grid>
       {/* PIC AND INTRO CONTENT */}
       {/* ===================== */}
-      <Grid container justify='center' className={classes.picIntroWrapper}>
+      <Grid container justify='center' className={classes.picIntroWrapper} style={{ top: width < 960 ? 10 : '30vh' }}>
 
         {/* PIC IN FROM LEFT SIDE */}
         <Grid item md={6} className={classes.picWrapper}>
           <motion.img
-            style={{ x: picXPosAnim, opacity: picOpacityAnim }}
+            style={{
+              marginBottom: '-2rem',
+              x: picXPosAnim,
+              opacity: picOpacityAnim
+            }}
             ref={picRef}
             className={classes.aboutMePic}
             src={headshot}
@@ -215,8 +213,11 @@ export default function AboutMe(props) {
         <Grid item md={6} className="aboutme-intro-wrapper" ref={introRef}>
           <motion.div
             style={{
+              // margin: '0 7vh -.67em 7vh',
+              marginBottom: '-.67em',
               x: introXPosAnim,
-              opacity: picOpacityAnim
+              opacity: picOpacityAnim,
+              fontSize: '1.2em'
             }}
           >
             <h3 className="aboutme-intro">I'm Zac!</h3>
@@ -228,30 +229,86 @@ export default function AboutMe(props) {
             y: missionnStatementYPos,
             x: missionStatementXPos,
             fontSize: missionStatmentFontSize,
-            width: missionStatementWidth,
-            opacity: missionStatementOpacity
+            width: '85vw',
+            opacity: missionStatementOpacity,
+            margin: '0 auto',
+            // textAlign: 'center',
+            // textJustify:'inter-word'
           }}
             className={classes.missionStatement}
           >
-            So, I reinvented myself as a <br /><strong><em>Full-Stack Web Developer</em></strong>.
+            So, I reinvented myself as a <strong><em>Full-Stack Web Developer</em></strong>.
             </motion.p>
         </Grid>
       </Grid>
 
-      <Grid container style={{ height: 3000 }}>
+      <Grid container justify="center" className={classes.secondaryText}>
+        <motion.p
+          style={{
+            position: 'abolute',
+            top: 0,
+            width: '85vw',
+            // margin:'0 auto',
+            y: secondaryTextYPos,
+            rotateY: secondaryTextRotateAnim,
+            backfaceVisibility: 'hidden',
+            textAlign: 'center',
 
+            // textJustify:'inter-word'
+            // opacity: secondaryTextOpacity
+          }}
+        >
+          Now I build <strong>functional</strong>, <strong>beautiful</strong> and <strong>intuitive</strong> web application while constantly learning and growing.
+          </motion.p>
+        <motion.p
+          style={{
+            position: 'absolute',
+            top: 0,
+            width: '85vw',
+            margin: '0 auto',
+            y: secondaryTextYPos,
+            backfaceVisibility: 'hidden',
+            textAlign: 'center',
+            // textJustify:'inter-word',
+            rotateY: secondaryTextRotateAnimBackside,
+            opacity: secondaryTextOpacity
+          }}
+        >
+          here's a bunch more text on the other side of the div... now it's visible!
+          </motion.p>
       </Grid>
+      {/* <Grid container style={{ height: 3000 }}>
+
+      </Grid> */}
       {/* LATEST BLOG POST */}
-      {/* <Grid container spacing={1} style={{ marginTop: '80vh' }}>
+      <Grid container justify="center">
         <Grid item xs={false} md={2}></Grid>
         <Grid item xs={11} md={8}>
-          <div style={{ width: '100%' }}>
+          <motion.div style={{
+            width: '100%',
+            position: 'fixed',
+            y: '100vh'
+          }}>
             {latestPost ? <PostCard post={latestPost} /> : <h4>Oh noes! There must've been a server error, and there's no blog post to show! Please <a href="mailto:zgstowell@gmail.com">Email Zac</a> right away!</h4>}
-          </div>
+          </motion.div>
         </Grid>
         <Grid item xs={false} md={2}>
         </Grid>
-      </Grid> */}
+      </Grid>
+      <a href="#aboutme-top">
+        <motion.button
+          style={{ 
+            position: 'fixed', 
+            bottom: '1rem', 
+            left: '1rem', 
+            y:topButtonYPos, 
+            background:'transparent', 
+            border: 'none' 
+          }}
+        >
+          &uarr; back to top
+      </motion.button>
+      </a>
     </div >
   )
 }
