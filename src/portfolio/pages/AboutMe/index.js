@@ -252,6 +252,7 @@ export default function AboutMe(props) {
             y: secondaryTextYPos,
             rotateY: secondaryTextRotateAnim,
             backfaceVisibility: 'hidden',
+            WebkitBackfaceVisibility:'hidden',
             textAlign: 'center',
 
             // textJustify:'inter-word'
@@ -268,6 +269,7 @@ export default function AboutMe(props) {
             margin: '0 auto',
             y: secondaryTextYPos,
             backfaceVisibility: 'hidden',
+            WebkitBackfaceVisibility:'hidden',
             textAlign: 'center',
             // textJustify:'inter-word',
             rotateY: secondaryTextRotateAnimBackside,
