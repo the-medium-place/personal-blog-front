@@ -78,12 +78,6 @@ export default function AboutMe(props) {
 
   const classes = useStyles(props);
 
-  const [showState, setShowState] = useState({
-    greeting: false,
-    picture: false,
-    intro: false
-  })
-
   const [scrollState, setScrollState] = useState(`0% Scrolled`)
   const [isComplete, setIsComplete] = useState(false);
 
@@ -117,10 +111,10 @@ export default function AboutMe(props) {
   // MISSION STATEMENT SPECIFIC ANIMATION
   // const missionStatementXPos = useTransform(scrollYProgress, [0, .18, .3, .5], ['100vw', '0vw', '0vw', '0vw'])
   const missionStatementXPos = useTransform(scrollYProgress, [0, .07, .18, .5], ['100vw', '0vw', '0vw', '0vw'])
-  const missionStatmentFontSize = useTransform(scrollYProgress, [0, .18, .5], ['1.2em', '1.2em', '1.9em'])
+  const missionStatmentFontSize = useTransform(scrollYProgress, [0, .18, .5], ['1em', '1em', '1.9em'])
   const missionnStatementYPos = useTransform(scrollYProgress, [0, .4, .5, .6, .7], ['0vh', '0vh', '-20vh', '-60vh', '-100vh'])
   // const missionStatementOpacity = useTransform(scrollYProgress, [0, .18, .5, .6, .7], [0, 1, 1, .8, 0])
-  const missionStatementOpacity = useTransform(scrollYProgress, [0, .07, .5, .6, .7], [0, 1, 1, .8, 0])
+  const missionStatementOpacity = useTransform(scrollYProgress, [0, .07, .5, .57], [0, 1, 1, 0])
 
   // AFTER MISSION STATEMENT (SECONDARY) TEXT
   const secondaryTextYPos = useTransform(scrollYProgress, [0, .55, .6], ['200vh', '100vh', '-25vh'])
@@ -217,7 +211,7 @@ export default function AboutMe(props) {
               marginBottom: '-.67em',
               x: introXPosAnim,
               opacity: picOpacityAnim,
-              fontSize: '1.2em'
+              fontSize: '1em'
             }}
           >
             <h3 className="aboutme-intro">I'm Zac!</h3>
