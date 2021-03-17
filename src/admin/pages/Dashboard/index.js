@@ -24,8 +24,11 @@ export default function Dashboard({ postsState, setPostsState }) {
 
     API.getProfile(token)
     .then(dbUser => {
-      setLoggedInUser(dbUser)
-      console.log(dbUser)
+      setLoggedInUser(dbUser.data)
+      console.table(dbUser.data)
+    })
+    .catch(err => {
+      console.log(err)
     })
   },[])
 

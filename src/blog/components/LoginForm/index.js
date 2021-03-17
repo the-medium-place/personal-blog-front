@@ -61,6 +61,7 @@ export default function LoginForm(props) {
                                 value={loginState.username}
                                 onChange={handleInputChange}
                                 type="text"
+                                style={{marginBottom: '1.3rem'}}
                             />
                             <TextField
                                 name="password"
@@ -70,11 +71,14 @@ export default function LoginForm(props) {
                                 value={loginState.password}
                                 onChange={handleInputChange}
                                 type="password"
+                                autoCapitalize="current-password"
+                                style={{marginBottom: '1.3rem'}}
                             />
                             <Button
-                                variant="secondary"
+                                variant="contained"
                                 type="submit"
                                 className="btn-lg"
+                                style={{width: '50%', margin: '0 auto'}}
                             >
                                 Submit
                             </Button>
