@@ -18,7 +18,7 @@ const API = {
     },
 
     getProfile: function (token) {
-        return axios.get(API_URL + '/api/users/secretProfile', {
+        return axios.get(API_URL + '/api/users/getloggedinuser', {
             headers: {
                 "authorization": `Bearer ${token}`
             }

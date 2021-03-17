@@ -18,6 +18,7 @@ import ContactMe from './portfolio/pages/ContactMe';
 import Portfolio from './portfolio/pages/Portfolio';
 import ViewPost from './blog/pages/ViewPost';
 import PortfolioSplash from './portfolio/pages/Splash';
+import LoginPage from './blog/pages/LoginPage'
 
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
@@ -122,6 +123,12 @@ function App() {
               <NavDrawer />
               <Container>
                 <ContactMe />
+              </Container>
+            </Route>
+            <Route exact path="/login">
+              <NavDrawer />
+              <Container>
+                <LoginPage />
               </Container>
             </Route>
 

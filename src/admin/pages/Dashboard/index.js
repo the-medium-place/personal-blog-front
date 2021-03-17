@@ -6,13 +6,28 @@ import AllComments from '../../components/AllComments';
 import AddPost from '../../components/AddPost';
 import UpdatePost from '../../components/UpdatePost';
 import AllTags from '../../components/AllTags';
+import API from '../../../utils/API';
+import { useHistory } from "react-router-dom";
 
 export default function Dashboard({ postsState, setPostsState }) {
 
-
+  const history = useHistory();
 
   const [componentViewState, setComponentViewState] = useState('main')
   const [updatePostState, setUpdatePostState] = useState(null)
+  const [loggedInUser, setLoggedInUser] = useState(null)
+
+  useEffect(()=>{
+    const token = localStorage.getItem('token') || null;
+
+    if(!token) history.push('/login');
+
+    API.getProfile(token)
+    .then(dbUser => {
+      setLoggedInUser(dbUser)
+      console.log(dbUser)
+    })
+  },[])
 
 
   console.log('postsState: ', postsState);
