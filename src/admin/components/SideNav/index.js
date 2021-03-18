@@ -1,8 +1,16 @@
 import React from 'react'
 import './style.css';
+import { useHistory } from 'react-router-dom'
 
 export default function SideNav(props) {
+    const history = useHistory();
+
     const { componentViewState, setComponentViewState } = props;
+
+    const handleLogout = () => {
+        localStorage.removeItem('token')
+        history.push('/crudposting')
+    }
 
     return (
         <div className="SideNav">
@@ -16,6 +24,9 @@ export default function SideNav(props) {
                 <li onClick={()=>setComponentViewState('tags')}>View/Edit All Tags</li>
                 
                 <li onClick={()=>setComponentViewState('comments')}>View/Approve All Comments</li>
+
+                <li onClick={()=>handleLogout()}>Logout & Exit</li>
+
             </ul>            
             
         </div>

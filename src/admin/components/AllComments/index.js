@@ -32,6 +32,7 @@ export default function AllComments(props) {
                 props.setPostsState(dbPosts.data)
             })
             .catch(err => console.log(err))
+            props.setCommentStats(props.getCommentsInfo())
         })
         .catch(err => console.log(err))
     }

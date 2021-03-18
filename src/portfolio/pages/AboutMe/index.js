@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     width: '100vw',
-    minHeight: 10000
+    minHeight: 15000
   },
   paper: {
     padding: theme.spacing(2),
@@ -155,14 +155,14 @@ export default function AboutMe(props) {
     secondaryTextRotateAnimBackside: useTransform(scrollYProgress, [0, .65, .8], ['-180deg', '-180deg', '0deg']),
 
     // TOP LINK BUTTON
-    topButtonYPos: useTransform(scrollYProgress, [0, 0.04, 0.09], ['100vh', '100vh', '0vh']),
+    topButtonYPos: useTransform(scrollYProgress, [0, 0.04, 0.09, .89, .95], ['100vh', '100vh', '0vh', '0vh', '85vh']),
 
     // DEV LANGUAGES ICON LIST
     logoArrXPos: useTransform(scrollYProgress, [0, .22, .5], ['-300vw', '-300vw', '300vw']),
 
     // PAGE BOTTOM LINKS ANIMATIONS
     linksOpacity: useTransform(scrollYProgress, [0, 0.8, 0.84], [0, 0, 1]),
-    linksYPos: useTransform(scrollYProgress, [0, .93, .98], ['0vh', '0vh', '-100vh' ]),
+    linksYPos: useTransform(scrollYProgress, [0, .93, .98], ['0vh', '0vh', '0vh']),
 
     portfolioLinkXPos: useTransform(scrollYProgress, [0, 0.8, 0.84], ['-1OOvw', '-100vw', '0vw']),
     portfolioDescXPos: useTransform(scrollYProgress, [0, 0.8, 0.84], ['1OOvw', '100vw', '0vw']),
@@ -177,14 +177,13 @@ export default function AboutMe(props) {
     blogPostYPos: useTransform(scrollYProgress, [0, .9, .97], ['100vh', '100vh', '0vh'])
   }
 
-
   return (
     <div className={"AboutMe " + classes.root}>
       {/* MENU HELPER BOX */}
       {menuHelperVisible ? (<div
         style={{
-          background: 'darkblue',
-          color: 'yellow',
+          background: 'cornflowerblue',
+          color: 'white',
           padding: '.5rem',
           position: 'absolute',
           top: '3.8rem',
@@ -212,13 +211,13 @@ export default function AboutMe(props) {
             Click 'OPEN MENU' to navigate to another page, or scroll down to learn more about me!
           </p>
         <Button
-          style={{ color: 'yellow', fontSize: '.9em' }}
+          style={{ color: 'darkred', fontSize: '.9em', cursor: 'pointer' }}
           onClick={() => setMenuHelperVisible(false)}
         >
           <strong>&times; close</strong>
         </Button>
         <Button
-          style={{ color: 'yellow', fontSize: '.9em' }}
+          style={{ color: 'darkred', fontSize: '.9em', cursor: 'pointer' }}
           onClick={() => handleMenuVisibleChange()}
         >
           <strong>&times; Don't show again</strong>
@@ -385,7 +384,7 @@ export default function AboutMe(props) {
       <Grid container spacing={3} style={{ width: '85vw', position: 'fixed', margin: '0 7.5vw 0 7.5vw', top: '20vh' }}>
         <Grid item xs={12} sm={4}>
           <Box display='flex' style={{ width: '100%' }} justifyContent={width >= 600 ? 'flex-end' : 'center'} alignItems={width > 960 ? 'flex-start' : 'flex-end'}>
-            <motion.a href="/portfolio" style={{ x: animations.portfolioLinkXPos, opacity: animations.linksOpacity, y:animations.linksYPos }}>
+            <motion.a href="/portfolio" style={{ x: animations.portfolioLinkXPos, opacity: animations.linksOpacity, y: animations.linksYPos }}>
               <Button variant="contained">
                 <strong>
                   SEE MY PORTFOLIO
@@ -396,7 +395,7 @@ export default function AboutMe(props) {
         </Grid>
         <Grid item xs={12} sm={8}>
           <Box display='flex' style={{ width: '100%' }} justifyContent={width >= 600 ? 'flex-start' : 'center'} alignItems={width > 960 ? 'center' : 'flex-start'}>
-            <motion.p style={{ marginTop: width>960?'0':'-.67em', x: animations.portfolioDescXPos, opacity: animations.linksOpacity, y:animations.linksYPos }}>
+            <motion.p style={{ marginTop: width > 960 ? '0' : '-.67em', x: animations.portfolioDescXPos, opacity: animations.linksOpacity, y: animations.linksYPos }}>
               A COLLECTION OF PROJECTS AND SKILLS.
             </motion.p>
           </Box>
@@ -405,7 +404,7 @@ export default function AboutMe(props) {
         {/* CONTACT ME */}
         <Grid item xs={12} sm={4}>
           <Box display='flex' style={{ width: '100%' }} justifyContent={width >= 600 ? 'flex-end' : 'center'} alignItems={width > 960 ? 'flex-start' : 'flex-end'}>
-            <motion.a href="/contact" style={{ x: animations.contactmeLinkXPos, opacity: animations.linksOpacity, y:animations.linksYPos }}>
+            <motion.a href="/contact" style={{ x: animations.contactmeLinkXPos, opacity: animations.linksOpacity, y: animations.linksYPos }}>
               <Button variant="contained">
                 <strong>
                   CONTACT ME
@@ -416,7 +415,7 @@ export default function AboutMe(props) {
         </Grid>
         <Grid item xs={12} sm={8}>
           <Box display='flex' style={{ width: '100%' }} justifyContent={width >= 600 ? 'flex-start' : 'center'} alignItems={width > 960 ? 'center' : 'flex-start'}>
-            <motion.p style={{ marginTop: width>960?'0':'-.67em', x: animations.contactmeDescXPos, opacity: animations.linksOpacity, y:animations.linksYPos }}>
+            <motion.p style={{ marginTop: width > 960 ? '0' : '-.67em', x: animations.contactmeDescXPos, opacity: animations.linksOpacity, y: animations.linksYPos }}>
               EMAIL ME&nbsp;<a href="mailto:zgstowell@gmail.com">HERE</a>&nbsp;OR CLICK THE LINK FOR OPTIONS
             </motion.p>
           </Box>
@@ -425,7 +424,7 @@ export default function AboutMe(props) {
         {/* BLOG */}
         <Grid item xs={12} sm={4}>
           <Box display='flex' style={{ width: '100%' }} justifyContent={width >= 600 ? 'flex-end' : 'center'} alignItems={width > 960 ? 'flex-start' : 'flex-end'}>
-            <motion.a href="/crudposting" style={{ x: animations.blogLinkXPos, opacity: animations.linksOpacity, y:animations.linksYPos }}>
+            <motion.a href="/crudposting" style={{ x: animations.blogLinkXPos, opacity: animations.linksOpacity, y: animations.linksYPos }}>
               <Button variant="contained">
                 <strong>
                   READ MY BLOG
@@ -436,10 +435,10 @@ export default function AboutMe(props) {
         </Grid>
         <Grid item xs={12} sm={8}>
           <Box display='flex' style={{ width: '100%' }} justifyContent={width >= 600 ? 'flex-start' : 'center'} alignItems={width > 960 ? 'center' : 'flex-start'}>
-            <motion.p style={{ marginTop: width>960?'0':'-.67em', x: animations.blogDescXPos, opacity: animations.linksOpacity, y:animations.linksYPos }}>
+            <motion.p style={{ marginTop: width > 960 ? '0' : '-.67em', x: animations.blogDescXPos, opacity: animations.linksOpacity, y: animations.linksYPos }}>
               PROGRAMMING STORIES AND RANDOM MUSINGS...
-            <br />
-              <strong>Read the latest entry below &darr;&darr;</strong>
+            {/* <br /> */}
+              {/* <strong>Read the latest entry below &darr;&darr;</strong> */}
             </motion.p>
           </Box>
         </Grid>
@@ -449,18 +448,18 @@ export default function AboutMe(props) {
       {/* EXTRA ANIMATED UTILITY OBJECTS */}
       {/* ============================== */}
       {/* LATEST BLOG POST */}
-      <motion.div style={{position: 'fixed',y: animations.blogPostYPos, top: '7rem', maxHeight: '70vh', overflowY: 'scroll', overflowX: 'hidden' }}>
-      <Grid container spacing={3} justify="center">
-        <Grid item xs={1} md={2}></Grid>
-        <Grid item xs={10} md={8}>
-          <div>
-            {latestPost ? <PostCard post={latestPost} /> : <h4>Oh noes! There must've been a server error, and there's no blog post to show! Please <a href="mailto:zgstowell@gmail.com">Email Zac</a> with the issue!</h4>}
-          </div>
+      {/* <motion.div style={{ position: 'fixed', y: animations.blogPostYPos, top: '7rem', maxHeight: '70vh', overflowY: 'scroll', overflowX: 'hidden' }}>
+        <Grid container spacing={3} justify="center">
+          <Grid item xs={1} md={2}></Grid>
+          <Grid item xs={10} md={8}>
+            <div>
+              {latestPost ? <PostCard post={latestPost} /> : <h4>Oh noes! There must've been a server error, and there's no blog post to show! Please <a href="mailto:zgstowell@gmail.com">Email Zac</a> with the issue!</h4>}
+            </div>
+          </Grid>
+          <Grid item xs={1} md={2}>
+          </Grid>
         </Grid>
-        <Grid item xs={1} md={2}>
-        </Grid>
-      </Grid>
-      </motion.div>
+      </motion.div> */}
 
       {/* DEV LANGUAGE ICON ARRAY */}
       <motion.div style={{
