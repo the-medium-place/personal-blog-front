@@ -1,6 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import facepic from '../../assets/images/facepic.jpg'
+import facepic from '../../assets/images/personal/facepic.jpg'
 
 
 const useStyles = makeStyles((theme) => ({

@@ -23,7 +23,7 @@ td {
     padding: 7px;
 }
 
-td img {
+.post-table-img {
     max-width: 100px;
 }
 

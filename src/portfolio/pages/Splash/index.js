@@ -1,10 +1,10 @@
 import React from 'react';
-import Headshot from '../../assets/images/headshot.jpg'
+import Headshot from '../../assets/images/personal/headshot.jpg'
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Paper from '@material-ui/core/Paper';
-import LinedPaper from '../../assets/images/linedpaper.png'
+
 
 
 const useStyles = makeStyles((theme) => ({

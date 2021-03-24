@@ -32,9 +32,9 @@ export default function AllPosts(props) {
                             <td>{post.text.substr(0,30)+'...'}</td>
                             <td>{post.Comments.length} total /<br/> {post.Comments.filter(comment=>comment.approved).length} approved</td>
                             <td>{post.Tags.map(tag=>tag.text+' ')}</td>
-                            <td><img src={post.image1url||'https://via.placeholder.com/150'} alt={post.title} /></td>
-                            <td><img src={post.image2url||'https://via.placeholder.com/150'} alt={post.title} /></td>
-                            <td><img src={post.image3url||'https://via.placeholder.com/150'} alt={post.title} /></td>
+                            <td><img src={post.image1url||'https://via.placeholder.com/150'} alt={post.title} className="post-table-img" /></td>
+                            <td><img src={post.image2url||'https://via.placeholder.com/150'} alt={post.title} className="post-table-img"/></td>
+                            <td><img src={post.image3url||'https://via.placeholder.com/150'} alt={post.title} className="post-table-img"/></td>
                             <td>{new Date(post.createdAt).toLocaleString()}</td>
                             <td><button onClick={()=>{
                                       setComponentViewState('updatepost')
