@@ -47,6 +47,9 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
         color: theme.palette.text.primary
     },
+    gridContainer: {
+        marginTop: '7vh'
+    },
     paper: {
         color: theme.palette.text.primary,
     },
@@ -156,8 +159,8 @@ export default function ContactMe() {
 
     return (
         <div className={classes.root}>
-            <Grid container spacing={3}>
-                <Grid
+            <Grid container spacing={3} className={classes.gridContainer}>
+                {/* <Grid
                     item
                     container
                     xs={12}
@@ -165,7 +168,7 @@ export default function ContactMe() {
                     alignItems="center"
                 >
                     <h1 className={classes.pageTitle}>Choose an option here, or use the form below!</h1>
-                </Grid>
+                </Grid> */}
 
                 <Grid className={classes.contactLinkBox} item xs={12} md={4}>
                     <CssButton

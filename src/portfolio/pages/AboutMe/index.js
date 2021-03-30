@@ -136,7 +136,7 @@ export default function AboutMe(props) {
             </div>) : null} */}
 
             {/* SCROLL PROGRESS TRACKER CIRCLE */}
-            <svg className={classes.scrollProgressIndicator} viewBox="0 0 60 60">
+            {/* <svg className={classes.scrollProgressIndicator} viewBox="0 0 60 60">
                 <motion.path
                     fill="none"
                     strokeWidth="5"
@@ -160,12 +160,12 @@ export default function AboutMe(props) {
                     strokeDasharray="0 1"
                     animate={{ pathLength: isComplete ? 1 : 0 }}
                 />
-            </svg>
+            </svg> */}
 
             {/* SCROLL PROGRESS PERCENTAGE TRACKER TEXT */}
-            <span className={classes.scrollProgressPercent}>
+            {/* <span className={classes.scrollProgressPercent}>
                 {scrollState}
-            </span>
+            </span> */}
 
             {/* ============ */}
             {/* PAGE CONTENT */}
