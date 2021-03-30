@@ -73,7 +73,7 @@ const projects = [
     title: "Mark-It",
     tagline: "Farm-to-market-to-internet-database...",
     screenshot: 'https://i.imgur.com/rcTeF3S.jpg',
-    technologies: "Node.js, Express, React JS, Sequelize, HTML5, CSS3, Bulma CSS"
+    technologies: "Node.js, Express, React JS, Sequelize, MySQL, HTML5, CSS3, Bulma CSS"
 
   },
   {
@@ -85,7 +85,7 @@ const projects = [
     title: "CRUDposting",
     tagline: "Personal CRUD blog and Portolio!",
     screenshot: 'https://i.imgur.com/zu9Gwy4.png',
-    technologies: "Node.js, Express, React JS, Sequelize, HTML5, CSS3, Material UI"
+    technologies: "Node.js, Express, React JS, Sequelize, MySQL, HTML5, CSS3, Material UI"
 
   },
 
@@ -103,33 +103,33 @@ const projects = [
     id: "togather",
     github: "https://github.com/the-medium-place/group-planner",
     deployed: "http://awesome-group-planner.herokuapp.com/",
-    description: "This application allows multiple users to collaborate on multiple events. It utilizes a Sequelize database to store all relevant data and allows the user to view, edit, and delete user information (full CRUD functionality!). Multiple users can collaborate on multiple projects or events, while keeping track of event specific tasks and expenditures. This was a one-week collaborative project with a team of four, for which I acted as Project Manager",
+    description: "This application allows multiple users to collaborate on multiple events. It utilizes a Sequelize  MySQL,database to store all relevant data and allows the user to view, edit, and delete user information (full CRUD functionality!). Multiple users can collaborate on multiple projects or events, while keeping track of event specific tasks and expenditures. This was a one-week collaborative project with a team of four, for which I acted as Project Manager",
     title: "To-Gather",
     tagline: "Getting people together, Helping them ToGather...",
     screenshot: 'https://i.imgur.com/tj8sCI5.jpg',
-    technologies: "HTML5, CSS3, Node.js, Sequelize, Handlebars JS, Express, Foundation CSS"
+    technologies: "HTML5, CSS3, Node.js, Sequelize, MySQL, Handlebars JS, Express, Foundation CSS"
 
   },
   {
     id: "googlebooks",
     github: "https://github.com/the-medium-place/google-books-search",
     deployed: "https://awesome-google-books-react.herokuapp.com/",
-    description: "This Full-Stack (MERN) application uses React JS and Mongoose, allowing a user to search the Google Books API, and save any results to a list that is displayed on the 'Saved' page. The user can also delete books from this list giving the app CR-D functionality.",
+    description: "This Full-Stack (MERN) application uses React JS and MongoDB, Mongoose, allowing a user to search the Google Books API, and save any results to a list that is displayed on the 'Saved' page. The user can also delete books from this list giving the app CR-D functionality.",
     title: "Google Books Search",
     tagline: "Simple but elegant book search...",
     screenshot: 'https://i.imgur.com/JWLfCey.png',
-    technologies: "Mongoose DB, Express, React JS, Node.js, HTML5, CSS3, Bootstrap/React-Bootstrap CSS Framework"
+    technologies: "MongoDB, Mongoose, Express, React JS, Node.js, HTML5, CSS3"
 
   },
   {
     id: "fitnessmonkey",
     github: "https://github.com/the-medium-place/fitness-tracker",
     deployed: "https://awesome-fitness-tracker.herokuapp.com/",
-    description: "This is a simple fitness tracker app that utilizes Node JS, Handlebars and Mongoose DB to allow a user to create workout regimens and then add/edit/delete the individual exercises within. My test data while building consistently focused, for some reason, on eating bananas. So, I called the app Fitness Monkey!",
+    description: "This is a simple fitness tracker app that utilizes Node JS, Handlebars and MongoDB, Mongoose to allow a user to create workout regimens and then add/edit/delete the individual exercises within. My test data while building consistently focused, for some reason, on eating bananas. So, I called the app Fitness Monkey!",
     title: "Fitness Monkey",
     tagline:'Stay fit... no monkey business!',
     screenshot: "https://i.imgur.com/hlZdCTl.png",
-  technologies: "HTML5, CSS3, Mongoose DB, Express, Handlebars JS, Node.js"
+  technologies: "HTML5, CSS3, MongoDB, Mongoose, Express, Handlebars JS, Node.js"
 
   },
   {

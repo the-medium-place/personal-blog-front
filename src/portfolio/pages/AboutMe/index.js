@@ -91,7 +91,7 @@ export default function AboutMe(props) {
     return (
         <div className={`AboutMe ${classes.root}`}>
             {/* MENU HELPER BOX */}
-            {menuHelperVisible ? (<div
+            {/* {menuHelperVisible ? (<div
                 style={{
                     background: 'cornflowerblue',
                     color: 'white',
@@ -133,7 +133,7 @@ export default function AboutMe(props) {
                 >
                     <strong>&times; Don't show again</strong>
                 </Button>
-            </div>) : null}
+            </div>) : null} */}
 
             {/* SCROLL PROGRESS TRACKER CIRCLE */}
             <svg className={classes.scrollProgressIndicator} viewBox="0 0 60 60">
@@ -185,12 +185,12 @@ export default function AboutMe(props) {
             <Grid container justify="center" className={classes.aboutmePicWrapper}>
                 <Grid item xs='auto' />
                 <Grid item xs={3}>
-                    <img src={sittingPicCircle} className={classes.aboutmePic} />
+                    <img src={sittingPicCircle} className={classes.aboutmePic} alt="I'm looking majestically off into the distance." />
                 </Grid>
                 <Grid item xs='auto' />
                 <Grid container justify="center">
                     <Grid item xs='auto' />
-                    <Grid item xs={8} style={{textAlign: 'center'}}>
+                    <Grid item xs={8} style={{ textAlign: 'center' }}>
                         <h2>
                             I am a Full-Stack Web Developer and Software Engineer based in the Pacific Northwest.
                         </h2>

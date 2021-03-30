@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
     blackText: {
         color: theme.palette.text.primary
     },
-    button: {margin: theme.spacing(3)},
+    button: { margin: theme.spacing(3) },
     form: {
         margin: theme.spacing(3),
     },
@@ -103,7 +103,11 @@ export default function ContactMe() {
     const handleSendClick = (e) => {
         e.preventDefault();
 
-        if (emailState.username.length < 1 && emailState.userMessage.length < 1 && !(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/).test(emailState.userEmail)) {
+        const isEmailEmpty = emailState.username.length < 1;
+        const isMessageEmpty = emailState.userMessage.length < 1;
+        const isEmailInvalidFormat = !(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/).test(emailState.userEmail);
+
+        if (isEmailEmpty && isMessageEmpty && isEmailInvalidFormat) {
             console.log('please enter valid info');
             setFailureBarText("You didn't enter any valid information!")
             setFailureBarOpen(true);
@@ -162,6 +166,18 @@ export default function ContactMe() {
                 >
                     <h1 className={classes.pageTitle}>Choose an option here, or use the form below!</h1>
                 </Grid>
+
+                <Grid className={classes.contactLinkBox} item xs={12} md={4}>
+                    <CssButton
+                        variant="contained"
+                        color="default"
+                        href="http://github.com/the-medium-place"
+                        startIcon={<GitHubIcon />}
+                        target="_blank"
+                    >
+                        GitHub
+                    </CssButton>
+                </Grid>
                 <Grid className={classes.contactLinkBox} item xs={12} md={4}>
                     <CssButton
                         variant="contained"
@@ -174,17 +190,6 @@ export default function ContactMe() {
                     </CssButton>
                 </Grid>
                 <Grid className={classes.contactLinkBox} item xs={12} md={4}>
-                    <CssButton
-                        variant="contained"
-                        color="default"
-                        href="http://github.com/the-medium-place"
-                        startIcon={<GitHubIcon />}
-                        target="_blank"
-                    >
-                        GitHub Profile
-                    </CssButton>
-                </Grid>
-                <Grid className={classes.contactLinkBox} item xs={12} md={4}>
 
                     <CssButton
                         variant="contained"
@@ -193,22 +198,14 @@ export default function ContactMe() {
                         startIcon={<LinkedInIcon />}
                         target="_blank"
                     >
-                        LinkedIn Profile
+                        LinkedIn
                     </CssButton>
                 </Grid>
-                <Grid item xs={5} style={{ borderTop: '3px dotted black' }}></Grid>
-                <Grid item xs={2}></Grid>
-                <Grid item xs={5} style={{ borderTop: '3px dotted black' }}></Grid>
-
-                <Grid item xs={5}></Grid>
-                <Grid item xs={2} style={{ marginTop: '-3.3rem', textAlign: 'center' }}><h2>OR</h2></Grid>
-                <Grid item xs={5}></Grid>
-
                 <Grid item md={2} xs={false}></Grid>
                 <Grid item xs={12} md={8}>
                     <Paper className={classes.paper}>
                         <Grid item xs={12} className={classes.formTitle}>
-                            <h1 className={classes.formTitleText}>Reach out and touch someone (me)!</h1>
+                            <h1 className={classes.formTitleText}>Contact me directly:</h1>
                         </Grid>
                         <form className={classes.form} noValidate autoComplete="off" onSubmit={handleSendClick}>
                             <Grid item xs={12}>
