@@ -1,3 +1,4 @@
+import { Chip } from '@material-ui/core';
 import React, { useState, useEffect, useRef } from 'react'
 import './style.css';
 
@@ -83,7 +84,14 @@ export default function PostCard({ post }) {
                     <div className="post-tags-wrapper">
                         {post.Tags.map(tag => {
                             return (
-                                <button className="post-tag" key={tag.id}>{tag.text}</button>
+                                // <button className="post-tag" key={tag.id}>{tag.text}</button>
+                                
+                                <Chip
+                                key={tag.text}
+                                label={tag.text}
+                                
+                                style={{ margin: 2, background: 'var(--resetBtnBG)', color: 'var(--tagBtnText)' }}
+                            />
                             )
                         })}
                     </div>

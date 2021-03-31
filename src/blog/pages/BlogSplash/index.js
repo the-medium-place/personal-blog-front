@@ -26,8 +26,13 @@ export default function BlogSplash({ postsState, modifiablePostsState, setModifi
             </div> */}
             {/* <p>{testScrollState}</p> */}
             <Grid container>
-                <Grid item>
+                <Grid item xs={12}>
                     <h1>My Scratch-Made Blog! <small>(under construction...)</small></h1>
+                </Grid>
+                <Grid item xs={12}>
+                    <a href="/crudposting">CRUDposting Home</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a href="/">Zac's Portolio Home</a>
                 </Grid>
             </Grid>
 
@@ -45,15 +50,8 @@ export default function BlogSplash({ postsState, modifiablePostsState, setModifi
                         })) : <h1>no search results OR bad DB connection OR empty DB... check the console logs to find out!</h1>}
                 </Grid>
                 <Grid item sm={12} md={4} className="post-widgets-wrapper">
-                    <Box
-                        // display="flex"
-                        // direction={width > 960 ? '' : "row"}
-                    >
-
                         <PostSearchWidget modifiablePostsState={modifiablePostsState} postsState={postsState} setModifiablePostsState={setModifiablePostsState} />
-
                         <TagSearchWidget modifiablePostsState={modifiablePostsState} postsState={postsState} setModifiablePostsState={setModifiablePostsState} />
-                    </Box>
                 </Grid>
             </Grid>
         </div>

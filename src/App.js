@@ -96,7 +96,7 @@ function App() {
       <Router>
         {/* <CssBaseline /> */}
         <ThemeProvider theme={theme}>
-          
+
           {/* BEGIN ROUTING */}
           <Switch>
             {/* PORTFOLIO SIDE ROUTING */}
@@ -104,7 +104,7 @@ function App() {
               {/* <AboutMeJumbotron /> */}
               <NavDrawer />
               {/* <Container> */}
-                <AboutMe latestPost={postsState.length > 0 ? postsState[0] : null} />
+              <AboutMe latestPost={postsState.length > 0 ? postsState[0] : null} />
               {/* </Container> */}
             </Route>
             <Route exact path="/home">
@@ -136,7 +136,9 @@ function App() {
             {/* BLOG SIDE ROUTING */}
             <Route exact path={['/crudposting']}>
               <Nav postsState={postsState} setPostsState={setPostsState} modifiablePostsState={modifiablePostsState} setModifiablePostsState={setModifiablePostsState} />
-              <BlogSplash postsState={postsState} setPostsState={setPostsState} modifiablePostsState={modifiablePostsState} setModifiablePostsState={setModifiablePostsState} />
+              <Container>
+                <BlogSplash postsState={postsState} setPostsState={setPostsState} modifiablePostsState={modifiablePostsState} setModifiablePostsState={setModifiablePostsState} />
+              </Container>
             </Route>
             <Route exact path="/crudposting/viewpost/:id">
               <Nav postsState={postsState} setPostsState={setPostsState} modifiablePostsState={modifiablePostsState} setModifiablePostsState={setModifiablePostsState} />

@@ -1,3 +1,4 @@
+import { Chip } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
 import API from '../../../utils/API';
 import './style.css';
@@ -16,16 +17,13 @@ export default function TagSearchWidget({ postsState, modifiablePostsState, setM
             .catch(err => console.log(err))
     }, [])
 
-    function handleTagClick(e) {
-        const tagId = e.target.id;
+    function handleTagClick(tagId) {
         API.getPostsByTagId(tagId)
             .then(dbFilteredPosts => {
                 console.log('filtered posts by tag: ', dbFilteredPosts)
                 setModifiablePostsState(dbFilteredPosts.data)
                 setResultCountShowState(true);
-
             })
-
     }
 
     function handleResetClick(e) {
@@ -43,7 +41,17 @@ export default function TagSearchWidget({ postsState, modifiablePostsState, setM
             <div className="tag-widget-tags-wrapper">
 
                 {allTagsState.map(tagObj => {
-                    return <button onClick={handleTagClick} className="tag-widget-tag-text" key={tagObj.text} id={tagObj.id}>{tagObj.text}</button>
+                    // return <button onClick={handleTagClick} className="tag-widget-tag-text" key={tagObj.text} id={tagObj.id}>{tagObj.text}</button>
+                    return <Chip
+                        clickable
+                        id={tagObj.id}
+                        onClick={()=>handleTagClick(tagObj.id)}
+                        key={tagObj.text}
+                        data-id={tagObj.id}
+                        label={tagObj.text}
+                        
+                        style={{ margin: 2, background: 'var(--resetBtnBG)', color: 'var(--tagBtnText)' }}
+                    />
                 })}
                 <hr />
                 {resultCountShowState ? (

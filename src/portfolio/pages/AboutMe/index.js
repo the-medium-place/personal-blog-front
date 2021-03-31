@@ -13,9 +13,9 @@ import { motion, useViewportScroll, useTransform, useSpring } from "framer-motio
 import './style.css';
 import useStyles from './styles.js' // external material styles file
 // LOGO AND IMAGE IMPORTS
-import sittingPic from '../../assets/images/personal/sitting-cropped.jpg'
+// import sittingPic from '../../assets/images/personal/sitting-cropped.jpg'
 import sittingPicCircle from '../../assets/images/personal/sitting-cropped-circle.png'
-import headshot from '../../assets/images/personal/headshotminSquare.png'
+// import headshot from '../../assets/images/personal/headshotminSquare.png'
 import logocss from '../../assets/images/devlogos/logocss.png';
 import logohtml from '../../assets/images/devlogos/logohtml.png';
 import logojavascript from '../../assets/images/devlogos/logojavascript.png';
@@ -176,8 +176,12 @@ export default function AboutMe(props) {
                     <strong>
 
                         <h1>
-                            My name is Zac!
-                    </h1>
+                            My name is Zac Stowell
+                            <br />
+                            <small>
+                                and I love to code!
+                            </small>
+                        </h1>
                     </strong>
                 </Grid>
                 <Grid item xs='auto' />
@@ -192,7 +196,7 @@ export default function AboutMe(props) {
                     <Grid item xs='auto' />
                     <Grid item xs={8} style={{ textAlign: 'center' }}>
                         <h2>
-                            I am a Full-Stack Web Developer and Software Engineer based in the Pacific Northwest.
+                            I am a Full-Stack Web Developer based in the Pacific Northwest.
                         </h2>
                     </Grid>
                     <Grid item xs='auto' />
