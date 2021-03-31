@@ -56,7 +56,7 @@ export default function NavDrawer() {
         <MenuItem onClick={handleClose}><Link href='/' color="inherit"><HomeIcon /> About Me</Link></MenuItem>
         <MenuItem onClick={handleClose}><Link href='/portfolio' color="inherit"><LaptopIcon /> Portfolio</Link></MenuItem>
         <MenuItem onClick={handleClose}><Link href='/contact' color="inherit"><MailIcon /> Contact Me</Link></MenuItem>
-        <MenuItem onClick={handleClose}><Link href='/crudposting' color="inherit"><CommentIcon /> CRUDposting</Link></MenuItem>
+        <MenuItem onClick={handleClose}><Link href='/crudposting' color="inherit"><CommentIcon /> Blog</Link></MenuItem>
       </Menu>
     </div>
   );

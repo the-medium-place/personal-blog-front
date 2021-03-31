@@ -3,12 +3,14 @@
     width: 90%;
     margin: 0 auto;
     min-height: 100vh;
+    margin-top: 7vh;
 
 }
 
 .post-cards-wrapper {
-    width: 60%;
-    position: absolute;
+    /* width: 60%; */
+    width: 100%;
+    /* position: absolute; */
     left: 0;
     display: flex;
     flex-direction: column;
@@ -17,12 +19,13 @@
 }
 
 .post-widgets-wrapper {
-    width:38%;
-    position: absolute;
+    /* width:38%; */
+    width: 100%;
+    /* position: absolute; */
     right: 0;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    /* min-height: 100vh; */
     
 }
 
