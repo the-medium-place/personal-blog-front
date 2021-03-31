@@ -103,9 +103,9 @@ function App() {
             <Route exact path="/">
               {/* <AboutMeJumbotron /> */}
               <NavDrawer />
-              {/* <Container> */}
-              <AboutMe latestPost={postsState.length > 0 ? postsState[0] : null} />
-              {/* </Container> */}
+              <Container>
+                <AboutMe latestPost={postsState.length > 0 ? postsState[0] : null} />
+              </Container>
             </Route>
             <Route exact path="/home">
               <NavDrawer />

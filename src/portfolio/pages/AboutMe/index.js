@@ -171,35 +171,39 @@ export default function AboutMe(props) {
             {/* PAGE CONTENT */}
             {/* ============ */}
             <Grid container justify="center" className={classes.aboutmeTop}>
-                <Grid item xs='auto' />
-                <Grid item>
+                {/* <Grid item sm='auto' /> */}
+                {/* <Grid item sm={12} md={8}> */}
                     <strong>
-
                         <h1>
                             My name is Zac Stowell
                             <br />
                             <small>
-                                and I love to code!
+                                I love making things and solving puzzles.<br />
+                                I love coding.
                             </small>
                         </h1>
                     </strong>
-                </Grid>
-                <Grid item xs='auto' />
+                {/* </Grid> */}
+                {/* <Grid item sm='auto' /> */}
             </Grid>
             <Grid container justify="center" className={classes.aboutmePicWrapper}>
-                <Grid item xs='auto' />
-                <Grid item xs={3}>
+                {/* <Grid item xs='auto' /> */}
+                <Grid item xs={5} md={4} lg={3} >
                     <img src={sittingPicCircle} className={classes.aboutmePic} alt="I'm looking majestically off into the distance." />
                 </Grid>
-                <Grid item xs='auto' />
+                {/* <Grid item xs='auto' /> */}
                 <Grid container justify="center">
-                    <Grid item xs='auto' />
+                    {/* <Grid item xs='auto' /> */}
                     <Grid item xs={8} style={{ textAlign: 'center' }}>
                         <h2>
-                            I am a Full-Stack Web Developer based in the Pacific Northwest.
+                            I'm a Full-Stack Web Developer based in the Pacific Northwest.
                         </h2>
+                        <p>
+                            I also have a passion for making music (I've worked as a professional freelance drummer/percussionist), retro video games (my collection of classis SNES jrpg's is pretty rad), and Billie (my incredible Labraheeler pup)!
+                            
+                        </p>
                     </Grid>
-                    <Grid item xs='auto' />
+                    {/* <Grid item xs='auto' /> */}
                 </Grid>
             </Grid>
 

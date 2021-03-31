@@ -82,9 +82,9 @@ const projects = [
     deployed: "https://zgs-personal-blog-frontend.herokuapp.com/crudposting",
     description: "Welcome to my personal blog and portfolio combo application! The blog-side is a fully CRUD-functional CMS that is directly connected to this portfolio site! click the menu above or the button below to visit the homepage and catch up on my programming journey, or random musings!",
     // "This full-stack application provides a way for users to search for local farmer's markets as well as create a vendor profile which allows the user to list and sell products - creating a way for consumers to get their farmer's market shopping done at a safe 'social distance'.  Items created appear on the app's map function, and users can favorite a vendor, item or market and have it appear on their profile page.",
-    title: "CRUDposting",
+    title: "Personal Blog",
     tagline: "Personal CRUD blog and Portolio!",
-    screenshot: 'https://i.imgur.com/zu9Gwy4.png',
+    screenshot: 'https://i.imgur.com/xSI1Rjh.png',
     technologies: "Node.js, Express, React JS, Sequelize, MySQL, HTML5, CSS3, Material UI"
 
   },
