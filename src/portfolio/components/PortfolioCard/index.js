@@ -38,7 +38,7 @@ const CssPortCard = withStyles((theme) => ({
             top: 0,
             padding: theme.spacing(1),
         },
-        '& .MuiChip-root':{
+        '& .MuiChip-root': {
             margin: theme.spacing(0.5)
         },
         '& .MuiCardMedia-root': {
@@ -100,8 +100,8 @@ export default function PortfolioCard({ project }) {
 
     }
 
-    function fetchAvatar(tech){
-        switch (tech){
+    function fetchAvatar(tech) {
+        switch (tech) {
             case 'HTML5':
                 return logohtml;
             case 'CSS3':
@@ -142,16 +142,15 @@ export default function PortfolioCard({ project }) {
                         title={project.title}
                         subheader={project.tagline}
                         titleTypographyProps
-                        subheaderTypographyProps={{color:'secondary'}}
+                        subheaderTypographyProps={{ color: '' }}
                     />
                     <Box marginBottom="15px" display="flex" justifyContent="flex-start" flexWrap="wrap">
-                        {project.technologies.split(', ').map(tech=>{
-                            return(
+                        {project.technologies.map(tech => {
+                            return (
                                 <Chip
                                     key={tech}
                                     label={tech}
                                     avatar={<Avatar alt={tech} src={fetchAvatar(tech)} />}
-
                                 />
                             )
                         })}
