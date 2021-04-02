@@ -10,6 +10,7 @@ import API from '../../../utils/API';
 import { useHistory } from "react-router-dom";
 import useWindowDimensions from '../../../hooks/WindowDimensions'
 import NavDrawer from '../../components/NavDrawer';
+import AdminNav from '../../components/AdminNav';
 
 
 export default function Dashboard({ postsState, setPostsState }) {
@@ -68,9 +69,10 @@ export default function Dashboard({ postsState, setPostsState }) {
       <h1>Welcome to the Admin Dashboard!</h1>
 
       <a href="/crudposting"><h3>Back to CRUDposting home</h3></a>
-      {width>960?
+      <AdminNav componentViewState={componentViewState} setComponentViewState={setComponentViewState}  />
+      {/* {width>960?
       <SideNav componentViewState={componentViewState} setComponentViewState={setComponentViewState} />:<NavDrawer componentViewState={componentViewState} setComponentViewState={setComponentViewState} />
-      }
+      } */}
       {
         componentViewState === 'posts' ? <AllPosts postsState={postsState} setComponentViewState={setComponentViewState} updatePostState={updatePostState} setUpdatePostState={setUpdatePostState} /> :
           componentViewState === 'comments' ? <><span>

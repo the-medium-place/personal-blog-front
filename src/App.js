@@ -7,6 +7,7 @@ import { createMuiTheme, makeStyles } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { Container } from '@material-ui/core';
 import NavDrawer from './portfolio/components/NavDrawer';
+import PortfolioNav from './portfolio/components/PortfolioNav'
 import { useEffect, useState } from 'react';
 import API from './utils/API';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -102,31 +103,31 @@ function App() {
             {/* PORTFOLIO SIDE ROUTING */}
             <Route exact path="/">
               {/* <AboutMeJumbotron /> */}
-              <NavDrawer />
+              <PortfolioNav />
               <Container>
                 <AboutMe latestPost={postsState.length > 0 ? postsState[0] : null} />
               </Container>
             </Route>
             <Route exact path="/home">
-              <NavDrawer />
+              <PortfolioNav />
               <Container>
                 <PortfolioSplash latestPost={postsState.length > 0 ? postsState[0] : null} />
               </Container>
             </Route>
             <Route exact path="/portfolio">
-              <NavDrawer />
+              <PortfolioNav />
               <Container>
                 <Portfolio />
               </Container>
             </Route>
             <Route exact path="/contact">
-              <NavDrawer />
+              <PortfolioNav />
               <Container>
                 <ContactMe />
               </Container>
             </Route>
             <Route exact path="/login">
-              <NavDrawer />
+              <PortfolioNav />
               <Container>
                 <LoginPage />
               </Container>

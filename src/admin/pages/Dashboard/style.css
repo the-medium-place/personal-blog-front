@@ -1,9 +1,9 @@
 .Dashboard {
-    width: 80vw;
+    width: 85vw;
     min-height:100vh;
     position: absolute;
     top: 0;
-    right: 0;
+    left: 100px;
 }
 
 table, th, td {
