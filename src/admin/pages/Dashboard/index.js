@@ -36,7 +36,7 @@ export default function Dashboard({ postsState, setPostsState }) {
         console.log(err)
         setLoggedInUser(null)
         localStorage.removeItem('token')
-        alert('your token is invalid or expired\nPlease log in again...')
+        // alert('your token is invalid or expired\nPlease log in again...')
         history.push('/login')
       })
 
@@ -68,18 +68,15 @@ export default function Dashboard({ postsState, setPostsState }) {
     <div className="Dashboard">
       <h1>Welcome to the Admin Dashboard!</h1>
 
-      <a href="/crudposting"><h3>Back to CRUDposting home</h3></a>
-      <AdminNav componentViewState={componentViewState} setComponentViewState={setComponentViewState}  />
-      {/* {width>960?
-      <SideNav componentViewState={componentViewState} setComponentViewState={setComponentViewState} />:<NavDrawer componentViewState={componentViewState} setComponentViewState={setComponentViewState} />
-      } */}
+      <a href="/crudposting"><h3>Back to Blog mainpage home</h3></a>
+      <AdminNav componentViewState={componentViewState} setComponentViewState={setComponentViewState} />
       {
         componentViewState === 'posts' ? <AllPosts postsState={postsState} setComponentViewState={setComponentViewState} updatePostState={updatePostState} setUpdatePostState={setUpdatePostState} /> :
           componentViewState === 'comments' ? <><span>
             Total: <span style={counterTextStyle}>{getCommentsInfo().totalLength}</span> <br />
             Approved: <span style={counterTextStyle}>{getCommentsInfo().approvedLength}</span><br />
             Denied: <span style={counterTextStyle}>{getCommentsInfo().deniedLength}</span>
-            </span><AllComments setPostsState={setPostsState} /></> :
+          </span><AllComments setPostsState={setPostsState} /></> :
             componentViewState === 'tags' ? <AllTags setPostsState={setPostsState} /> :
               componentViewState === 'updatepost' ? <UpdatePost setComponentViewState={setComponentViewState} postId={updatePostState} setPostsState={setPostsState} /> :
                 componentViewState === 'addpost' ? <AddPost postsState={postsState} setPostsState={setPostsState} /> :
@@ -94,7 +91,7 @@ export default function Dashboard({ postsState, setPostsState }) {
                         Approved: <span style={counterTextStyle}>{getCommentsInfo().approvedLength}</span><br />
                         Denied: <span style={counterTextStyle}>{getCommentsInfo().deniedLength}</span>
                       </span>
-                    </div></> : <h1>What are you lookin' for? How are you even seeing this?</h1>
+                    </div></> : <h1>What are you lookin' for? How are you even seeing this? <br/>Just click <button onClick={()=>setComponentViewState('main')}>here</button></h1>
       }
     </div>
   )

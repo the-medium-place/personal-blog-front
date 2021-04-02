@@ -13,14 +13,15 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import TimeToLeaveIcon from '@material-ui/icons/TimeToLeave'
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import PostAddIcon from '@material-ui/icons/PostAdd';
+import MailIcon from '@material-ui/icons/ViewAgenda';
 import HomeIcon from '@material-ui/icons/Home';
-import LaptopIcon from '@material-ui/icons/LaptopMac';
-import CommentIcon from '@material-ui/icons/Comment';
+import LabelIcon from '@material-ui/icons/Label';
+import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 
 const drawerWidth = 240;
 
@@ -147,7 +148,7 @@ export default function MiniDrawer({ componentViewState, setComponentViewState }
                 }}
             >
                 <div className={classes.toolbar}>
-                    <IconButton onClick={handleDrawerClose}>
+                    <IconButton onClick={()=>handleDrawerClose(componentViewState)}>
                         {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
                     </IconButton>
                 </div>
@@ -161,7 +162,7 @@ export default function MiniDrawer({ componentViewState, setComponentViewState }
                     </ListItem>
                     <ListItem onClick={() => handleDrawerClose("addpost")} id="addpost">
                         <ListItemIcon>
-                            <LaptopIcon />
+                            <PostAddIcon />
                         </ListItemIcon>
                         <ListItemText primary="Add New Post" />
                     </ListItem>
@@ -173,19 +174,19 @@ export default function MiniDrawer({ componentViewState, setComponentViewState }
                     </ListItem>
                     <ListItem onClick={() => handleDrawerClose("tags")} id="tags">
                         <ListItemIcon>
-                            <CommentIcon />
+                            <LabelIcon />
                         </ListItemIcon>
                         <ListItemText primary="All Tags" />
                     </ListItem>
                     <ListItem onClick={() => handleDrawerClose("comments")} id="comments">
                         <ListItemIcon>
-                            <CommentIcon />
+                            <ChatBubbleIcon />
                         </ListItemIcon>
                         <ListItemText primary="All Comments" />
                     </ListItem>
                     <ListItem onClick={handleLogout}>
                         <ListItemIcon>
-                            <CommentIcon />
+                            <TimeToLeaveIcon />
                         </ListItemIcon>
                         <ListItemText primary="Logout/Exit" />
                     </ListItem>
