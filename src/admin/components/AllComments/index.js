@@ -9,6 +9,11 @@ export default function AllComments(props) {
         fetchComments();
     },[])
 
+    const adminCheck = () => {
+        return props.loggedInUser.admin
+    }
+
+
     function fetchComments () {
         API.getAllComments()
         .then(dbComments => {
@@ -19,22 +24,26 @@ export default function AllComments(props) {
     }
 
     function handleApprovalClick(commentId, approval){
-        const apprObj = {
-            approved: !approval
-        }
-        API.setCommentApproval(apprObj, commentId)
-        .then(dbComment => {
-            // alert(`Comment ${approval ? 'Denied!':'Approved!'}`)
-            console.log(dbComment)
-            fetchComments()
-            API.getAllPosts()
-            .then(dbPosts => {
-                props.setPostsState(dbPosts.data)
+        if(adminCheck()){
+            const apprObj = {
+                approved: !approval
+            }
+            API.setCommentApproval(apprObj, commentId)
+            .then(dbComment => {
+                // alert(`Comment ${approval ? 'Denied!':'Approved!'}`)
+                console.log(dbComment)
+                fetchComments()
+                API.getAllPosts()
+                .then(dbPosts => {
+                    props.setPostsState(dbPosts.data)
+                })
+                .catch(err => console.log(err))
+                props.setCommentStats(props.getCommentsInfo())
             })
             .catch(err => console.log(err))
-            props.setCommentStats(props.getCommentsInfo())
-        })
-        .catch(err => console.log(err))
+        } else {
+            alert('You do not have permission to change comment approval')
+        }
     }
 
     return (

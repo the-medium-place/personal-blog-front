@@ -3,7 +3,12 @@ import './style.css';
 
 export default function AllPosts(props) {
 
-    const { postsState, setComponentViewState, setUpdatePostState } = props;
+    const { postsState, setComponentViewState, setUpdatePostState, loggedInUser } = props;
+
+
+    const adminCheck = () => {
+        return loggedInUser.admin
+    }
 
     return (
         <div className="AllPosts">

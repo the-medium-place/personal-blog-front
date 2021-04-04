@@ -7,14 +7,14 @@
 
 .tags-left {
     padding: 10px;
-    width: 50%;
+    /* width: 50%; */
     top: 0;
     left: 0;
 }
 
 .tags-right {
     padding: 10px;
-    width: 50%;
+    /* width: 50%; */
     top: 0;
     right: 0;
 }

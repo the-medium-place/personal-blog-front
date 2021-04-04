@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import API from '../../../utils/API'
 import TagEdit from '../TagEdit'
+import Grid from '@material-ui/core/Grid'
 
 import './style.css'
 
-export default function AllTags({ setPostsState }) {
+export default function AllTags({ setPostsState, loggedInUser }) {
 
     const [tagsState, setTagsState] = useState([])
     const [editViewState, setEditViewState] = useState(false)
     const [editTag, setEditTag] = useState(null);
-    const [newTagState, setNewTagState] = useState('')
+    const [newTagState, setNewTagState] = useState({ text: '' })
 
     useEffect(() => {
         API.getAllTags()
@@ -20,11 +21,20 @@ export default function AllTags({ setPostsState }) {
             .catch(err => console.log(err))
     }, [])
 
+
+    const adminCheck = () => {
+        return loggedInUser.admin
+    }
+
     function handleEditClick(tag) {
         // API.getTagById(event.target.id)
         // .then(dbTag => {
+        if (adminCheck()) {
             setEditTag(tag)
             setEditViewState(true);
+        } else {
+            alert('You do not have permission to edit tags')
+        }
         // })
         // console.log('clicked!')
         // return <TagEdit tag={tag} />
@@ -32,20 +42,24 @@ export default function AllTags({ setPostsState }) {
 
     function handleInputChange(event) {
         const { name, value } = event.target;
-        setNewTagState({[name]:value})
+        setNewTagState({ [name]: value })
 
     }
 
-    function handleTagSave () {
-        API.saveNewTag(newTagState)
-        .then(dbNewTag => {
-            API.getAllTags()
-            .then(dbTags => {
-                setTagsState(dbTags.data);
-            })
-            .catch(err => console.log(err))
-        })
-        .catch(err => console.log(err))
+    function handleTagSave() {
+        if (adminCheck()) {
+            API.saveNewTag(newTagState)
+                .then(dbNewTag => {
+                    API.getAllTags()
+                        .then(dbTags => {
+                            setTagsState(dbTags.data);
+                        })
+                        .catch(err => console.log(err))
+                })
+                .catch(err => console.log(err))
+        } else {
+            alert('You do not have permission to add new tags')
+        }
     }
 
     return (
@@ -54,8 +68,13 @@ export default function AllTags({ setPostsState }) {
             <label htmlFor="new-tag">Save new tag: </label>
             <input id="new-tag" name="text" type="text" value={newTagState.text} onChange={handleInputChange} />
             <button onClick={handleTagSave}>SAVE</button>
-            <div className="tags-wrapper">
-                <div className="tags-left">
+            <Grid container className="tags-wrapper">
+                {editViewState ? 
+                <Grid item xs={12} md={4}>
+                    <TagEdit editTag={editTag} setEditTag={setEditTag} setEditViewState={setEditViewState} setParentTagsState={setTagsState} setPostsState={setPostsState} />
+                </Grid> : null
+                }
+                <Grid item xs={12} md={8}>
                     <table>
                         <thead>
                             <tr>
@@ -68,21 +87,19 @@ export default function AllTags({ setPostsState }) {
                         <tbody>
                             {tagsState.map(tag => {
                                 return (
-                                    <tr key={tag.id} >
+                                    <tr key={tag.text} >
                                         <td>{tag.id}</td>
                                         <td>{tag.text}</td>
                                         <td>{new Date(tag.createdAt).toLocaleString()}</td>
-                                        <td><button id={tag.id} onClick={()=>handleEditClick(tag)}>Edit Tag</button></td>
+                                        <td><button id={tag.id} onClick={() => handleEditClick(tag)}>Edit Tag</button></td>
                                     </tr>
                                 )
                             })}
                         </tbody>
                     </table>
-                </div>
-                <div className="tags-right">
-                    {editViewState ? <TagEdit editTag={editTag} setEditTag={setEditTag} setEditViewState={setEditViewState} setParentTagsState={setTagsState} setPostsState={setPostsState}/> : null}
-                </div>
-            </div>
+                </Grid>
+
+            </Grid>
         </div>
     )
 }

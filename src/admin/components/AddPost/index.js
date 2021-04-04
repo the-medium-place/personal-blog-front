@@ -3,8 +3,11 @@ import API from '../../../utils/API';
 import './style.css';
 
 export default function AddPost(props) {
-    const { postsState, setPostsState } = props;
+    const { postsState, setPostsState, loggedInUser } = props;
 
+    const adminCheck = () => {
+        return loggedInUser.admin
+    }
 
 
     const [formState, setFormState] = useState({
@@ -51,32 +54,36 @@ export default function AddPost(props) {
 
     function savePost(event) {
         event.preventDefault();
-        const postObj = {
-            ...formState, tags: tagCheckboxState
-        }
-        console.log(postObj);
-        API.saveNewPost(postObj)
-            .then(dbPost => {
-                alert('post saved');
-                setFormState({
-                    title: '',
-                    text: '',
-                    image1url: '',
-                    image2url: '',
-                    image3url: ''
-                })
-
-                API.getAllPosts()
-                    .then(dbPosts => {
-                        setPostsState(dbPosts.data)
+        if(adminCheck()){
+            const postObj = {
+                ...formState, tags: tagCheckboxState
+            }
+            console.log(postObj);
+            API.saveNewPost(postObj)
+                .then(dbPost => {
+                    alert('post saved');
+                    setFormState({
+                        title: '',
+                        text: '',
+                        image1url: '',
+                        image2url: '',
+                        image3url: ''
                     })
-
-            })
+    
+                    API.getAllPosts()
+                        .then(dbPosts => {
+                            setPostsState(dbPosts.data)
+                        })
+    
+                })
+        } else {
+            alert('you do not have permission to add posts')
+        }
     }
 
     return (
         <div className="AddPost">
-            <form>
+            <form className="addpost-form">
                 <label htmlFor="post-title">Title:</label>
                 <input
                     type="text"
