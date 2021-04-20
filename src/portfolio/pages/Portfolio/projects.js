@@ -63,7 +63,7 @@ const projects = [
   // technologies: "'HTML5', 'CSS3', 'Node.js', 'Express JS', 'MySQL'"
 
   // },
- 
+
   {
     id: "markit",
     github: "https://github.com/the-medium-place/mark-it-react",
@@ -127,9 +127,9 @@ const projects = [
     deployed: "https://awesome-monkey-fitness.herokuapp.com/",
     description: "This is a simple fitness tracker app that utilizes Node JS, Handlebars and 'MongoDB', 'Mongoose' to allow a user to create workout regimens and then add/edit/delete the individual exercises within. My test data while building consistently focused, for some reason, on eating bananas. So, I called the app Fitness Monkey!",
     title: "Fitness Monkey",
-    tagline:'Stay fit... no monkey business!',
+    tagline: 'Stay fit... no monkey business!',
     screenshot: "https://i.imgur.com/hlZdCTl.png",
-  technologies: ['HTML5', 'CSS3', 'MongoDB', 'Mongoose', 'Express JS', 'Handlebars JS', 'Node.js']
+    technologies: ['HTML5', 'CSS3', 'MongoDB', 'Mongoose', 'Express JS', 'Handlebars JS', 'Node.js']
 
   },
   {
@@ -141,6 +141,26 @@ const projects = [
     tagline: "There's good news AND bad news...",
     screenshot: 'https://i.imgur.com/m4b4xIC.jpg',
     technologies: ['HTML5', 'CSS3', 'jQuery', 'Skeleton Framework']
+  },
+  {
+    id: "phpcmsblog",
+    github: "https://github.com/the-medium-place/PHP_cms_project",
+    deployed: "https://zgs-php-cms.herokuapp.com/",
+    description: "A basic PHP CMS blog, built on the LAMP stack with a MySQL backend. ",
+    title: "PHP CMS Blog",
+    tagline: "Another Blog? But different...",
+    screenshot: 'https://i.imgur.com/khEs4nl.png',
+    technologies: ['PHP', 'Linux', 'Apache', 'MySQL', 'Bootstrap']
+  },
+  {
+    id: "laravellinkcard",
+    github: "https://github.com/the-medium-place/laravel_test",
+    deployed: "http://agile-savannah-89480.herokuapp.com/",
+    description: "A basic link card generator. Users can create new cards with links to an external site and a description of the linked site. Built as a test for the Laravel framework.",
+    title: "Laravel Link Card Generator",
+    tagline: "Make a card, any card...",
+    screenshot: 'https://i.imgur.com/ZFA500l.png',
+    technologies: ['PHP', 'Laravel', 'MySQL', 'Bootstrap']
   },
 ];
 export default projects;

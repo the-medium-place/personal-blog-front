@@ -112,8 +112,6 @@ export default function LoginPage() {
               <form className={classes.form} onSubmit={handleFormSubmit}>
                 <CardHeader color="primary" className={classes.cardHeader}>
                   <h4>Login to Admin</h4>
-                  <div className={classes.socialLine}>
-                  </div>
                 </CardHeader>
                 <CardBody>
                   <CustomInput
