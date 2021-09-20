@@ -65,7 +65,7 @@ const projects = [
   // },
   {
     id: "bcsdataviewer",
-    github: "https://github.com/bcs-data-viewer",
+    github: "https://github.com/the-medium-place/bcs-data-viewer",
     deployed: "https://bcs-data-viewer.herokuapp.com",
     description: "Application designed for use by instructional staff of the 2U / Trilogy Education coding bootcamps. Organize and aggregate all student data, and use this data to quickly form project groups and give presentation notes.",
     title: "BCS Data Viewer",
