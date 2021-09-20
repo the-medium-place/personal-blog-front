@@ -17,7 +17,8 @@ import logomysql from '../../assets/images/devlogos/logomysql.png';
 import logonode from '../../assets/images/devlogos/logonode.png';
 import logoreact from '../../assets/images/devlogos/logoreact.png';
 import logosequelize from '../../assets/images/devlogos/logosequelize.png';
-
+import logoGraphQL from '../../assets/images/devlogos/logoGraphQL.png';
+import logoBootstrap from '../../assets/images/devlogos/logoBootstrap.png';
 
 import { Card, CardContent, CardHeader, CardMedia, Chip, Box, Avatar } from '@material-ui/core';
 
@@ -109,7 +110,7 @@ export default function PortfolioCard({ project }) {
             case 'Node.js':
                 return logonode;
             case 'MySQL':
-                return logomysql
+                return logomysql;
             case 'Sequelize':
                 return logosequelize;
             case 'MongoDB':
@@ -118,6 +119,10 @@ export default function PortfolioCard({ project }) {
                 return logomongoose;
             case 'React JS':
                 return logoreact;
+            case 'GraphQL':
+                return logoGraphQL;
+            case 'Bootstrap':
+                return logoBootstrap;
             default:
                 return tech[0];
         }
