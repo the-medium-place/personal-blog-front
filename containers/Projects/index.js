@@ -1,8 +1,9 @@
 
-import ProjectCard from '../../components/ProjectCard'
+// import ProjectCard from '../../components/ProjectCard'
 import projects from '../../utils/projects'
 import { Grid } from '@mui/material'
 import styled from '@emotion/styled'
+import { ProjectCard } from '../../components'
 
 const Header = styled.h1`
 font-size: 200%;
@@ -11,7 +12,7 @@ text-align: center;
 
 `
 
-export default function Projects() {
+export function Projects() {
 
 
     return (

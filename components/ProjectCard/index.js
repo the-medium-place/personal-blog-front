@@ -117,6 +117,7 @@ const CardImg = styled('img')`
     border-radius: 8px;
     transition: all .3s;
     margin: 0 auto;
+    border: 2px solid #ededed;
     @media (max-width: 900px) {
         width: 80%;  
         margin: 0 auto;
@@ -187,7 +188,22 @@ padding: .6rem 0;
 width: 100%;
 `
 
-export default function ProjectCard(props) {
+const StyledChip = styled(Chip)`
+margin: 1.3px; 
+fontSize: 1rem; 
+background: #ededed;
+
+@media (max-width: 900px) {
+    font-size: .4rem;
+}
+
+@media (max-width: 1200px) {
+    margin: .8px;
+    font-size: .7rem;
+}
+`
+
+export function ProjectCard(props) {
 
     const { width, height } = useWindowDimensions();
 
@@ -211,19 +227,19 @@ export default function ProjectCard(props) {
     const [hoverState, setHoverState] = useState(false)
 
     useEffect(() => {
-        console.log({ width })
+        // console.log({ width })
         cardRef.current.focus();
         viewBtnRef.current.focus();
     })
 
 
     function handleHoverStart(event) {
-        console.log('hovered')
+        // console.log('hovered')
         setHoverState(true)
     }
 
     function handleHoverEnd(e) {
-        console.log('stopped hover')
+        // console.log('stopped hover')
         setHoverState(false)
     }
 
@@ -268,11 +284,11 @@ export default function ProjectCard(props) {
                     }}>
                         {technologies.map(tech => {
                             return (
-                                <Chip
+                                <StyledChip
                                     key={tech}
                                     label={tech}
                                     avatar={<Avatar alt={tech} src={fetchAvatar(tech)} />}
-                                    style={{ margin: width > 1200 ? 1.3 : .8, fontSize: width > 1200 ? '.7em' : width > 900 ? '.4em' : '.2em', background: "#ededed" }}
+                                // style={{ margin: width > 1200 ? 1.3 : .8, fontSize: width > 1200 ? '.7em' : width > 900 ? '.4em' : '.2em', background: "#ededed" }}
                                 />
                             )
                         })}

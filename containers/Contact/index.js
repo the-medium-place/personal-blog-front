@@ -114,7 +114,7 @@ const CONTENT = [
     }
 ]
 
-export default function Contact() {
+export function Contact() {
     return (
         <SectionWrapper id="contact">
             <Header>
@@ -123,7 +123,7 @@ export default function Contact() {
             <ContactContainer>
                 {CONTENT.map(obj => {
                     return (
-                        <ContactWrapper>
+                        <ContactWrapper key={obj.name}>
                             <p
                                 style={{ margin: 12 }}
                             >{obj.text}</p>

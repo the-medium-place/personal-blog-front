@@ -109,7 +109,7 @@ const DropdownWrapper = styled(motion.div)`
     z-index:500;
 `
 
-export default function NavBar() {
+export function NavBar() {
 
 
     const { width, height } = useWindowDimensions();
@@ -121,7 +121,7 @@ export default function NavBar() {
     const [menuOpen, setMenuOpen] = useState(false);
 
     useEffect(() => {
-        console.log('testing intitial width: ', { width })
+        // console.log('testing intitial width: ', { width })
         // scrollBarRef.current.focus()
 
         scrollYProgress.onChange(x => {
@@ -136,7 +136,7 @@ export default function NavBar() {
             <Nav
                 animate={{
                     position: scrollState > 12 ? 'fixed' : 'absolute',
-                    background: scrollState > 12 || menuOpen ? '#ededed' : 'transparent',
+                    background: scrollState > 12 || menuOpen ? '#ededed' : 'rgba(0,0,0,0)',
                     color: scrollState > 12 || menuOpen ? 'rgb(50,50,50)' : '#ededed',
                     // opacity: scrollState < 7 ? 1 : scrollState < 11 ? 0 : 1
                 }}

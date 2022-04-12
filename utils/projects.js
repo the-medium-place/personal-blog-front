@@ -127,7 +127,7 @@ const projects = [
     description: "This portfolio (yes, the one you're looking at right now!) was built using React/NextJS. Most of the animations are achieved with 'framer-motion'. I'm no designer, but I'm fairly proud of how it turned out!",
     title: 'Zac Stowell Codes',
     tagline: "You're already here, might as well take a look inside...",
-    screenshot: 'http://placekitten.com/700/500',
+    screenshot: 'https://i.imgur.com/KrTCwKA.jpg',
     technologies: ['Node.js', 'React JS', 'NextJS', 'MUI', 'Framer-Motion']
   },
   // {
