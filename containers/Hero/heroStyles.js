@@ -2,15 +2,29 @@ import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 import { Grid } from '@mui/material';
 
-
-export const TextBubble = styled.div`
+export const TextBubbleWrapper = styled.div`
 position: absolute;
+display: flex;
+justify-content: center;
+align-items: center;
 top: 10%;
-right: 0;
-background: white;
+right: -5%;
+padding: 1.2rem;
 height: 20%;
 width: 35%;
 border-radius: 50%;
+background: linear-gradient(to bottom right, var(--primaryLight), var(--primaryColor));
+box-shadow: 0px 0px 3rem rgba(50, 50, 50, .4);
+
+`
+
+
+export const TextBubble = styled.div`
+
+background: #ededed;
+border-radius: 50%;
+height: 100%;
+width: 100%;
 padding: .7rem;
 color: rgb(50,50,50);
 display: flex;
@@ -18,20 +32,25 @@ justify-content: center;
 align-items: center;
 font-weight: 900;
 z-index: 100;
-box-shadow: 0px 0px 3rem rgba(50, 50, 50, .4);
 &:after {
     content: "";
     width: 0px;
     height: 0px;
     position: absolute;
-    border-left: 24px solid #fff;
+    border-left: 24px solid #ededed;
     border-right: 12px solid transparent;
-    border-top: 12px solid #fff;
+    border-top: 12px solid #ededed;
     border-bottom: 20px solid transparent;
-    left: 15%;
+    left: 18%;
     bottom: -12%;
     z-index:-1;
     transform: skew(-30deg)
+}
+@media (min-width: 960px) {
+    &:after {
+        left: 20%;
+        bottom: -9%;
+    }
 }
 `;
 
@@ -104,7 +123,7 @@ export const DevLogoBox = styled.div`
 `
 
 export const AboutMeText = styled.p`
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     font-size: 125%;
     margin-top: 40px;
@@ -114,7 +133,5 @@ export const AboutMeText = styled.p`
     margin-bottom: 40px;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
-    @media (max-width: 900px) {
-        width: 90%;
-    }
+
 `

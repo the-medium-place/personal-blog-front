@@ -86,7 +86,7 @@ export const StyledLI = styled(motion.li)`
     padding: 1rem;
     margin: .4rem;
     &:hover {
-        background: #47056b;
+        background-image: linear-gradient(to bottom right, var(--primaryColor), var(--primaryLight));
         color: #ededed;
     }
     &:hover a {

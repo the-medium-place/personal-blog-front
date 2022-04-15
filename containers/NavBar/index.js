@@ -44,7 +44,7 @@ export function NavBar() {
                 <NavContentWrapper>
 
                     <NavLogoWrapper>
-                        <h1>{`<ZGS>`}</h1>
+                        &lt;<h1>ZGS</h1>&gt;
                     </NavLogoWrapper>
 
                     <NavLinkWrapper>

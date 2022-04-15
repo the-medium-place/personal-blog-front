@@ -5,6 +5,7 @@
     padding: 2rem 0;
     justify-content: center;
     align-items: center;
+    background: var(--primaryColor);
 }
 
 .footer a {

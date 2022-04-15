@@ -28,15 +28,17 @@ export const ContactWrapper = styled(motion.div)`
 export const ContactButton = styled(Button)`
     color: #ededed;
     border: 2px solid #47056b;
-    background: #47056b;
+    background: linear-gradient(to bottom right, var(--primaryColor), var(--primaryLight));
     width: 100%;
+    transition: all .1s ease-in;
     &:hover {
-        background: #6e08a6;
-        border: 2px solid #6e08a6;
-        box-shadow: 0px 0px 1rem 5px #6e08a6;
+        transform: scale(1.005);
+        background: linear-gradient(to bottom right, var(--primaryLight), var(--primaryColor));
+        box-shadow: 5px 5px 1rem var(--primaryColor);
     }
-`
+    `
 
+// border: 2px solid var(--primaryLight);
 export const ButtonWrapper = styled(motion.div)`
     width:100%;
     display: flex;

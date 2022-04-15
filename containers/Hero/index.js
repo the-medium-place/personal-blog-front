@@ -16,7 +16,8 @@ import {
     DevSection,
     DevLogoWrapper,
     DevLogoBox,
-    AboutMeText
+    AboutMeText,
+    TextBubbleWrapper
 } from './heroStyles';
 
 import logomongodb from '../../public/images/devlogos/logomongodb.png';
@@ -114,9 +115,12 @@ export function Hero() {
 
                         {
                             devName ? (
-                                <TextBubble>
-                                    {devName}!
-                                </TextBubble>
+                                <TextBubbleWrapper>
+
+                                    <TextBubble>
+                                        {devName}!
+                                    </TextBubble>
+                                </TextBubbleWrapper>
                             ) : null
                         }
                     </ImgWrapper>
@@ -141,16 +145,14 @@ export function Hero() {
                             )
                         })}
                     </DevLogoWrapper>
-                    <AboutMeText>
-                        That's me! I'm Zac Stowell. I love puzzles and problem solving. I love to code.
-                        <br /><br />
-                        I received my certification in <strong>Full-Stack Web Development</strong> from the <a href="https://bootcamp.uw.edu/">University of Washington Bootcamp</a> and I have continued expanding my skills and knowledge ever since.
-                        <br /><br />
-                        I am endlessly driven to learn and grow. Breaking problems down to their smallest parts and rebuilding has always been a passion, and the world of Web Development grants me the opportunity to spend every day doing just that.
-                        <br /><br />
-                        If you are in need of a developer for any project - big or small - reach out! I am excited to solve your problems. I love to code.
-                    </AboutMeText>
                 </DevSection>
+                <AboutMeText>
+                    That's me! I'm Zac Stowell. I love puzzles and problem solving. I love to code.
+                    <br /><br />
+                    I am endlessly driven to learn and grow. Breaking problems down to their smallest parts and rebuilding has always been a passion, and the world of Web Development grants me the opportunity to spend every day doing just that.
+                    <br /><br />
+                    If you are in need of a developer for any project - big or small - reach out! I am excited to solve your problems. I love to code.
+                </AboutMeText>
             </HeroDiv>
         </>
     )

@@ -84,6 +84,11 @@ const FlipCard = styled(Grid)`
   align-items: center;
   justify-content: center;
   height: 55vw;
+  &:hover .view-btn {
+    transform: scale(1.05);
+    background: linear-gradient(to bottom right, var(--primaryLight), var(--primaryColor));
+    box-shadow: 5px 5px 5px var(--primaryColor);
+}
   @media (min-width: 700px) {
     width: 50vw;  
     margin: 0 auto;
@@ -127,7 +132,8 @@ const TitleText = styled(motion.p)`
     backface-visibility: hidden;
     font-weight: bold;
     position: absolute;
-    top: 12%;
+    top: -3%;
+    left: 12%;
     z-index: 100;
     padding: .6rem;
     background: #ededed;
@@ -165,16 +171,16 @@ const ViewButton = styled(motion.button)`
     aspect-ratio: 1/1;
     font-weight: 700;
     font-size: 1.3rem;
-    background: #47056b;
+    background-image: linear-gradient(to bottom right, var(--primaryColor), var(--primaryLight));
+    padding: 1rem;
     color: white;
-    border: .4rem solid #47056b;
+    border: 1px solid var(--light);
     z-index: 1000;
+    transform: rotate(15deg);
     backface-visibility: hidden;
-    &:hover {
-        box-shadow: -4px 4px 10px rgba(50, 50, 50, .5);
-        transform: scale(1.2);
-    }
-    @media (max-width: 1000px) {
+    transition: all .1s ease-in;
+
+    @media (max-width: 1100px) {
         font-size: .8rem;
     }
 `
@@ -245,7 +251,7 @@ export function ProjectCard(props) {
     function handleHoverEnd(e) {
         // console.log('stopped hover')
         setHoverState(false)
-        event.target.blur()
+        e.target.blur()
 
     }
 
@@ -260,7 +266,8 @@ export function ProjectCard(props) {
         >
             <TitleText
                 animate={{
-                    opacity: frontView && hoverState ? 1 : 0,
+                    opacity: hoverState ? 1 : 0,
+                    display: frontView ? 'block' : 'none'
                 }}
             >
                 {title}
@@ -272,6 +279,7 @@ export function ProjectCard(props) {
             >
                 <StyledCardFace>
                     <ViewButton
+                        className="view-btn"
                         color='error'
                         variant='contained'
                         onClick={() => { setFrontView(!frontView) }}

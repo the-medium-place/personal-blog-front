@@ -56,31 +56,27 @@ export function Contact() {
                 Reach Out!
             </Header>
             <ContactContainer>
-                {CONTENT.map(obj => {
-                    return (
-                        <ContactWrapper key={obj.name}>
-                            <p
-                                style={{ margin: 12 }}
-                            >{obj.text}</p>
-                            <ButtonWrapper>
+                {CONTENT.map(({ name, text, Icon, href }) => (
+                    <ContactWrapper key={name}>
+                        <p
+                            style={{ margin: 12 }}
+                        >{text}</p>
+                        <ButtonWrapper>
 
-                                <ContactButton
-                                    href={obj.href}
-                                    endIcon={<obj.Icon />}
-                                    target="_blank"
-                                >
-                                    {obj.name}
-                                </ContactButton>
-                            </ButtonWrapper>
+                            <ContactButton
+                                href={href}
+                                endIcon={<Icon />}
+                                target="_blank"
+                            >
+                                {name}
+                            </ContactButton>
+                        </ButtonWrapper>
 
-                        </ContactWrapper>
-                    )
-                })}
+                    </ContactWrapper>
+                )
+                )}
             </ContactContainer>
             <QRWrapper>
-                {/* <QRHeader >
-                    Save Me!
-                </QRHeader> */}
                 <QRImg
                     src={saveContact.src}
                 />
