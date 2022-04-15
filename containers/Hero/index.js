@@ -1,12 +1,23 @@
 import React, { useRef, useEffect, useState } from 'react'
-import styles from '../../styles/Hero.module.css';
 import useMousePosition from '../../utils/hooks/MousePosition';
 import useWindowDimensions from '../../utils/hooks/WindowDimensions';
 import { motion } from 'framer-motion';
 import { Grid } from '@mui/material';
 import faceIcon from '../../public/images/faceIcon.png'
 
-import { TextBubble, DevImg, FaceImg } from './heroStyles';
+import {
+    TextBubble,
+    DevImg,
+    FaceImg,
+    HeroDiv,
+    NameWrapper,
+    ImgWrapper,
+    NameSpan,
+    DevSection,
+    DevLogoWrapper,
+    DevLogoBox,
+    AboutMeText
+} from './heroStyles';
 
 import logomongodb from '../../public/images/devlogos/logomongodb.png';
 import logomongoose from '../../public/images/devlogos/logomongoose.png';
@@ -57,7 +68,7 @@ export function Hero() {
 
     return (
         <>
-            <div className={styles.hero} ref={heroRef}>
+            <HeroDiv ref={heroRef}>
                 <Grid
                     container
                     component={motion.div}
@@ -67,11 +78,11 @@ export function Hero() {
                         rotateX: `${15 - percentY / 2}deg`
                     }}
                 >
-                    <Grid
+                    <NameWrapper
                         item
                         xs={12}
                         sm={6}
-                        className={styles.nameWrapper}
+                        // className={styles.nameWrapper}
                         component={motion.div}
                         display="flex"
                         flexDirection="column"
@@ -80,15 +91,15 @@ export function Hero() {
                             rotateX: `${15 - percentY / 3}deg`
                         }}
                     >
-                        <span className={styles.name}>Zac</span>
-                        <span className={styles.name}>Stowell</span>
-                        <span className={styles.name}>Codes</span>
-                    </Grid>
-                    <Grid
+                        <NameSpan>Zac</NameSpan>
+                        <NameSpan>Stowell</NameSpan>
+                        <NameSpan>Codes</NameSpan>
+                    </NameWrapper>
+                    <ImgWrapper
                         item
                         xs={12}
                         sm={6}
-                        className={styles.imgWrapper}
+                        // className={styles.imgWrapper}
                         component={motion.div}
                         animate={{
                             rotateY: `${-(percentX / 2)}deg`,
@@ -108,23 +119,17 @@ export function Hero() {
                                 </TextBubble>
                             ) : null
                         }
-                    </Grid>
+                    </ImgWrapper>
 
                 </Grid>
-                <div style={{ width: '100%', zIndex: 150, padding: '1rem 0' }}>
+                <DevSection>
 
 
-                    <div style={{ width: '100%', display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
+                    <DevLogoWrapper>
                         {devLogos.map((img) => {
                             return (
-                                <div
+                                <DevLogoBox
                                     key={img.name}
-                                    style={{
-                                        height: '100%',
-                                        width: '10%',
-                                        overflow: 'hidden',
-                                        padding: '.5rem'
-                                    }}
                                 >
                                     <DevImg
                                         src={img.image.src}
@@ -132,16 +137,15 @@ export function Hero() {
                                         onMouseEnter={handleLogoHover}
                                         onMouseLeave={handleLogoLeave}
                                     />
-                                </div>
+                                </DevLogoBox>
                             )
                         })}
-                    </div>
-                    <p style={{ margin: '30px auto', textAlign: 'center', fontSize: '125%' }}>
-
+                    </DevLogoWrapper>
+                    <AboutMeText>
                         That's me! I'm Zac Stowell. I love puzzles and problem solving. I love to code.
-                    </p>
-                </div>
-            </div>
+                    </AboutMeText>
+                </DevSection>
+            </HeroDiv>
         </>
     )
 }

@@ -1,135 +1,35 @@
 import React, { useState, useEffect, useLayoutEffect, useRef } from 'react'
-import styled from '@emotion/styled'
-import { motion, useViewportScroll } from 'framer-motion'
+import { useViewportScroll } from 'framer-motion'
 import MenuIcon from '@mui/icons-material/Menu';
 import LunchDiningSharpIcon from '@mui/icons-material/LunchDiningSharp';
-import useWindowDimensions from '../../utils/hooks/WindowDimensions';
-
-
-
-const Nav = styled(motion.nav)(() => [
-    `
-    width: 100%;
-    margin: 0 auto;
-    display: block;
-    top: 0;
-    height: 45px;
-    margin: 0 auto;
-    z-index: 1000;
-    padding: .6rem;
-    `
-])
-
-const NavContentWrapper = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
-    width: 90%;
-    margin: 0 auto;
-`
-
-const NavLogoWrapper = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 200%;
-    width: 15%;
-    height: 100%;
-    padding: .6rem;
-`
-
-const NavLinkWrapper = styled.div`
-    height: 100%;
-    width:70%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: .6rem;
-    @media (max-width: 1000px) {
-        display:none;
-    }
-`
-
-const MobileLinkWrapper = styled(motion.div)`
-@media (min-width:999px) {
-    display:none;
-}
-`
-
-const LinkUL = styled.ul`
-    list-decoration: none;
-    display: flex;
-    flex-direction:row;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    font-weight: 700;
-`
-
-const DropdownUL = styled(motion.ul)`
-    list-decoration:none;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    text-align: center;
-    width: 100%;
-
-
-`
-
-const StyledLink = styled(motion.a)`
-
-`
-
-const StyledLI = styled(motion.li)`
-    font-size: 170%;
-    font-weight: 600;
-    line-height: 2rem;
-    width: 100%;
-    padding: 1rem;
-    margin: .4rem;
-    &:hover {
-        background: rgb(50,50,50);
-        color: #ededed;
-    }
-    &:hover a {
-        color: #ededed !important;
-    }
-`
-
-const DropdownWrapper = styled(motion.div)`
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #ededed;
-    display: flex;
-    color: rgb(50,50,50);
-    z-index:500;
-`
+import {
+    Nav,
+    NavContentWrapper,
+    NavLogoWrapper,
+    NavLinkWrapper,
+    MobileLinkWrapper,
+    LinkUL,
+    DropdownUL,
+    StyledLink,
+    StyledLI,
+    DropdownWrapper,
+    OverlayDiv
+} from './navBarStyles'
 
 export function NavBar() {
 
 
-    const { width, height } = useWindowDimensions();
-
-    // const percentY = y ? Math.round(((y / (height)) * 100)) : 0;
     const { scrollYProgress } = useViewportScroll();
 
     const [scrollState, setScrollState] = useState();
     const [menuOpen, setMenuOpen] = useState(false);
 
     useEffect(() => {
-        // console.log('testing intitial width: ', { width })
-        // scrollBarRef.current.focus()
-
         scrollYProgress.onChange(x => {
             setScrollState(Math.ceil(x * 100))
 
         })
-        if (width > 1000) { setMenuOpen(false) }
-    }, [width])
+    }, [])
 
     return (
         <>
@@ -297,19 +197,9 @@ function Overlay({ setMenuOpen }) {
     useLockBodyScroll();
 
     return (
-        <motion.div
-            style={{
-                zIndex: '-1',
-                background: 'rgba(50,50,50,.8)',
-                position: 'fixed',
-                top: 70,
-                bottom: 0,
-                right: 0,
-                left: 0
-
-            }}
+        <OverlayDiv
             onClick={() => setMenuOpen(false)}
-        ></motion.div>
+        />
     )
 
 
@@ -319,6 +209,10 @@ function useLockBodyScroll() {
     useLayoutEffect(() => {
         const originalStyle = window.getComputedStyle(document.body).overflow;
         document.body.style.overflow = 'hidden';
+
+        if (window.getComputedStyle(document.body).width > 999) {
+            document.body.style.overflow = originalStyle
+        }
 
         return () => (document.body.style.overflow = originalStyle)
     })

@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
+import { Grid } from '@mui/material';
 
 
 export const TextBubble = styled.div`
@@ -47,4 +48,60 @@ export const FaceImg = styled(motion.img)`
     @media (max-width: 600px) {
         width: 40%;
     }
+`
+
+export const HeroDiv = styled(motion.div)`
+    width: 100%;
+    perspective: 1000px;
+    position: relative;
+`
+
+export const NameWrapper = styled(Grid)`
+    height: 100%;
+    transform-style: preserve-3d;
+    padding-top: 5%;
+    width: 100%;
+`
+
+export const ImgWrapper = styled(Grid)`
+    transform-style: preserve-3d;
+`
+
+export const NameSpan = styled(motion.span)`
+    display: block;
+    font-size: 9.5vw;
+    font-weight: 900;
+    text-align: right;
+    width: 100%;
+    @media (max-width: 600px) {
+        font-size: 4rem;
+        text-align: center;
+    }
+`
+
+export const DevSection = styled.section`
+    width: 100%;
+    z-index: 150;
+    padding: 1rem 0px;
+`
+
+export const DevLogoWrapper = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+`
+
+export const DevLogoBox = styled.div`
+    height: 100%;
+    width: 10%;
+    overflow: hidden;
+    padding: .5rem;
+`
+
+export const AboutMeText = styled.p`
+    text-align: center;
+    font-size: 125%;
+    margin-top: 40px;
+
 `

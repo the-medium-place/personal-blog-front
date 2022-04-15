@@ -4,8 +4,6 @@ import styled from '@emotion/styled'
 import AccountTreeTwoToneIcon from '@mui/icons-material/AccountTreeTwoTone';
 import WebTwoToneIcon from '@mui/icons-material/WebTwoTone';
 import { Chip, Box, Avatar, Grid, ButtonGroup, Button } from '@mui/material';
-import useWindowDimensions from '../../utils/hooks/WindowDimensions';
-
 
 import logocss from '../../public/images/devlogos/logocss.png';
 import logohtml from '../../public/images/devlogos/logohtml.png';
@@ -172,7 +170,10 @@ const ViewButton = styled(motion.button)`
     border: .4rem solid red;
     z-index: 1000;
     backface-visibility: hidden;
-
+    &:hover {
+        box-shadow: -4px 4px 10px rgba(50, 50, 50, .5);
+        transform: scale(1.2);
+    }
 `
 
 const ChipBox = styled(motion.div)`
@@ -205,7 +206,6 @@ background: #ededed;
 
 export function ProjectCard(props) {
 
-    const { width, height } = useWindowDimensions();
 
 
     const {
@@ -236,11 +236,14 @@ export function ProjectCard(props) {
     function handleHoverStart(event) {
         // console.log('hovered')
         setHoverState(true)
+        event.target.blur()
     }
 
     function handleHoverEnd(e) {
         // console.log('stopped hover')
         setHoverState(false)
+        event.target.blur()
+
     }
 
     return (
@@ -271,8 +274,8 @@ export function ProjectCard(props) {
                         onClick={() => { setFrontView(!frontView) }}
                         ref={viewBtnRef}
                         animate={{
-                            boxShadow: hoverState ? '-4px 4px 10px rgba(50, 50, 50, .5)' : '0px 0px 0px rgba(0, 0, 0, 0)',
-                            transform: hoverState ? 'scale(1.2)' : 'scale(1)',
+                            // boxShadow: hoverState ? '-4px 4px 10px rgba(50, 50, 50, .5)' : '0px 0px 0px rgba(0, 0, 0, 0)',
+                            // transform: hoverState ? 'scale(1.2)' : 'scale(1)',
                             opacity: frontView ? 1 : 0
                         }}
                     >

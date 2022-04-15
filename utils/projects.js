@@ -122,8 +122,8 @@ const projects = [
   // },
   {
     id: 'nextJS-portfolio',
-    github: "https://github.com/the-medium-place/portfolio-nextjs",
-    deployed: 'https://nextjs-zgs-portfolio.herokuapp.com/',
+    github: "https://github.com/the-medium-place/personal-blog-front",
+    deployed: 'https://www.zacstowellcodes.com',
     description: "This portfolio (yes, the one you're looking at right now!) was built using React/NextJS. Most of the animations are achieved with 'framer-motion'. I'm no designer, but I'm fairly proud of how it turned out!",
     title: 'Zac Stowell Codes',
     tagline: "You're already here, might as well take a look inside...",

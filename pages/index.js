@@ -15,7 +15,7 @@ import Script from 'next/script'
 const Spacer = styled('div')`
   width: 85%;
   border: 1px solid #ededed;
-  margin: 8vh auto;
+  margin: 40px auto;
 `
 
 
