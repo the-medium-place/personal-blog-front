@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 
 export const Nav = styled(motion.nav)(() => [
     `
-    width: 100%;
+    width: 100vw;
     margin: 0 auto;
     display: block;
     top: 0;
@@ -82,9 +82,9 @@ export const StyledLI = styled(motion.li)`
     font-size: 170%;
     font-weight: 600;
     line-height: 2rem;
-    width: 100%;
+    width: 100vw;
     padding: 1rem;
-    margin: .4rem;
+ 
     &:hover {
         background-image: linear-gradient(to bottom right, var(--primaryColor), var(--primaryLight));
         color: #ededed;

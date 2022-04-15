@@ -1,12 +1,8 @@
 
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-// import Footer from '../containers/Footer'
-// import Hero from '../containers/Hero'
 import styled from '@emotion/styled'
-// import Projects from '../containers/Projects'
-// import NavBar from '../containers/NavBar'
-// import Contact from '../containers/Contact'
+
 
 import { NavBar, Hero, Contact, Footer, Projects } from '../containers'
 import Script from 'next/script'
@@ -25,6 +21,7 @@ export default function Home() {
 
   return (
     <>
+      <NavBar />
       <div className={styles.container}>
         <Head>
           <meta charSet="UTF-8" />
@@ -33,15 +30,9 @@ export default function Home() {
           <title>Zac Stowell Codes</title>
         </Head>
         <main className={styles.main}>
-          <NavBar />
           <Hero id="hero" />
-          {/* <Spacer /> */}
           <Projects />
-          {/* <Spacer /> */}
           <Contact />
-          {/* <Spacer /> */}
-
-
         </main>
         <Script
           strategy="afterInteractive"

@@ -52,6 +52,12 @@ z-index: 100;
         bottom: -9%;
     }
 }
+@media (min-width: 1400px) {
+    &:after {
+        left: 20%;
+        bottom: -9%;
+    }
+}
 `;
 
 export const DevImg = styled(motion.img)`
@@ -123,7 +129,6 @@ export const DevLogoBox = styled.div`
 `
 
 export const AboutMeText = styled.p`
-    width: 100%;
     margin: 0 auto;
     font-size: 125%;
     margin-top: 40px;
