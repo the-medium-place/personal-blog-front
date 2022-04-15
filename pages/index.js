@@ -35,11 +35,11 @@ export default function Home() {
         <main className={styles.main}>
           <NavBar />
           <Hero id="hero" />
-          <Spacer />
+          {/* <Spacer /> */}
           <Projects />
-          <Spacer />
+          {/* <Spacer /> */}
           <Contact />
-          <Spacer />
+          {/* <Spacer /> */}
 
 
         </main>

@@ -27,11 +27,13 @@ export const ContactWrapper = styled(motion.div)`
 
 export const ContactButton = styled(Button)`
     color: #ededed;
-    border: 2px solid #ededed;
+    border: 2px solid #47056b;
+    background: #47056b;
+    width: 100%;
     &:hover {
-        color: rgb(50,50,50);
-        background: #ededed;
-        box-shadow: 0px 0px 1rem 5px #ededed;
+        background: #6e08a6;
+        border: 2px solid #6e08a6;
+        box-shadow: 0px 0px 1rem 5px #6e08a6;
     }
 `
 

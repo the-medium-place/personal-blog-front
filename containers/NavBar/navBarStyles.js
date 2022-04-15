@@ -73,7 +73,9 @@ export const DropdownUL = styled(motion.ul)`
 `
 
 export const StyledLink = styled(motion.a)`
-
+    &:hover {
+        text-decoration: underline;
+    }
 `
 
 export const StyledLI = styled(motion.li)`
@@ -84,7 +86,7 @@ export const StyledLI = styled(motion.li)`
     padding: 1rem;
     margin: .4rem;
     &:hover {
-        background: rgb(50,50,50);
+        background: #47056b;
         color: #ededed;
     }
     &:hover a {

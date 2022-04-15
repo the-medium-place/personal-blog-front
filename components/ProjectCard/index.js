@@ -164,15 +164,18 @@ const ViewButton = styled(motion.button)`
     border-radius: 50%;
     aspect-ratio: 1/1;
     font-weight: 700;
-    font-family: 'Lobster', cursive;
-    background: red;
+    font-size: 1.3rem;
+    background: #47056b;
     color: white;
-    border: .4rem solid red;
+    border: .4rem solid #47056b;
     z-index: 1000;
     backface-visibility: hidden;
     &:hover {
         box-shadow: -4px 4px 10px rgba(50, 50, 50, .5);
         transform: scale(1.2);
+    }
+    @media (max-width: 1000px) {
+        font-size: .8rem;
     }
 `
 

@@ -42,12 +42,24 @@ export function NavBar() {
                 }}
             >
                 <NavContentWrapper>
+
                     <NavLogoWrapper>
                         <h1>{`<ZGS>`}</h1>
                     </NavLogoWrapper>
+
                     <NavLinkWrapper>
                         <LinkUL>
-                            <li>About</li>
+                            <li>
+                                <StyledLink
+                                    onClick={() => setMenuOpen(false)}
+                                    animate={{
+                                        color: scrollState > 12 || menuOpen ? 'rgb(50,50,50)' : '#ededed'
+                                    }}
+                                    href="#aboutme"
+                                >
+                                    About Me
+                                </StyledLink>
+                            </li>
 
                             <li>
                                 <StyledLink
@@ -101,6 +113,7 @@ export function NavBar() {
 
                         </LinkUL>
                     </NavLinkWrapper>
+
                     <MobileLinkWrapper>
                         <LunchDiningSharpIcon onClick={() => setMenuOpen(!menuOpen)} />
                         {/* <MenuIcon
@@ -108,6 +121,7 @@ export function NavBar() {
                         /> 
                         */}
                     </MobileLinkWrapper>
+
                     <DropdownWrapper
                         animate={{
                             // transform: menuOpen ? 'translateY(60px)' : 'translateY(-100%)'
@@ -119,7 +133,21 @@ export function NavBar() {
                         }}
                     >
                         <DropdownUL>
-                            <StyledLI>About</StyledLI>
+                            <StyledLI>
+                                <StyledLink
+                                    onClick={() => setMenuOpen(false)}
+
+                                    animate={{
+                                        color: scrollState > 12 || menuOpen ? 'rgb(50,50,50)' : '#ededed'
+                                    }}
+                                    href="#aboutme"
+                                >
+                                    <div style={{ width: '100%', height: '100%' }}>
+
+                                        About Me
+                                    </div>
+                                </StyledLink>
+                            </StyledLI>
 
                             <StyledLI>
                                 <StyledLink
@@ -183,6 +211,7 @@ export function NavBar() {
 
                         </DropdownUL>
                     </DropdownWrapper>
+
                 </NavContentWrapper>
                 {menuOpen ? (
                     <Overlay

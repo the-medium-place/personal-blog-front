@@ -100,8 +100,12 @@ export const DevLogoBox = styled.div`
 `
 
 export const AboutMeText = styled.p`
-    text-align: center;
+    width: 80%;
+    margin: 0 auto;
     font-size: 125%;
     margin-top: 40px;
-
+    text-align: center;
+    padding: 1.3rem;
+    border: 2px solid #ededed;
+    margin-bottom: 40px;
 `

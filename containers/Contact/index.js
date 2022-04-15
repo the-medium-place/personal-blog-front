@@ -78,9 +78,9 @@ export function Contact() {
                 })}
             </ContactContainer>
             <QRWrapper>
-                <QRHeader >
+                {/* <QRHeader >
                     Save Me!
-                </QRHeader>
+                </QRHeader> */}
                 <QRImg
                     src={saveContact.src}
                 />
