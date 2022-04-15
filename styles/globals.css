@@ -4,6 +4,13 @@
 */
 @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap');
 
+:root {
+  --dark: rgb(50,50,50);
+  --light: #ededed;
+  --primaryColor: #47056b;
+  --primaryLight: #6e08a6;
+}
+
 * {
   font-family: 'Montserrat', sans-serif;
 }
@@ -17,11 +24,11 @@ html {
 }
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-  background: rgb(50,50,50);
+  background: var(--dark);
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #ededed;
+  background-color: var(--light);
   /* outline: 2px solid #ededed; */
   border-radius: 8px;
 }
@@ -35,8 +42,8 @@ html {
 }
 
 body {
-  background: rgb(50, 50, 50);
-  color: #ededed;
+  background: var(--dark);
+  color: var(--light);
   overflow-x: hidden;
   width: 99vw;
 }
@@ -44,7 +51,7 @@ body {
 a {
   /* color: #ededed; */
   text-decoration: none;
-  color: #ededed;
+  color:var(--light);
 
 }
 a:hover {

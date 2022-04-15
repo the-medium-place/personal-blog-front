@@ -73,6 +73,7 @@ export const NameSpan = styled(motion.span)`
     font-weight: 900;
     text-align: right;
     width: 100%;
+    -webkit-font-smoothing: antialiased;
     @media (max-width: 600px) {
         font-size: 4rem;
         text-align: center;
@@ -97,6 +98,9 @@ export const DevLogoBox = styled.div`
     width: 10%;
     overflow: hidden;
     padding: .5rem;
+    @media (max-width: 900px) {
+        width: 14%;
+    }
 `
 
 export const AboutMeText = styled.p`
@@ -108,4 +112,9 @@ export const AboutMeText = styled.p`
     padding: 1.3rem;
     border: 2px solid #ededed;
     margin-bottom: 40px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    @media (max-width: 900px) {
+        width: 90%;
+    }
 `
