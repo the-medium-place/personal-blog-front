@@ -69,7 +69,7 @@ export function Hero() {
 
     return (
         <>
-            <HeroDiv ref={heroRef}>
+            <HeroDiv ref={heroRef} id="top">
                 <Grid
                     container
                     component={motion.div}

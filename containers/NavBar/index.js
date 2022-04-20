@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useLayoutEffect, useRef } from 'react'
-import { useViewportScroll } from 'framer-motion'
+import { motion, useViewportScroll } from 'framer-motion'
 import MenuIcon from '@mui/icons-material/Menu';
 import LunchDiningSharpIcon from '@mui/icons-material/LunchDiningSharp';
 import {
@@ -44,7 +44,17 @@ export function NavBar() {
                 <NavContentWrapper>
 
                     <NavLogoWrapper>
-                        &lt;<h1>ZGS</h1>&gt;
+                        &lt;
+                        <a href="#top">
+                            <motion.h1
+                                animate={{
+                                    color: scrollState > 12 ? 'rgb(50,50,50)' : '#ededed',
+
+                                }}
+
+                            >ZGS</motion.h1>
+                        </a>
+                        &gt;
                     </NavLogoWrapper>
 
                     <NavLinkWrapper>
