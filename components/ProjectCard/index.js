@@ -114,9 +114,9 @@ transform-style: preserve-3d;
 transform: rotateY(180deg);
 `
 
-
 const CardImg = styled('img')`
     width: 80%;
+    aspect-ratio: 16/9;
     border-radius: 8px;
     transition: all .3s;
     margin: 0 auto;

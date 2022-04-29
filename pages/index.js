@@ -25,20 +25,6 @@ export default function Home() {
       <div className={styles.container}>
         <Head>
 
-          <Script
-            strategy='beforeInteractive'
-            dangerouslySetInnerHTML={{
-              __html: `
-          (function(h,o,t,j,a,r){
-            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-            h._hjSettings={hjid:2932229,hjsv:6};
-            a=o.getElementsByTagName('head')[0];
-            r=o.createElement('script');r.async=1;
-            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-            a.appendChild(r);
-        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-          `
-            }} />
           <meta charSet="UTF-8" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -64,6 +50,12 @@ export default function Home() {
           "type": "dog",
           "breed": "Belgian Malinois/German Shepherd/Border Collie"
         },
+        "Hobbies":[
+          "Playing Drums",
+          "Houseplant Care",
+          "Retro Video Games",
+          "Cooking"
+        ],
         "Phone Number": "(503) 507-1351",
         "Email Address":"zgstowell@gmail.com",
         "Languages":[

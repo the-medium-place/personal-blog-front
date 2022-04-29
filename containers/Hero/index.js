@@ -147,11 +147,12 @@ export function Hero() {
                     </DevLogoWrapper>
                 </DevSection>
                 <AboutMeText>
-                    That's me! I'm Zac Stowell. I love puzzles and problem solving. I love to code.
+                    That's me! Making websitez. Coding appz. Playing drumz.
+                    {/* That's me! I'm Zac Stowell. I love puzzles and problem solving. I love to code.
                     <br /><br />
                     I am endlessly driven to learn and grow. Breaking problems down to their smallest parts and rebuilding has always been a passion, and the world of Web Development grants me the opportunity to spend every day doing just that.
                     <br /><br />
-                    If you are in need of a developer for any project - big or small - reach out! I am excited to solve your problems. I love to code.
+                    If you are in need of a developer for any project - big or small - reach out! I am excited to solve your problems. I love to code. */}
                 </AboutMeText>
             </HeroDiv>
         </>

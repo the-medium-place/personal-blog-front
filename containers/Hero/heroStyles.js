@@ -54,7 +54,7 @@ z-index: 100;
 }
 @media (min-width: 1400px) {
     &:after {
-        left: 20%;
+        left: 25%;
         bottom: -9%;
     }
 }
@@ -130,11 +130,10 @@ export const DevLogoBox = styled.div`
 
 export const AboutMeText = styled.p`
     margin: 0 auto;
-    font-size: 125%;
+    font-size: 175%;
     margin-top: 40px;
     text-align: center;
     padding: 1.3rem;
-    border: 2px solid #ededed;
     margin-bottom: 40px;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
