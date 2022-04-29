@@ -48,10 +48,8 @@ export function NavBar() {
                         <a href="#top">
                             <motion.h1
                                 animate={{
-                                    color: scrollState > 12 ? 'rgb(50,50,50)' : '#ededed',
-
+                                    color: scrollState > 12 || menuOpen ? 'rgb(50,50,50)' : '#ededed',
                                 }}
-
                             >ZGS</motion.h1>
                         </a>
                         &gt;
@@ -138,8 +136,8 @@ export function NavBar() {
                             top: menuOpen ? 60 : '-100vh'
                         }}
                         transition={{
-                            duration: .6,
-                            ease: 'circInOut'
+                            duration: menuOpen ? .4 : .1,
+                            ease: 'easeInOut'
                         }}
                     >
                         <DropdownUL>

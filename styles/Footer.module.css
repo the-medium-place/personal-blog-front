@@ -1,6 +1,6 @@
 .footer {
     display: flex;
-    height: 13vh;
+    height: 15px;
     flex: 1;
     padding: 2rem 0;
     justify-content: center;
@@ -8,10 +8,10 @@
     background: var(--primaryColor);
 }
 
-.footer a {
+/* .footer a {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-grow: 1;
 
-}
+} */
