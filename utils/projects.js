@@ -64,6 +64,16 @@ const projects = [
 
   // },
   {
+    id: 'rockademy',
+    github: "https://github.com/Opstical",
+    deployed: 'https://www.therockademy.rocks',
+    description: "This website was constructed from scratch for The Rockademy - a children's music school and summercamp program in southern CA. It is a full MERN stack application with an 'Admin' dashboard allowing the site owner full CRUD functionality with camp events and students.",
+    title: 'The Rockademy',
+    tagline: "Cultivate Your Inner Rockstar...",
+    screenshot: 'https://i.imgur.com/AZbhFYo.png',
+    technologies: ['Node.js', 'React JS', 'NextJS', 'Tailwind UI', 'Framer-Motion']
+  },
+  {
     id: "bcsdataviewer",
     github: "https://github.com/the-medium-place/bcs-data-viewer",
     deployed: "https://bcs-data-viewer.herokuapp.com",
@@ -130,6 +140,7 @@ const projects = [
     screenshot: 'https://i.imgur.com/KrTCwKA.jpg',
     technologies: ['Node.js', 'React JS', 'NextJS', 'MUI', 'Framer-Motion']
   },
+
   // {
   //   id: "googlebooks",
   //   github: "https://github.com/the-medium-place/google-books-search",
@@ -141,17 +152,17 @@ const projects = [
   //   technologies: ['MongoDB', 'Mongoose', 'Express JS', 'React JS', 'Node.js', 'CSS3']
 
   // },
-  {
-    id: "fitnessmonkey",
-    github: "https://github.com/the-medium-place/fitness-tracker",
-    deployed: "https://awesome-monkey-fitness.herokuapp.com/",
-    description: "This is a simple fitness tracker app that utilizes Node JS, Handlebars and 'MongoDB', 'Mongoose' to allow a user to create workout regimens and then add/edit/delete the individual exercises within. My test data while building consistently focused, for some reason, on eating bananas. So, I called the app Fitness Monkey!",
-    title: "Fitness Monkey",
-    tagline: 'Stay fit... no monkey business!',
-    screenshot: "https://i.imgur.com/hlZdCTl.png",
-    technologies: ['MongoDB', 'Mongoose', 'Express JS', 'Handlebars JS', 'Node.js']
+  // {
+  //   id: "fitnessmonkey",
+  //   github: "https://github.com/the-medium-place/fitness-tracker",
+  //   deployed: "https://awesome-monkey-fitness.herokuapp.com/",
+  //   description: "This is a simple fitness tracker app that utilizes Node JS, Handlebars and 'MongoDB', 'Mongoose' to allow a user to create workout regimens and then add/edit/delete the individual exercises within. My test data while building consistently focused, for some reason, on eating bananas. So, I called the app Fitness Monkey!",
+  //   title: "Fitness Monkey",
+  //   tagline: 'Stay fit... no monkey business!',
+  //   screenshot: "https://i.imgur.com/hlZdCTl.png",
+  //   technologies: ['MongoDB', 'Mongoose', 'Express JS', 'Handlebars JS', 'Node.js']
 
-  },
+  // },
   // {
   //   id: "socialdistance",
   //   github: "https://github.com/the-medium-place/covidDistractions",

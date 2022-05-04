@@ -120,7 +120,7 @@ const CardImg = styled('img')`
     border-radius: 8px;
     transition: all .3s;
     margin: 0 auto;
-    border: 2px solid #ededed;
+    border: 2px solid var(--light);
     @media (max-width: 900px) {
         width: 80%;  
         margin: 0 auto;
@@ -136,8 +136,8 @@ const TitleText = styled(motion.p)`
     left: 12%;
     z-index: 100;
     padding: .6rem;
-    background: #ededed;
-    color: rgb(50,50,50);
+    background: var(--light);
+    color: var(--dark);
     border-radius: 5px;
     transition: opacity .3s;
     @media (max-width: 1000px) {
@@ -159,7 +159,7 @@ const TaglineText = styled(motion.p)`
 
 const StyledButton = styled(Button)`
     background: rgb(20, 20, 20);
-    color: #ededed;
+    color: var(--light);
     z-index: 110;
 `
 
@@ -201,7 +201,7 @@ width: 100%;
 const StyledChip = styled(Chip)`
 margin: 1.3px; 
 fontSize: 1rem; 
-background: #ededed;
+background: var(--light);
 
 @media (max-width: 900px) {
     font-size: .4rem;
@@ -302,7 +302,7 @@ export function ProjectCard(props) {
                                     key={tech}
                                     label={tech}
                                     avatar={<Avatar alt={tech} src={fetchAvatar(tech)} />}
-                                // style={{ margin: width > 1200 ? 1.3 : .8, fontSize: width > 1200 ? '.7em' : width > 900 ? '.4em' : '.2em', background: "#ededed" }}
+                                // style={{ margin: width > 1200 ? 1.3 : .8, fontSize: width > 1200 ? '.7em' : width > 900 ? '.4em' : '.2em', background: "var(--light)" }}
                                 />
                             )
                         })}

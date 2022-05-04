@@ -87,10 +87,10 @@ export const StyledLI = styled(motion.li)`
  
     &:hover {
         background-image: linear-gradient(to bottom right, var(--primaryColor), var(--primaryLight));
-        color: #ededed;
+        color: var(--light);
     }
     &:hover a {
-        color: #ededed !important;
+        color: var(--light) !important;
     }
 `
 
@@ -99,9 +99,9 @@ export const DropdownWrapper = styled(motion.div)`
     top: 0;
     left: 0;
     width: 100%;
-    background: #ededed;
+    background: var(--light);
     display: flex;
-    color: rgb(50,50,50);
+    color: var(--dark);
     z-index:500;
     @media (min-width:1000px) {
         display: none;
